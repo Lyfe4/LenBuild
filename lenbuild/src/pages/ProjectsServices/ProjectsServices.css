@@ -1,0 +1,225 @@
+/* Service Categories */
+.service-category {
+  margin-bottom: var(--spacing-xxl);
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--box-shadow-light);
+}
+
+.service-category h3 {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--primary);
+  color: white;
+  margin: 0;
+  font-size: var(--font-size-xl);
+}
+
+.service-content {
+  display: flex;
+  padding: var(--spacing-xl);
+  gap: var(--spacing-xl);
+}
+
+.service-description {
+  flex: 1;
+}
+
+.service-features {
+  margin-top: var(--spacing-md);
+  list-style-type: none;
+}
+
+.service-features li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-features li:before {
+  content: "✓";
+  color: var(--primary);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.project-gallery {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.project-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-light);
+}
+
+.project-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: var(--transition-medium);
+}
+
+.project-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  padding: var(--spacing-md);
+  color: white;
+  transition: var(--transition-medium);
+}
+
+.project-overlay h4 {
+  color: white;
+  margin-bottom: 5px;
+}
+
+.project-overlay p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.project-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Project Showcase */
+.project-showcase {
+  background-color: var(--light);
+}
+
+.project-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.filter-btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: white;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-medium);
+  font-weight: 500;
+}
+
+.filter-btn:hover, 
+.filter-btn.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.showcase-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-light);
+  aspect-ratio: 4/3;
+}
+
+.showcase-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-medium);
+}
+
+.showcase-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: var(--spacing-md);
+  color: white;
+  transform: translateY(100%);
+  transition: var(--transition-medium);
+}
+
+.showcase-item:hover .showcase-overlay {
+  transform: translateY(0);
+}
+
+.showcase-item:hover img {
+  transform: scale(1.1);
+}
+
+.showcase-overlay h3 {
+  color: white;
+  margin-bottom: 5px;
+}
+
+.showcase-overlay p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Animation for filtering */
+.showcase-item {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.showcase-item.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .service-content {
+    flex-direction: column;
+  }
+  
+  .service-description,
+  .project-gallery {
+    width: 100%;
+  }
+  
+  .project-gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .project-item {
+    flex: 0 0 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .project-filter {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .filter-btn {
+    width: 80%;
+  }
+  
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-item {
+    flex: 0 0 100%;
+  }
+}
