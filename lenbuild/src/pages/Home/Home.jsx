@@ -10,17 +10,20 @@ const Home = () => {
     {
       title: "Custom Home Building",
       description: "We create bespoke homes designed specifically for you and your lifestyle, working closely with you from concept to completion.",
-      link: "/projects-services#custom-homes"
+      link: "/projects-services#custom-homes",
+      state: { scrollToTop: false }
     },
     {
       title: "Home Extensions",
       description: "Need more space? Our extension services seamlessly integrate with your existing home, providing additional living areas.",
-      link: "/projects-services#extensions"
+      link: "/projects-services#extensions",
+      state: { scrollToTop: false }
     },
     {
       title: "Renovations",
       description: "Transform your current space with our comprehensive renovation services, breathing new life into your home.",
-      link: "/projects-services#renovations"
+      link: "/projects-services#renovations",
+      state: { scrollToTop: false }
     }
   ];
 
@@ -74,7 +77,7 @@ const Home = () => {
               >
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
-                <Link to={service.link} className="btn">Learn More</Link>
+                <Link to={service.link} state={service.state} className="btn">Learn More</Link>
               </div>
             ))}
           </div>
@@ -98,7 +101,13 @@ const Home = () => {
             </div>
           </div>
           <div className="text-center view-all" data-aos="fade-up" data-aos-delay="300">
-            <Link to="/about#testimonials" className="btn">Read More Testimonials</Link>
+            <Link 
+              to="/about#testimonials" 
+              state={{ scrollToTop: false }}
+              className="btn"
+            >
+              Read More Testimonials
+            </Link>
           </div>
         </div>
       </section>

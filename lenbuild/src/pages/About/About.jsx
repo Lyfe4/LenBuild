@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';
 import ParallaxImage from '../../components/ParallaxImage/ParallaxImage';
@@ -77,6 +77,20 @@ const About = () => {
       author: "John & Emily Parker"
     }
   ];
+  
+  // Scroll to section if hash in URL
+  useEffect(() => {
+    const { hash } = window.location;
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        // Add slight delay to ensure page is fully loaded
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 500);
+      }
+    }
+  }, []);
   
   return (
     <div className="about-page">

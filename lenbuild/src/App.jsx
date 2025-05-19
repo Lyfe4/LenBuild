@@ -6,6 +6,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import AutoScrollToTop from './components/ScrollToTop/AutoScrollToTop';
 
 // Pages
 import Home from './pages/Home/Home';
@@ -46,6 +47,7 @@ function App() {
   return (
     <Router>
       <div className="app">
+        <AutoScrollToTop />
         <Header />
         <main className="main-content">
           <AnimatedRoutes />

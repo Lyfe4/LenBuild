@@ -22,11 +22,11 @@ const Footer = () => {
           <div className="footer-col">
             <h3>Our Services</h3>
             <ul>
-              <li><Link to="/projects-services#custom-homes">Custom Home Building</Link></li>
-              <li><Link to="/projects-services#extensions">Home Extensions</Link></li>
-              <li><Link to="/projects-services#renovations">Renovations</Link></li>
-              <li><Link to="/projects-services#energy-efficient">Energy-Efficient Solutions</Link></li>
-              <li><Link to="/projects-services#commercial">Commercial Construction</Link></li>
+              <li><Link to="/projects-services#custom-homes" state={{ scrollToTop: false }}>Custom Home Building</Link></li>
+              <li><Link to="/projects-services#extensions" state={{ scrollToTop: false }}>Home Extensions</Link></li>
+              <li><Link to="/projects-services#renovations" state={{ scrollToTop: false }}>Renovations</Link></li>
+              <li><Link to="/projects-services#energy-efficient" state={{ scrollToTop: false }}>Energy-Efficient Solutions</Link></li>
+              <li><Link to="/projects-services#commercial" state={{ scrollToTop: false }}>Commercial Construction</Link></li>
             </ul>
           </div>
           
