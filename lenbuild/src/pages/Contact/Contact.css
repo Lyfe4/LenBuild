@@ -11,16 +11,47 @@
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact-form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-medium);
 }
 
 .form-group {
   margin-bottom: var(--spacing-md);
+  position: relative;
+  /* Remove the opacity and transform that were causing the blank form */
 }
+
+/* Apply staggered animation to form groups but with visibility maintained */
+@keyframes formFieldAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group:nth-child(1) { animation: formFieldAppear 0.5s ease forwards 0.1s; }
+.form-group:nth-child(2) { animation: formFieldAppear 0.5s ease forwards 0.2s; }
+.form-group:nth-child(3) { animation: formFieldAppear 0.5s ease forwards 0.3s; }
+.form-group:nth-child(4) { animation: formFieldAppear 0.5s ease forwards 0.4s; }
+.form-group:nth-child(5) { animation: formFieldAppear 0.5s ease forwards 0.5s; }
 
 .form-group label {
   display: block;
   margin-bottom: var(--spacing-xs);
   font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.form-group:focus-within label {
+  color: var(--primary);
 }
 
 .form-group .required {
@@ -35,7 +66,7 @@
   border: 1px solid #ddd;
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-base);
-  transition: var(--transition-medium);
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus,
@@ -44,6 +75,7 @@
   border-color: var(--primary);
   outline: none;
   box-shadow: 0 0 0 2px rgba(44, 76, 99, 0.1);
+  transform: translateY(-2px);
 }
 
 .form-group textarea {
@@ -55,12 +87,20 @@
 .form-group.error textarea,
 .form-group.error select {
   border-color: #e74c3c;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
 }
 
 .error-message {
   color: #e74c3c;
   font-size: var(--font-size-small);
   margin-top: 5px;
+  animation: fadeIn 0.3s ease;
 }
 
 .success-message {
@@ -69,11 +109,25 @@
   padding: var(--spacing-md);
   border-radius: var(--border-radius-sm);
   margin-bottom: var(--spacing-md);
+  animation: slideUp 0.5s ease;
+  box-shadow: var(--box-shadow-light);
+}
+
+.btn {
+  animation: fadeIn 0.5s ease forwards 0.6s;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .btn.submitting {
   background-color: #999;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .hidden {
@@ -92,11 +146,39 @@
   padding: var(--spacing-lg);
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 0;
+  background-color: var(--secondary);
+  transition: height 0.4s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-medium);
+}
+
+.contact-card:hover::before {
+  height: 100%;
 }
 
 .contact-card h3 {
   margin-bottom: var(--spacing-md);
   color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover h3 {
+  transform: translateX(8px);
 }
 
 .contact-item {
@@ -110,23 +192,67 @@
   height: 24px;
   margin-right: var(--spacing-md);
   color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+  transform: scale(1.2);
 }
 
 /* Map Section */
 .map-section {
   background-color: var(--light);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-section::before,
+.map-section::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(44, 76, 99, 0.05); /* Primary color with opacity */
+  z-index: 0;
+}
+
+.map-section::before {
+  top: -100px;
+  left: -100px;
+  width: 200px;
+  height: 200px;
+}
+
+.map-section::after {
+  bottom: -100px;
+  right: -100px;
+  width: 250px;
+  height: 250px;
+  background-color: rgba(228, 192, 142, 0.05); /* Secondary color with opacity */
 }
 
 .map-container {
   overflow: hidden;
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.map-container:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-medium);
 }
 
 .map-placeholder {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.5s ease;
+}
+
+.map-container:hover .map-placeholder {
+  transform: scale(1.05);
 }
 
 /* FAQ Section */
@@ -141,6 +267,12 @@
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
   overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-medium);
 }
 
 .faq-question {
@@ -150,7 +282,7 @@
   font-weight: 600;
   color: var(--primary);
   background-color: #f9f9f9;
-  transition: var(--transition-medium);
+  transition: all 0.3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -167,7 +299,7 @@
 
 .faq-icon {
   font-size: 20px;
-  transition: var(--transition-medium);
+  transition: transform 0.3s ease;
 }
 
 .faq-question.active .faq-icon {
@@ -177,8 +309,9 @@
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.4s ease, padding 0.4s ease;
   padding: 0 var(--spacing-lg);
+  background-color: white;
 }
 
 .faq-question.active + .faq-answer {

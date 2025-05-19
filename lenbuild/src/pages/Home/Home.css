@@ -1,34 +1,61 @@
-/* Hero Section */
 .hero {
   height: 80vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/placeholder.jpg');  background-size: cover;
-  background-position: center;
+  position: relative;
   display: flex;
   align-items: center;
   text-align: center;
   color: white;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/placeholder.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: slowZoom 20s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
 }
 
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .hero h1 {
   font-size: var(--font-size-huge);
   margin-bottom: var(--spacing-md);
   color: white;
+  opacity: 0; /* AOS will handle the visibility */
 }
 
 .hero p {
   font-size: var(--font-size-large);
   margin-bottom: var(--spacing-xl);
+  opacity: 0; /* AOS will handle the visibility */
 }
 
 .hero-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: var(--spacing-md);
+  opacity: 0; /* AOS will handle the visibility */
 }
 
 /* Welcome Section */
@@ -49,6 +76,11 @@
 
 .welcome-text .btn {
   margin-top: var(--spacing-md);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.welcome-text .btn:hover {
+  transform: translateY(-5px);
 }
 
 .welcome-image {
@@ -56,17 +88,7 @@
   overflow: hidden;
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-medium);
-}
-
-.welcome-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: var(--transition-medium);
-}
-
-.welcome-image:hover img {
-  transform: scale(1.03);
+  height: 400px; /* Fixed height for parallax effect */
 }
 
 /* Services Section */
@@ -82,9 +104,10 @@
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
-  transition: var(--transition-medium);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   display: flex;
   flex-direction: column;
+  opacity: 0; /* AOS will handle the visibility */
 }
 
 .service-card:hover {
@@ -95,6 +118,23 @@
 .service-card h3 {
   margin-bottom: var(--spacing-md);
   color: var(--primary);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.service-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--secondary);
+  transition: width 0.3s ease;
+}
+
+.service-card:hover h3::after {
+  width: 100px;
 }
 
 .service-card p {
@@ -104,11 +144,40 @@
 
 .service-card .btn {
   align-self: flex-start;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.service-card .btn:hover {
+  transform: translateY(-5px);
 }
 
 /* Testimonial Section */
 .featured-testimonial {
   background-color: var(--light);
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-testimonial::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(228, 192, 142, 0.1); /* Using secondary color with opacity */
+  border-radius: 50%;
+}
+
+.featured-testimonial::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(44, 76, 99, 0.1); /* Using primary color with opacity */
+  border-radius: 50%;
 }
 
 .testimonial-card {
@@ -116,10 +185,11 @@
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
-  transition: var(--transition-medium);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   max-width: 800px;
   margin: 0 auto var(--spacing-xl);
+  opacity: 0; /* AOS will handle the visibility */
 }
 
 .testimonial-card:hover {
@@ -135,6 +205,11 @@
   left: 20px;
   color: var(--primary);
   opacity: 0.1;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover:before {
+  transform: rotate(10deg);
 }
 
 .testimonial-content {
@@ -148,10 +223,31 @@
   font-weight: 600;
   color: var(--primary);
   text-align: right;
+  position: relative;
+  padding-top: 10px;
+}
+
+.testimonial-author::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--secondary);
 }
 
 .view-all {
   margin-top: var(--spacing-lg);
+  opacity: 0; /* AOS will handle the visibility */
+}
+
+.view-all .btn {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.view-all .btn:hover {
+  transform: translateY(-5px);
 }
 
 /* Responsive */

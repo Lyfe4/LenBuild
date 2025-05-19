@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';
+import ParallaxImage from '../../components/ParallaxImage/ParallaxImage';
 import './ProjectsServices.css';
 
 const ProjectsServices = () => {
@@ -12,6 +13,7 @@ const ProjectsServices = () => {
   // State for project filtering
   const [filter, setFilter] = useState('all');
   const [filteredProjects, setFilteredProjects] = useState([]);
+  const [animatingFilter, setAnimatingFilter] = useState(false);
   
   // Project showcase data
   const projects = [
@@ -76,8 +78,139 @@ const ProjectsServices = () => {
   
   // Handle filter button click
   const handleFilterClick = (category) => {
-    setFilter(category);
+    if (filter === category) return; // Don't re-filter if same category
+    
+    setAnimatingFilter(true);
+    
+    // First fade out
+    setTimeout(() => {
+      setFilter(category);
+      
+      // Then fade back in after filter is applied
+      setTimeout(() => {
+        setAnimatingFilter(false);
+      }, 300);
+    }, 300);
   };
+  
+  // Service categories data
+  const services = [
+    {
+      id: 'custom-homes',
+      title: 'Custom Home Building',
+      description: 'We create bespoke homes designed specifically for you and your lifestyle, working closely with you from concept to completion to ensure your vision becomes reality. Our custom homes feature quality craftsmanship, energy-efficient designs, and thoughtful details that make your house a home.',
+      features: [
+        'Full architectural design services',
+        'Energy-efficient building practices',
+        'Premium materials and finishes',
+        'Transparent project management'
+      ],
+      projects: [
+        {
+          title: 'Modern Family Home',
+          year: '2024',
+          image: '/placeholder.jpg'
+        },
+        {
+          title: 'Beachside Retreat',
+          year: '2023',
+          image: '/placeholder.jpg'
+        }
+      ]
+    },
+    {
+      id: 'extensions',
+      title: 'Home Extensions',
+      description: 'Need more space? Our extension services seamlessly integrate with your existing home, providing additional living areas that match your home\'s character and style. We handle everything from design through to completion, ensuring minimal disruption to your daily life.',
+      features: [
+        'Second-story additions',
+        'Living area extensions',
+        'Seamless integration with existing structure',
+        'Council approval management'
+      ],
+      projects: [
+        {
+          title: 'Second Story Addition',
+          year: '2024',
+          image: '/placeholder.jpg'
+        },
+        {
+          title: 'Living Area Extension',
+          year: '2023',
+          image: '/placeholder.jpg'
+        }
+      ]
+    },
+    {
+      id: 'renovations',
+      title: 'Renovations',
+      description: 'Transform your current space with our comprehensive renovation services, breathing new life into your home while enhancing functionality and aesthetics. From kitchen and bathroom renovations to complete home transformations, we deliver stunning results that exceed expectations.',
+      features: [
+        'Kitchen and bathroom renovations',
+        'Interior reconfiguration',
+        'Modern updates to older homes',
+        'Premium fixtures and fittings'
+      ],
+      projects: [
+        {
+          title: 'Kitchen Transformation',
+          year: '2024',
+          image: '/placeholder.jpg'
+        },
+        {
+          title: 'Whole Home Renovation',
+          year: '2023',
+          image: '/placeholder.jpg'
+        }
+      ]
+    },
+    {
+      id: 'energy-efficient',
+      title: 'Energy-Efficient Solutions',
+      description: 'We specialize in incorporating sustainable, energy-efficient elements into your build, reducing your environmental footprint and long-term operational costs. Our forward-thinking approach ensures your home is comfortable, economical to run, and kind to the planet.',
+      features: [
+        'Solar panel installation',
+        'High-performance insulation',
+        'Energy-efficient windows and doors',
+        'Smart home technology integration'
+      ],
+      projects: [
+        {
+          title: 'Net-Zero Energy Home',
+          year: '2024',
+          image: '/placeholder.jpg'
+        },
+        {
+          title: 'Smart Home Upgrade',
+          year: '2023',
+          image: '/placeholder.jpg'
+        }
+      ]
+    },
+    {
+      id: 'commercial',
+      title: 'Commercial Construction',
+      description: 'From office spaces to retail outlets, we deliver high-quality commercial construction services tailored to your business needs and industry requirements. Our team understands the unique demands of commercial projects and delivers functional, attractive spaces on time and on budget.',
+      features: [
+        'Office fit-outs',
+        'Retail space construction',
+        'Restaurant and hospitality venues',
+        'Medical and professional facilities'
+      ],
+      projects: [
+        {
+          title: 'Modern Office Fit-out',
+          year: '2024',
+          image: '/placeholder.jpg'
+        },
+        {
+          title: 'Retail Shopfront',
+          year: '2023',
+          image: '/placeholder.jpg'
+        }
+      ]
+    }
+  ];
   
   // Scroll to service section if hash in URL
   useEffect(() => {
@@ -88,7 +221,7 @@ const ProjectsServices = () => {
         // Add slight delay to ensure page is fully loaded
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
+        }, 500);
       }
     }
   }, []);
@@ -100,178 +233,52 @@ const ProjectsServices = () => {
       {/* Expertise Section */}
       <section className="expertise-section section">
         <div className="container">
-          <h2 className="section-title">Our Expertise</h2>
-          <p className="section-intro">At LenBuild, we offer a comprehensive range of building services, each delivered with the same commitment to quality and attention to detail. Explore our services below and view examples of our completed projects.</p>
+          <h2 className="section-title" data-aos="fade-up">Our Expertise</h2>
+          <p className="section-intro" data-aos="fade-up" data-aos-delay="100">At LenBuild, we offer a comprehensive range of building services, each delivered with the same commitment to quality and attention to detail. Explore our services below and view examples of our completed projects.</p>
           
-          {/* Service Category 1 */}
-          <div className="service-category" id="custom-homes">
-            <h3>Custom Home Building</h3>
-            <div className="service-content">
-              <div className="service-description">
-                <p>We create bespoke homes designed specifically for you and your lifestyle, working closely with you from concept to completion to ensure your vision becomes reality. Our custom homes feature quality craftsmanship, energy-efficient designs, and thoughtful details that make your house a home.</p>
-                <ul className="service-features">
-                  <li>Full architectural design services</li>
-                  <li>Energy-efficient building practices</li>
-                  <li>Premium materials and finishes</li>
-                  <li>Transparent project management</li>
-                </ul>
-              </div>
-              <div className="project-gallery">
-                <div className="project-item">
-                  <img src="/placeholder.jpg" alt="Custom Home Project 1" />
-                  <div className="project-overlay">
-                    <h4>Modern Family Home</h4>
-                    <p>Completed 2024</p>
-                  </div>
+          {/* Service Categories */}
+          {services.map((service, index) => (
+            <div 
+              className="service-category" 
+              id={service.id}
+              data-aos="fade-up"
+              data-aos-delay={index * 50}
+              key={service.id}
+            >
+              <h3>{service.title}</h3>
+              <div className="service-content">
+                <div className="service-description" data-aos="fade-right" data-aos-delay={200 + index * 50}>
+                  <p>{service.description}</p>
+                  <ul className="service-features">
+                    {service.features.map((feature, i) => (
+                      <li className="stagger-item" key={i}>{feature}</li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="project-item">
-                  <img src="/placeholder.jpg" alt="Custom Home Project 2" />
-                  <div className="project-overlay">
-                    <h4>Beachside Retreat</h4>
-                    <p>Completed 2023</p>
-                  </div>
+                <div className="project-gallery" data-aos="fade-left" data-aos-delay={300 + index * 50}>
+                  {service.projects.map((project, i) => (
+                    <div className="project-item zoom-on-hover" key={i}>
+                      <img src={project.image} alt={project.title} />
+                      <div className="project-overlay">
+                        <h4>{project.title}</h4>
+                        <p>Completed {project.year}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
-          </div>
-          
-          {/* Service Category 2 */}
-          <div className="service-category" id="extensions">
-            <h3>Home Extensions</h3>
-            <div className="service-content">
-              <div className="service-description">
-                <p>Need more space? Our extension services seamlessly integrate with your existing home, providing additional living areas that match your home's character and style. We handle everything from design through to completion, ensuring minimal disruption to your daily life.</p>
-                <ul className="service-features">
-                  <li>Second-story additions</li>
-                  <li>Living area extensions</li>
-                  <li>Seamless integration with existing structure</li>
-                  <li>Council approval management</li>
-                </ul>
-              </div>
-              <div className="project-gallery">
-                <div className="project-item">
-                  <img src="/placeholder.jpg" alt="Extension Project 1" />
-                  <div className="project-overlay">
-                    <h4>Second Story Addition</h4>
-                    <p>Completed 2024</p>
-                  </div>
-                </div>
-                <div className="project-item">
-                  <img src="/placeholder.jpg" alt="Extension Project 2" />
-                  <div className="project-overlay">
-                    <h4>Living Area Extension</h4>
-                    <p>Completed 2023</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Service Category 3 */}
-          <div className="service-category" id="renovations">
-            <h3>Renovations</h3>
-            <div className="service-content">
-              <div className="service-description">
-                <p>Transform your current space with our comprehensive renovation services, breathing new life into your home while enhancing functionality and aesthetics. From kitchen and bathroom renovations to complete home transformations, we deliver stunning results that exceed expectations.</p>
-                <ul className="service-features">
-                  <li>Kitchen and bathroom renovations</li>
-                  <li>Interior reconfiguration</li>
-                  <li>Modern updates to older homes</li>
-                  <li>Premium fixtures and fittings</li>
-                </ul>
-              </div>
-              <div className="project-gallery">
-                <div className="project-item">
-                  <img src="/placeholder.jpg" alt="Renovation Project 1" />
-                  <div className="project-overlay">
-                    <h4>Kitchen Transformation</h4>
-                    <p>Completed 2024</p>
-                  </div>
-                </div>
-                <div className="project-item">
-                  <img src="/placeholder.jpg" alt="Renovation Project 2" />
-                  <div className="project-overlay">
-                    <h4>Whole Home Renovation</h4>
-                    <p>Completed 2023</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Service Category 4 */}
-          <div className="service-category" id="energy-efficient">
-            <h3>Energy-Efficient Solutions</h3>
-            <div className="service-content">
-              <div className="service-description">
-                <p>We specialize in incorporating sustainable, energy-efficient elements into your build, reducing your environmental footprint and long-term operational costs. Our forward-thinking approach ensures your home is comfortable, economical to run, and kind to the planet.</p>
-                <ul className="service-features">
-                  <li>Solar panel installation</li>
-                  <li>High-performance insulation</li>
-                  <li>Energy-efficient windows and doors</li>
-                  <li>Smart home technology integration</li>
-                </ul>
-              </div>
-              <div className="project-gallery">
-                <div className="project-item">
-                  <img src="/placeholder.jpg" alt="Energy-Efficient Project 1" />
-                  <div className="project-overlay">
-                    <h4>Net-Zero Energy Home</h4>
-                    <p>Completed 2024</p>
-                  </div>
-                </div>
-                <div className="project-item">
-                  <img src="/placeholder.jpg" alt="Energy-Efficient Project 2" />
-                  <div className="project-overlay">
-                    <h4>Smart Home Upgrade</h4>
-                    <p>Completed 2023</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Service Category 5 */}
-          <div className="service-category" id="commercial">
-            <h3>Commercial Construction</h3>
-            <div className="service-content">
-              <div className="service-description">
-                <p>From office spaces to retail outlets, we deliver high-quality commercial construction services tailored to your business needs and industry requirements. Our team understands the unique demands of commercial projects and delivers functional, attractive spaces on time and on budget.</p>
-                <ul className="service-features">
-                  <li>Office fit-outs</li>
-                  <li>Retail space construction</li>
-                  <li>Restaurant and hospitality venues</li>
-                  <li>Medical and professional facilities</li>
-                </ul>
-              </div>
-              <div className="project-gallery">
-                <div className="project-item">
-                  <img src="/placeholder.jpg" alt="Commercial Project 1" />
-                  <div className="project-overlay">
-                    <h4>Modern Office Fit-out</h4>
-                    <p>Completed 2024</p>
-                  </div>
-                </div>
-                <div className="project-item">
-                  <img src="/placeholder.jpg" alt="Commercial Project 2" />
-                  <div className="project-overlay">
-                    <h4>Retail Shopfront</h4>
-                    <p>Completed 2023</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
       
       {/* Project Showcase */}
       <section className="project-showcase section">
         <div className="container">
-          <h2 className="section-title">Featured Projects</h2>
-          <p className="section-intro">Browse our portfolio of completed projects. Each represents our commitment to quality, innovation, and client satisfaction.</p>
+          <h2 className="section-title" data-aos="fade-up">Featured Projects</h2>
+          <p className="section-intro" data-aos="fade-up" data-aos-delay="100">Browse our portfolio of completed projects. Each represents our commitment to quality, innovation, and client satisfaction.</p>
           
-          <div className="project-filter">
+          <div className="project-filter" data-aos="fade-up" data-aos-delay="200">
             <button 
               className={`filter-btn ${filter === 'all' ? 'active' : ''}`} 
               onClick={() => handleFilterClick('all')}
@@ -304,12 +311,14 @@ const ProjectsServices = () => {
             </button>
           </div>
           
-          <div className="showcase-grid">
-            {filteredProjects.map(project => (
+          <div className={`showcase-grid ${animatingFilter ? 'filtering' : ''}`}>
+            {filteredProjects.map((project, index) => (
               <div 
                 key={project.id} 
                 className="showcase-item" 
                 data-category={project.category}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
               >
                 <img src={project.image} alt={project.title} />
                 <div className="showcase-overlay">

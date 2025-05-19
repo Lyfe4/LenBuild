@@ -4,6 +4,15 @@
   position: sticky;
   top: 0;
   z-index: var(--z-index-header);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  box-shadow: var(--box-shadow-medium);
+}
+
+.header.nav-hidden {
+  transform: translateY(-100%);
 }
 
 .header-container {
@@ -17,6 +26,11 @@
   font-size: var(--font-size-xl);
   font-weight: 700;
   color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .logo span {
@@ -35,6 +49,7 @@ nav ul li {
 nav ul li a {
   font-weight: 500;
   position: relative;
+  transition: color 0.3s ease;
 }
 
 nav ul li a::after {
@@ -45,7 +60,7 @@ nav ul li a::after {
   width: 0;
   height: 2px;
   background-color: var(--secondary);
-  transition: var(--transition-medium);
+  transition: width 0.3s ease;
 }
 
 nav ul li a:hover::after,
@@ -61,6 +76,11 @@ nav ul li a.active {
   display: none;
   font-size: var(--font-size-xl);
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+  transform: rotate(90deg);
 }
 
 @media (max-width: 768px) {
@@ -76,7 +96,7 @@ nav ul li a.active {
     background-color: white;
     box-shadow: var(--box-shadow-light);
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    transition: var(--transition-medium);
+    transition: clip-path 0.4s ease;
   }
   
   nav.mobile-menu-open {

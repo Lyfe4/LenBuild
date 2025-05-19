@@ -13,24 +13,26 @@
 
 .about-text p {
   margin-bottom: var(--spacing-md);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.5s ease;
 }
+
+.about-text[data-aos="fade-right"].aos-animate p {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.about-text p:nth-child(1) { transition-delay: 0.2s; }
+.about-text p:nth-child(2) { transition-delay: 0.4s; }
+.about-text p:nth-child(3) { transition-delay: 0.6s; }
 
 .about-image {
   flex: 1;
   overflow: hidden;
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-medium);
-}
-
-.about-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: var(--transition-medium);
-}
-
-.about-image:hover img {
-  transform: scale(1.03);
+  height: 400px;
 }
 
 /* Company Values */
@@ -54,7 +56,20 @@
   padding: var(--spacing-lg);
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
-  transition: var(--transition-medium);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 0;
+  background-color: var(--secondary);
+  transition: height 0.4s ease;
 }
 
 .value-card:hover {
@@ -62,10 +77,19 @@
   box-shadow: var(--box-shadow-medium);
 }
 
+.value-card:hover::before {
+  height: 100%;
+}
+
 .value-card h4 {
   color: var(--primary);
   margin-bottom: var(--spacing-sm);
   font-size: var(--font-size-large);
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover h4 {
+  transform: translateX(8px);
 }
 
 /* Team Section */
@@ -80,7 +104,7 @@
   border-radius: var(--border-radius-md);
   overflow: hidden;
   box-shadow: var(--box-shadow-light);
-  transition: var(--transition-medium);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .team-member:hover {
@@ -98,20 +122,42 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transition-medium);
+  transition: transform 0.5s ease;
 }
 
 .team-member:hover .team-image img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .team-details {
   padding: var(--spacing-lg);
   text-align: center;
+  position: relative;
+}
+
+.team-details::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: var(--secondary);
+  transition: width 0.3s ease;
+}
+
+.team-member:hover .team-details::before {
+  width: 30%;
 }
 
 .team-details h3 {
   margin-bottom: var(--spacing-xs);
+  transition: color 0.3s ease;
+}
+
+.team-member:hover .team-details h3 {
+  color: var(--secondary);
 }
 
 .team-position {
@@ -123,12 +169,38 @@
 /* Testimonials Section */
 .testimonials-section {
   background-color: var(--light);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-section::before,
+.testimonials-section::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: rgba(44, 76, 99, 0.05); /* Primary color with opacity */
+  z-index: 1;
+}
+
+.testimonials-section::before {
+  top: -150px;
+  left: -150px;
+}
+
+.testimonials-section::after {
+  bottom: -150px;
+  right: -150px;
+  background-color: rgba(228, 192, 142, 0.05); /* Secondary color with opacity */
 }
 
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: var(--spacing-xl);
+  position: relative;
+  z-index: 2;
 }
 
 .testimonial-card {
@@ -136,8 +208,9 @@
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
-  transition: var(--transition-medium);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
+  opacity: 0; /* AOS will handle the visibility */
 }
 
 .testimonial-card:hover {
@@ -153,17 +226,41 @@
   left: 20px;
   color: var(--primary);
   opacity: 0.1;
+  transition: transform 0.4s ease;
+}
+
+.testimonial-card:hover:before {
+  transform: rotate(10deg) scale(1.2);
 }
 
 .testimonial-content {
   margin-bottom: var(--spacing-md);
   font-style: italic;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial-author {
   font-weight: 600;
   color: var(--primary);
   text-align: right;
+  position: relative;
+  padding-top: 15px;
+}
+
+.testimonial-author::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--secondary);
+  transition: width 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-author::before {
+  width: 100px;
 }
 
 /* Responsive */
