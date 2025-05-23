@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';
 import ParallaxImage from '../../components/ParallaxImage/ParallaxImage';
 import './About.css';
 
 const About = () => {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  
   // Breadcrumbs for the page header
   const breadcrumbs = [
     { text: 'About Us' }
@@ -77,6 +79,15 @@ const About = () => {
       author: "John & Emily Parker"
     }
   ];
+  
+  // Auto-cycle testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000); // Change every 5 seconds
+    
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
   
   // Scroll to section if hash in URL
   useEffect(() => {
@@ -163,22 +174,27 @@ const About = () => {
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">What Our Clients Say</h2>
           
-          <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                className="testimonial-card" 
-                data-aos="fade-up" 
-                data-aos-delay={index * 100} 
-                key={index}
-              >
-                <div className="testimonial-content">
-                  <p>{testimonial.content}</p>
-                </div>
-                <div className="testimonial-author">
-                  <p>- {testimonial.author}</p>
-                </div>
+          <div className="testimonial-carousel">
+            <div className="testimonial-display" key={currentTestimonial}>
+              <div className="testimonial-content">
+                <p>"{testimonials[currentTestimonial].content}"</p>
               </div>
-            ))}
+              <div className="testimonial-author">
+                <p>— {testimonials[currentTestimonial].author}</p>
+              </div>
+            </div>
+            
+            {/* Testimonial indicators */}
+            <div className="testimonial-indicators">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  className={`indicator ${index === currentTestimonial ? 'active' : ''}`}
+                  onClick={() => setCurrentTestimonial(index)}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
