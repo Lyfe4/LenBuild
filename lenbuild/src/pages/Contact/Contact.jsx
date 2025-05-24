@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import './Contact.css';
 
@@ -114,6 +114,20 @@ const Contact = () => {
     }
   };
   
+  // Scroll to section if hash in URL
+  useEffect(() => {
+    const { hash } = window.location;
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        // Add slight delay to ensure page is fully loaded
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 500);
+      }
+    }
+  }, []);
+
   // FAQ data
   const faqs = [
     {
@@ -139,7 +153,7 @@ const Contact = () => {
       <PageHeader title="Contact Us" breadcrumbs={breadcrumbs} />
       
       {/* Contact Section */}
-      <section className="contact-section section">
+      <section className="contact-section section" id="contact-form">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">Get In Touch</h2>
           <p className="section-intro" data-aos="fade-up" data-aos-delay="100">Have a project in mind? We'd love to hear from you. Fill out the form below and one of our team members will get back to you as soon as possible.</p>
@@ -272,7 +286,7 @@ const Contact = () => {
       </section>
       
       {/* Map Section */}
-      <section className="map-section section">
+      <section className="map-section section" id="map">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">Find Us</h2>
           {/* In a real implementation, this would be a Google Maps iframe */}
@@ -283,7 +297,7 @@ const Contact = () => {
       </section>
       
       {/* FAQ Section */}
-      <section className="faq-section section">
+      <section className="faq-section section" id="faq">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
           

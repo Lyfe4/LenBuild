@@ -231,7 +231,7 @@ const ProjectsServices = () => {
       <PageHeader title="Projects & Services" breadcrumbs={breadcrumbs} />
       
       {/* Expertise Section */}
-      <section className="expertise-section section">
+      <section className="expertise-section section" id="expertise">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">Our Expertise</h2>
           <p className="section-intro" data-aos="fade-up" data-aos-delay="100">At LenBuild, we offer a comprehensive range of building services, each delivered with the same commitment to quality and attention to detail. Explore our services below and view examples of our completed projects.</p>
@@ -273,7 +273,7 @@ const ProjectsServices = () => {
       </section>
       
       {/* Project Showcase */}
-      <section className="project-showcase section">
+      <section className="project-showcase section" id="projects">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">Featured Projects</h2>
           <p className="section-intro" data-aos="fade-up" data-aos-delay="100">Browse our portfolio of completed projects. Each represents our commitment to quality, innovation, and client satisfaction.</p>

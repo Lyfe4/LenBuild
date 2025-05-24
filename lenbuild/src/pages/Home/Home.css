@@ -1,11 +1,13 @@
 .hero {
-  height: 80vh;
+  height: 70vh;
   position: relative;
   display: flex;
   align-items: center;
   text-align: center;
   color: white;
   overflow: hidden;
+  margin-top: calc(-1 * (var(--spacing-md) * 2 + var(--font-size-xl) * 1.2) - 10px);
+  padding-top: calc(var(--spacing-md) * 2 + var(--font-size-xl) * 1.2 + 10px);
 }
 
 .hero-background {
@@ -151,14 +153,14 @@
   transform: translateY(-5px);
 }
 
-/* Testimonial Section */
-.featured-testimonial {
+/* Recent Projects Section */
+.recent-projects {
   background-color: var(--light);
   position: relative;
   overflow: hidden;
 }
 
-.featured-testimonial::before {
+.recent-projects::before {
   content: '';
   position: absolute;
   top: -100px;
@@ -169,7 +171,7 @@
   border-radius: 50%;
 }
 
-.featured-testimonial::after {
+.recent-projects::after {
   content: '';
   position: absolute;
   bottom: -100px;
@@ -180,61 +182,83 @@
   border-radius: 50%;
 }
 
-.testimonial-card {
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.project-card {
   background-color: white;
-  padding: var(--spacing-xl);
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto var(--spacing-xl);
+  overflow: hidden;
   opacity: 0; /* AOS will handle the visibility */
 }
 
-.testimonial-card:hover {
-  transform: translateY(-5px);
+.project-card:hover {
+  transform: translateY(-10px);
   box-shadow: var(--box-shadow-medium);
 }
 
-.testimonial-card:before {
-  content: '"';
-  font-size: 80px;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  color: var(--primary);
-  opacity: 0.1;
-  transition: transform 0.3s ease;
-}
-
-.testimonial-card:hover:before {
-  transform: rotate(10deg);
-}
-
-.testimonial-content {
-  margin-bottom: var(--spacing-md);
-  font-style: italic;
-  font-size: var(--font-size-large);
-  line-height: 1.8;
-}
-
-.testimonial-author {
-  font-weight: 600;
-  color: var(--primary);
-  text-align: right;
+.project-image {
+  height: 250px;
+  overflow: hidden;
   position: relative;
-  padding-top: 10px;
 }
 
-.testimonial-author::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50px;
-  height: 2px;
-  background-color: var(--secondary);
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-details {
+  padding: var(--spacing-xl);
+}
+
+.project-details h3 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary);
+  font-size: var(--font-size-xl);
+}
+
+.project-type {
+  color: var(--secondary);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-md);
+}
+
+.project-details p {
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.project-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.project-features span {
+  background-color: var(--light);
+  color: var(--primary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  border: 1px solid rgba(44, 76, 99, 0.1);
 }
 
 .view-all {
@@ -268,11 +292,16 @@
   .welcome-text {
     margin-bottom: var(--spacing-lg);
   }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
 }
 
 @media (max-width: 768px) {
   .hero {
-    height: 70vh;
+    height: 60vh;
   }
   
   .hero h1 {
@@ -290,5 +319,21 @@
   
   .hero-buttons .btn {
     margin: 0;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-image {
+    height: 200px;
+  }
+
+  .project-details {
+    padding: var(--spacing-lg);
+  }
+
+  .project-features {
+    justify-content: center;
   }
 }

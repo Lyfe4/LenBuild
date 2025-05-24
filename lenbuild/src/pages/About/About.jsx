@@ -108,7 +108,7 @@ const About = () => {
       <PageHeader title="About LenBuild" breadcrumbs={breadcrumbs} />
       
       {/* Story Section */}
-      <section className="about-story section">
+      <section className="about-story section" id="story">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">Our Story</h2>
           <div className="about-content">

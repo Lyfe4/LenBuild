@@ -1,5 +1,5 @@
 .page-header {
-  height: 40vh;
+  height: 60vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -8,6 +8,8 @@
   text-align: center;
   margin-bottom: var(--spacing-xl);
   overflow: hidden;
+  margin-top: calc(-1 * (var(--spacing-md) * 2 + var(--font-size-xl) * 1.2) - 10px);
+  padding-top: calc(var(--spacing-md) * 2 + var(--font-size-xl) * 1.2 + 10px);
 }
 
 .page-header-background {
@@ -98,7 +100,7 @@
 
 @media (max-width: 768px) {
   .page-header {
-    height: 30vh;
+    height: 50vh;
   }
   
   .page-header h1 {
