@@ -16,18 +16,22 @@ const About = () => {
   const values = [
     {
       title: "Quality Craftsmanship",
+      icon: "🔨",
       description: "We never compromise on quality. Every project, regardless of size, receives the same attention to detail and commitment to excellence."
     },
     {
       title: "Client-Centered Approach",
+      icon: "🤝",
       description: "We believe in transparent communication and involving our clients throughout the entire building process."
     },
     {
       title: "Sustainability",
+      icon: "🌱",
       description: "We're committed to environmentally responsible building practices that create healthier, more efficient homes."
     },
     {
       title: "Innovation",
+      icon: "💡",
       description: "We continuously seek out new techniques, materials, and technologies to improve our building processes and outcomes."
     }
   ];
@@ -132,6 +136,7 @@ const About = () => {
                   data-aos-delay={index * 100}
                   key={index}
                 >
+                  <div className="value-icon">{value.icon}</div>
                   <h4>{value.title}</h4>
                   <p>{value.description}</p>
                 </div>

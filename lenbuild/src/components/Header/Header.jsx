@@ -51,6 +51,13 @@ const Header = () => {
   const isActive = (path) => {
     return location.pathname === path ? 'active' : '';
   };
+
+  // Handle main nav link clicks to scroll to top if already on the page
+  const handleMainNavClick = (path) => {
+    if (location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
   
   // Dropdown menu data
   const dropdownMenus = {
@@ -94,7 +101,7 @@ const Header = () => {
     <header className={`header ${scrolled ? 'scrolled' : ''} ${navHidden ? 'nav-hidden' : ''} ${shouldMergeWithImage ? 'merged-with-image' : ''}`}>
       <div className="container">
         <div className="header-container">
-          <Link to="/" className="logo">
+          <Link to="/" className="logo" onClick={() => handleMainNavClick('/')}>
             Len<span>Build</span>
           </Link>
           
@@ -109,7 +116,7 @@ const Header = () => {
                 onMouseEnter={() => handleDropdownEnter('/')}
                 onMouseLeave={handleDropdownLeave}
               >
-                <Link to="/" className={isActive('/')}>Home</Link>
+                <Link to="/" className={isActive('/')} onClick={() => handleMainNavClick('/')}>Home</Link>
                 {dropdownMenus['/'] && (
                   <div className={`dropdown-menu ${activeDropdown === '/' ? 'show' : ''}`}>
                     {dropdownMenus['/'].map((item, index) => (
@@ -130,7 +137,7 @@ const Header = () => {
                 onMouseEnter={() => handleDropdownEnter('/about')}
                 onMouseLeave={handleDropdownLeave}
               >
-                <Link to="/about" className={isActive('/about')}>About</Link>
+                <Link to="/about" className={isActive('/about')} onClick={() => handleMainNavClick('/about')}>About</Link>
                 {dropdownMenus['/about'] && (
                   <div className={`dropdown-menu ${activeDropdown === '/about' ? 'show' : ''}`}>
                     {dropdownMenus['/about'].map((item, index) => (
@@ -151,7 +158,7 @@ const Header = () => {
                 onMouseEnter={() => handleDropdownEnter('/projects-services')}
                 onMouseLeave={handleDropdownLeave}
               >
-                <Link to="/projects-services" className={isActive('/projects-services')}>Projects & Services</Link>
+                <Link to="/projects-services" className={isActive('/projects-services')} onClick={() => handleMainNavClick('/projects-services')}>Projects & Services</Link>
                 {dropdownMenus['/projects-services'] && (
                   <div className={`dropdown-menu ${activeDropdown === '/projects-services' ? 'show' : ''}`}>
                     {dropdownMenus['/projects-services'].map((item, index) => (
@@ -172,7 +179,7 @@ const Header = () => {
                 onMouseEnter={() => handleDropdownEnter('/contact')}
                 onMouseLeave={handleDropdownLeave}
               >
-                <Link to="/contact" className={isActive('/contact')}>Contact</Link>
+                <Link to="/contact" className={isActive('/contact')} onClick={() => handleMainNavClick('/contact')}>Contact</Link>
                 {dropdownMenus['/contact'] && (
                   <div className={`dropdown-menu ${activeDropdown === '/contact' ? 'show' : ''}`}>
                     {dropdownMenus['/contact'].map((item, index) => (
