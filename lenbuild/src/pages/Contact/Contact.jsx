@@ -10,7 +10,8 @@ const Contact = () => {
   
   // Form state
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     service: '',
@@ -19,6 +20,7 @@ const Contact = () => {
   
   // Form validation state
   const [errors, setErrors] = useState({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   
   // Form submission state
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,8 +34,8 @@ const Contact = () => {
       [name]: value
     }));
     
-    // Clear error when field is changed
-    if (errors[name]) {
+    // Clear error when field is changed (only if form has been submitted)
+    if (hasSubmitted && errors[name]) {
       setErrors(prevErrors => ({
         ...prevErrors,
         [name]: null
@@ -41,26 +43,87 @@ const Contact = () => {
     }
   };
   
+  // Validate individual fields
+  const validateField = (name, value) => {
+    switch (name) {
+      case 'firstName':
+        if (!value.trim()) {
+          return 'First name is required';
+        }
+        if (value.trim().length < 2) {
+          return 'First name must be at least 2 characters';
+        }
+        if (!/^[a-zA-Z\s'-]+$/.test(value.trim())) {
+          return 'First name can only contain letters, spaces, hyphens, and apostrophes';
+        }
+        return null;
+        
+      case 'lastName':
+        if (!value.trim()) {
+          return 'Last name is required';
+        }
+        if (value.trim().length < 2) {
+          return 'Last name must be at least 2 characters';
+        }
+        if (!/^[a-zA-Z\s'-]+$/.test(value.trim())) {
+          return 'Last name can only contain letters, spaces, hyphens, and apostrophes';
+        }
+        return null;
+        
+      case 'email':
+        if (!value.trim()) {
+          return 'Email is required';
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value.trim())) {
+          return 'Please enter a valid email address';
+        }
+        return null;
+        
+      case 'phone':
+        // Phone is optional, but if provided, validate format
+        if (value.trim() && !/^[\d\s\-\+\(\)]+$/.test(value.trim())) {
+          return 'Please enter a valid phone number';
+        }
+        if (value.trim() && value.trim().replace(/\D/g, '').length < 8) {
+          return 'Phone number must be at least 8 digits';
+        }
+        return null;
+        
+      case 'service':
+        if (!value.trim()) {
+          return 'Please select a service';
+        }
+        return null;
+        
+      case 'message':
+        if (!value.trim()) {
+          return 'Message is required';
+        }
+        if (value.trim().length < 10) {
+          return 'Message must be at least 10 characters';
+        }
+        if (value.trim().length > 1000) {
+          return 'Message must be less than 1000 characters';
+        }
+        return null;
+        
+      default:
+        return null;
+    }
+  };
+  
   // Validate form
   const validateForm = () => {
     const newErrors = {};
     
-    // Name validation
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-    
-    // Email validation
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
-    
-    // Message validation
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    }
+    // Validate all fields
+    Object.keys(formData).forEach(field => {
+      const error = validateField(field, formData[field]);
+      if (error) {
+        newErrors[field] = error;
+      }
+    });
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -69,9 +132,18 @@ const Contact = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    setHasSubmitted(true);
     
     // Validate form
     if (!validateForm()) {
+      // Focus on first error field
+      const firstErrorField = Object.keys(errors)[0];
+      if (firstErrorField) {
+        const element = document.getElementById(firstErrorField);
+        if (element) {
+          element.focus();
+        }
+      }
       return;
     }
     
@@ -83,15 +155,20 @@ const Contact = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
+      setHasSubmitted(false);
       
       // Reset form
       setFormData({
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: '',
         service: '',
         message: ''
       });
+      
+      // Clear any errors
+      setErrors({});
       
       // Reset success message after 5 seconds
       setTimeout(() => {
@@ -109,7 +186,10 @@ const Contact = () => {
       faqElement.style.maxHeight = null;
       faqQuestion.classList.remove('active');
     } else {
-      faqElement.style.maxHeight = faqElement.scrollHeight + "px";
+      // Calculate height including padding (var(--spacing-lg) = 30px top + 30px bottom = 60px)
+      const contentHeight = faqElement.scrollHeight;
+      const paddingHeight = 60; // 30px top + 30px bottom padding
+      faqElement.style.maxHeight = (contentHeight + paddingHeight) + "px";
       faqQuestion.classList.add('active');
     }
   };
@@ -166,18 +246,35 @@ const Contact = () => {
                   <p>We've received your inquiry and will get back to you as soon as possible.</p>
                 </div>
               ) : (
-                <form id="contact-form" onSubmit={handleSubmit}>
-                  <div className={`form-group ${errors.name ? 'error' : ''}`}>
-                    <label htmlFor="name">Your Name <span className="required">*</span></label>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      name="name" 
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                    />
-                    {errors.name && <div className="error-message">{errors.name}</div>}
+                <form id="contact-form" onSubmit={handleSubmit} noValidate>
+                  <div className="form-row">
+                    <div className={`form-group ${errors.firstName ? 'error' : ''}`}>
+                      <label htmlFor="firstName">First Name <span className="required">*</span></label>
+                      <input 
+                        type="text" 
+                        id="firstName" 
+                        name="firstName" 
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        required
+                        aria-describedby={errors.firstName ? 'firstName-error' : undefined}
+                      />
+                      {errors.firstName && <div id="firstName-error" className="error-message">{errors.firstName}</div>}
+                    </div>
+                    
+                    <div className={`form-group ${errors.lastName ? 'error' : ''}`}>
+                      <label htmlFor="lastName">Last Name <span className="required">*</span></label>
+                      <input 
+                        type="text" 
+                        id="lastName" 
+                        name="lastName" 
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        required
+                        aria-describedby={errors.lastName ? 'lastName-error' : undefined}
+                      />
+                      {errors.lastName && <div id="lastName-error" className="error-message">{errors.lastName}</div>}
+                    </div>
                   </div>
                   
                   <div className={`form-group ${errors.email ? 'error' : ''}`}>
@@ -189,28 +286,34 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      aria-describedby={errors.email ? 'email-error' : undefined}
                     />
-                    {errors.email && <div className="error-message">{errors.email}</div>}
+                    {errors.email && <div id="email-error" className="error-message">{errors.email}</div>}
                   </div>
                   
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone Number</label>
+                  <div className={`form-group ${errors.phone ? 'error' : ''}`}>
+                    <label htmlFor="phone">Phone Number <span className="optional">(Optional)</span></label>
                     <input 
                       type="tel" 
                       id="phone" 
                       name="phone" 
                       value={formData.phone}
                       onChange={handleChange}
+                      placeholder="e.g., (02) 1234 5678"
+                      aria-describedby={errors.phone ? 'phone-error' : undefined}
                     />
+                    {errors.phone && <div id="phone-error" className="error-message">{errors.phone}</div>}
                   </div>
                   
-                  <div className="form-group">
-                    <label htmlFor="service">Service Interested In</label>
+                  <div className={`form-group ${errors.service ? 'error' : ''}`}>
+                    <label htmlFor="service">Service Interested In <span className="required">*</span></label>
                     <select 
                       id="service" 
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
+                      required
+                      aria-describedby={errors.service ? 'service-error' : undefined}
                     >
                       <option value="">Select a Service</option>
                       <option value="custom-home">Custom Home Building</option>
@@ -220,6 +323,7 @@ const Contact = () => {
                       <option value="commercial">Commercial Construction</option>
                       <option value="other">Other</option>
                     </select>
+                    {errors.service && <div id="service-error" className="error-message">{errors.service}</div>}
                   </div>
                   
                   <div className={`form-group ${errors.message ? 'error' : ''}`}>
@@ -230,8 +334,14 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
+                      placeholder="Please describe your project or inquiry..."
+                      rows="5"
+                      aria-describedby={errors.message ? 'message-error' : undefined}
                     ></textarea>
-                    {errors.message && <div className="error-message">{errors.message}</div>}
+                    <div className="character-count">
+                      {formData.message.length}/1000 characters
+                    </div>
+                    {errors.message && <div id="message-error" className="error-message">{errors.message}</div>}
                   </div>
                   
                   <button 
@@ -249,22 +359,22 @@ const Contact = () => {
               <div className="contact-card" data-aos="fade-up" data-aos-delay="400">
                 <h3>Contact Information</h3>
                 <div className="contact-item">
-                  <div className="contact-icon">📍</div>
+                  <div className="contact-icon location-icon">⚲</div>
                   <div>
                     <p>123 Main Street</p>
-                    <p>Sydney, NSW 2000</p>
+                    <p>Guyra, NSW 2365</p>
                   </div>
                 </div>
                 <div className="contact-item">
-                  <div className="contact-icon">📱</div>
+                  <div className="contact-icon">☎</div>
                   <div>
                     <p>(02) 1234 5678</p>
                   </div>
                 </div>
                 <div className="contact-item">
-                  <div className="contact-icon">✉️</div>
+                  <div className="contact-icon">✉</div>
                   <div>
-                    <p>info@lenbuild.com.au</p>
+                    <p>lenbuild@myyahoo.com</p>
                   </div>
                 </div>
               </div>
@@ -272,11 +382,10 @@ const Contact = () => {
               <div className="contact-card" data-aos="fade-up" data-aos-delay="500">
                 <h3>Business Hours</h3>
                 <div className="contact-item">
-                  <div className="contact-icon">🕒</div>
+                  <div className="contact-icon">◷</div>
                   <div>
-                    <p>Monday - Friday: 7:30 AM - 5:00 PM</p>
-                    <p>Saturday: 8:00 AM - 12:00 PM</p>
-                    <p>Sunday: Closed</p>
+                    <p>Monday - Friday:  9am - 4pm</p>
+                    <p>Saturday & Sunday: Closed</p>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
+import apaLogo from '../../assets/apa.png';
+import hiaLogo from '../../assets/hia.png';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -42,11 +45,44 @@ const Footer = () => {
           <div className="footer-col">
             <h3>Connect With Us</h3>
             <ul className="social-links">
-              <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-              <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a href="#" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <FaFacebook className="social-icon" />
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <FaInstagram className="social-icon" />
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin className="social-icon" />
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <FaTwitter className="social-icon" />
+                  Twitter
+                </a>
+              </li>
             </ul>
+          </div>
+        </div>
+        
+        {/* Professional Memberships Section */}
+        <div className="memberships-section">
+          <h3>Professional Memberships</h3>
+          <div className="membership-logos">
+            <div className="membership-item">
+              <img src={apaLogo} alt="Australian Physiotherapy Association" className="membership-logo" />
+            </div>
+            <div className="membership-item">
+              <img src={hiaLogo} alt="Housing Industry Association" className="membership-logo" />
+            </div>
           </div>
         </div>
         

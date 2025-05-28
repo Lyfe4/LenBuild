@@ -16,23 +16,21 @@ const About = () => {
   const values = [
     {
       title: "Quality Craftsmanship",
-      icon: "🔨",
-      description: "We never compromise on quality. Every project, regardless of size, receives the same attention to detail and commitment to excellence."
+      description: "We never compromise on quality. Every project, regardless of size, receives the same attention to detail and commitment to excellence.",
+      defaultImage: "/placeholder.jpg",
+      hoverImage: "/placeholder2.jpg"
     },
     {
       title: "Client-Centered Approach",
-      icon: "🤝",
-      description: "We believe in transparent communication and involving our clients throughout the entire building process."
+      description: "We believe in transparent communication and involving our clients throughout the entire building process.",
+      defaultImage: "/placeholder.jpg",
+      hoverImage: "/placeholder2.jpg"
     },
     {
       title: "Sustainability",
-      icon: "🌱",
-      description: "We're committed to environmentally responsible building practices that create healthier, more efficient homes."
-    },
-    {
-      title: "Innovation",
-      icon: "💡",
-      description: "We continuously seek out new techniques, materials, and technologies to improve our building processes and outcomes."
+      description: "We're committed to environmentally responsible building practices that create healthier, more efficient homes.",
+      defaultImage: "/placeholder.jpg",
+      hoverImage: "/placeholder2.jpg"
     }
   ];
   
@@ -131,14 +129,29 @@ const About = () => {
             <div className="values-grid">
               {values.map((value, index) => (
                 <div 
-                  className="value-card stagger-item" 
+                  className="value-card" 
                   data-aos="fade-up" 
                   data-aos-delay={index * 100}
                   key={index}
                 >
-                  <div className="value-icon">{value.icon}</div>
-                  <h4>{value.title}</h4>
-                  <p>{value.description}</p>
+                  <div className="value-image-container">
+                    <img 
+                      src={value.defaultImage} 
+                      alt={value.title}
+                      className="value-image default"
+                    />
+                    <img 
+                      src={value.hoverImage} 
+                      alt={value.title}
+                      className="value-image hover"
+                    />
+                  </div>
+                  <div className="value-overlay">
+                    <div className="value-content">
+                      <h4>{value.title}</h4>
+                      <p>{value.description}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

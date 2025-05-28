@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';
 import ParallaxImage from '../../components/ParallaxImage/ParallaxImage';
@@ -105,6 +106,7 @@ const ProjectsServices = () => {
         'Premium materials and finishes',
         'Transparent project management'
       ],
+      ctaText: 'Start Your Dream Home',
       projects: [
         {
           title: 'Modern Family Home',
@@ -128,6 +130,7 @@ const ProjectsServices = () => {
         'Seamless integration with existing structure',
         'Council approval management'
       ],
+      ctaText: 'Expand Your Space',
       projects: [
         {
           title: 'Second Story Addition',
@@ -151,6 +154,7 @@ const ProjectsServices = () => {
         'Modern updates to older homes',
         'Premium fixtures and fittings'
       ],
+      ctaText: 'Transform Your Home',
       projects: [
         {
           title: 'Kitchen Transformation',
@@ -174,6 +178,7 @@ const ProjectsServices = () => {
         'Energy-efficient windows and doors',
         'Smart home technology integration'
       ],
+      ctaText: 'Go Green Today',
       projects: [
         {
           title: 'Net-Zero Energy Home',
@@ -197,6 +202,7 @@ const ProjectsServices = () => {
         'Restaurant and hospitality venues',
         'Medical and professional facilities'
       ],
+      ctaText: 'Build Your Business',
       projects: [
         {
           title: 'Modern Office Fit-out',
@@ -254,6 +260,9 @@ const ProjectsServices = () => {
                       <li className="stagger-item" key={i}>{feature}</li>
                     ))}
                   </ul>
+                  <Link to="/contact" className="service-cta-btn">
+                    {service.ctaText}
+                  </Link>
                 </div>
                 <div className="project-gallery" data-aos="fade-left" data-aos-delay={300 + index * 50}>
                   {service.projects.map((project, i) => (
