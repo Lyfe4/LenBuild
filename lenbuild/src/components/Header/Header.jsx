@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
+import lenbuildLogo from '../../assets/lenbuild.png';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -102,7 +103,7 @@ const Header = () => {
       <div className="container">
         <div className="header-container">
           <Link to="/" className="logo" onClick={() => handleMainNavClick('/')}>
-            Len<span>Build</span>
+            <img src={lenbuildLogo} alt="LenBuild" className="logo-image" />
           </Link>
           
           <div className="mobile-menu-btn" onClick={toggleMobileMenu}>

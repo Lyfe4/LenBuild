@@ -1,5 +1,5 @@
 .cta {
-  background-color: var(--primary);
+  background-color: var(--darker);
   color: white;
   padding: var(--spacing-xl) 0;
   text-align: center;
@@ -48,8 +48,8 @@
 }
 
 .cta .btn {
-  background-color: var(--secondary);
-  color: var(--dark);
+  background-color: var(--primary);
+  color: var(--white);
   padding: var(--spacing-sm) var(--spacing-xl);
   font-weight: 600;
   position: relative;
@@ -58,8 +58,8 @@
 }
 
 .cta .btn:hover {
-  background-color: white;
-  color: var(--primary);
+  background-color: var(--accent);
+  color: var(--white);
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }

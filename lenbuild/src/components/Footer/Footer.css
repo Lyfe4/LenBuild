@@ -1,5 +1,5 @@
 .footer {
-  background-color: var(--primary);
+  background-color: var(--darker);
   color: white;
   padding: var(--spacing-xxl) 0 var(--spacing-lg);
 }
@@ -32,7 +32,7 @@
 }
 
 .footer-col ul li a:hover {
-  color: var(--secondary);
+  color: var(--white);
 }
 
 .social-links li a {

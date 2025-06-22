@@ -1,10 +1,17 @@
 :root {
-  /* Color palette */
-  --primary: #2c4c63;
-  --secondary: #e4c08e;
-  --light: #f5f5f5;
-  --dark: #333333;
-  --text: #4a4a4a;
+  /* Color palette - LenBuild Brand Colors */
+  --primary: #7ED321; /* Vibrant green from logo */
+  --secondary: #2D2D2D; /* Dark grey/black */
+  --accent: #5CB85C; /* Darker green for variety */
+  --light: #F8F9FA; /* Very light grey */
+  --medium-light: #E9ECEF; /* Light grey */
+  --medium: #6C757D; /* Medium grey */
+  --dark: #343A40; /* Dark grey */
+  --darker: #212529; /* Very dark grey/black */
+  --text: #495057; /* Text grey */
+  --text-light: #6C757D; /* Light text grey */
+  --white: #FFFFFF;
+  --black: #000000;
   
   /* Typography */
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

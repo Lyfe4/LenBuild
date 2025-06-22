@@ -8,8 +8,8 @@
   text-align: center;
   margin-bottom: var(--spacing-xl);
   overflow: hidden;
-  margin-top: calc(-1 * (var(--spacing-md) * 2 + var(--font-size-xl) * 1.2) - 10px);
-  padding-top: calc(var(--spacing-md) * 2 + var(--font-size-xl) * 1.2 + 10px);
+  margin-top: calc(-1 * (var(--spacing-md) * 2 + var(--font-size-xl) * 1.2) - 15px);
+  padding-top: calc(var(--spacing-md) * 2 + var(--font-size-xl) * 1.2 + 15px);
 }
 
 .page-header-background {
