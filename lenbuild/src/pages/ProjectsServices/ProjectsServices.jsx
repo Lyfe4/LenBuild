@@ -133,14 +133,14 @@ const ProjectsServices = () => {
       ctaText: 'Expand Your Space',
       projects: [
         {
-          title: 'Second Story Addition',
-          year: '2024',
-          image: '/placeholder.jpg'
+          title: 'Placeholder',
+          year: 'This is placeholder info',
+          image: require('../../assets/13.jpg')
         },
         {
-          title: 'Living Area Extension',
-          year: '2023',
-          image: '/placeholder.jpg'
+          title: 'Placeholder',
+          year: 'This is placeholder info',
+          image: require('../../assets/Post 2.jpg')
         }
       ]
     },
@@ -157,38 +157,9 @@ const ProjectsServices = () => {
       ctaText: 'Transform Your Home',
       projects: [
         {
-          title: 'Kitchen Transformation',
+          title: 'Bathroom Transformation',
           year: '2024',
-          image: '/placeholder.jpg'
-        },
-        {
-          title: 'Whole Home Renovation',
-          year: '2023',
-          image: '/placeholder.jpg'
-        }
-      ]
-    },
-    {
-      id: 'energy-efficient',
-      title: 'Energy-Efficient Solutions',
-      description: 'We specialize in incorporating sustainable, energy-efficient elements into your build, reducing your environmental footprint and long-term operational costs. Our forward-thinking approach ensures your home is comfortable, economical to run, and kind to the planet.',
-      features: [
-        'Solar panel installation',
-        'High-performance insulation',
-        'Energy-efficient windows and doors',
-        'Smart home technology integration'
-      ],
-      ctaText: 'Go Green Today',
-      projects: [
-        {
-          title: 'Net-Zero Energy Home',
-          year: '2024',
-          image: '/placeholder.jpg'
-        },
-        {
-          title: 'Smart Home Upgrade',
-          year: '2023',
-          image: '/placeholder.jpg'
+          image: require('../../assets/11.jpg')
         }
       ]
     },
@@ -266,7 +237,7 @@ const ProjectsServices = () => {
                 </div>
                 <div className="project-gallery" data-aos="fade-left" data-aos-delay={300 + index * 50}>
                   {service.projects.map((project, i) => (
-                    <div className="project-item zoom-on-hover" key={i}>
+                    <div className={`project-item zoom-on-hover ${project.title === 'Placeholder' && i === 1 ? 'post-2-image' : ''}`} key={i}>
                       <img src={project.image} alt={project.title} />
                       <div className="project-overlay">
                         <h4>{project.title}</h4>

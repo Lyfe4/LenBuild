@@ -17,8 +17,8 @@ const About = () => {
     {
       title: "Quality Craftsmanship",
       description: "We never compromise on quality. Every project, regardless of size, receives the same attention to detail and commitment to excellence.",
-      defaultImage: "/placeholder.jpg",
-      hoverImage: "/placeholder2.jpg"
+      defaultImage: require('../../assets/10 - Copy.jpg'),
+      hoverImage: require('../../assets/Picture 3.jpg')
     },
     {
       title: "Client-Centered Approach",
@@ -120,7 +120,7 @@ const About = () => {
               <p>Our team of skilled craftsmen is hand-picked and renowned for their exceptional quality of work and attention to detail. We take pride in our ability to bring visions to life and create spaces that reflect the unique personalities and lifestyles of our clients.</p>
             </div>
             <div className="about-image" data-aos="fade-left" data-aos-delay="300">
-              <ParallaxImage imgSrc="/placeholder.jpg" altText="LenBuild Construction" speed={0.1} />
+              <ParallaxImage imgSrc={require('../../assets/5.jpg')} altText="LenBuild Construction" speed={0} />
             </div>
           </div>
           
