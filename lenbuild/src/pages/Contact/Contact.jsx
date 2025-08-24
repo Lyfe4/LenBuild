@@ -361,14 +361,7 @@ const Contact = () => {
                 <div className="contact-item">
                   <div className="contact-icon location-icon">⚲</div>
                   <div>
-                    <p>123 Main Street</p>
-                    <p>Guyra, NSW 2365</p>
-                  </div>
-                </div>
-                <div className="contact-item">
-                  <div className="contact-icon">☎</div>
-                  <div>
-                    <p>(02) 1234 5678</p>
+                    <p>Guyra Region, NSW 2365</p>
                   </div>
                 </div>
                 <div className="contact-item">
@@ -378,29 +371,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              
-              <div className="contact-card" data-aos="fade-up" data-aos-delay="500">
-                <h3>Business Hours</h3>
-                <div className="contact-item">
-                  <div className="contact-icon">◷</div>
-                  <div>
-                    <p>Monday - Friday:  9am - 4pm</p>
-                    <p>Saturday & Sunday: Closed</p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Map Section */}
-      <section className="map-section section" id="map">
-        <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Find Us</h2>
-          {/* In a real implementation, this would be a Google Maps iframe */}
-          <div className="map-container" data-aos="zoom-in" data-aos-delay="200">
-            <img src="/placeholder.jpg" alt="Map" className="map-placeholder" />
           </div>
         </div>
       </section>

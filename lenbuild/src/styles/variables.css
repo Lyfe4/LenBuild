@@ -1,13 +1,14 @@
 :root {
   /* Color palette - LenBuild Brand Colors */
-  --primary: #7ED321; /* Vibrant green from logo */
+  --primary: #2E7D32; /* Professional dark green */
   --secondary: #2D2D2D; /* Dark grey/black */
-  --accent: #5CB85C; /* Darker green for variety */
-  --light: #F8F9FA; /* Very light grey */
+  --accent: #1B5E20; /* Darker green for hovers that matches primary */
+  --light: #DEE2E6; /* Slightly darker light grey */
   --medium-light: #E9ECEF; /* Light grey */
+  --card-bg: #F5F6F7; /* Off-white for cards - between white and background */
   --medium: #6C757D; /* Medium grey */
   --dark: #343A40; /* Dark grey */
-  --darker: #212529; /* Very dark grey/black */
+  --darker: #495057; /* Medium-dark grey */
   --text: #495057; /* Text grey */
   --text-light: #6C757D; /* Light text grey */
   --white: #FFFFFF;

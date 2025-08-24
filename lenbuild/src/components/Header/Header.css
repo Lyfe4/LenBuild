@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--medium-light);
+  background-color: var(--light);
   box-shadow: var(--box-shadow-light);
   position: sticky;
   top: 0;
@@ -116,7 +116,7 @@ nav ul li a.active {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: var(--medium-light);
+  background-color: var(--light);
   box-shadow: var(--box-shadow-medium);
   border-radius: var(--border-radius-sm);
   min-width: 200px;
@@ -160,8 +160,8 @@ nav ul li a.active {
 }
 
 .header.merged-with-image .dropdown-item:hover {
-  background-color: var(--secondary);
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--white);
 }
 
 .mobile-menu-btn {
@@ -185,7 +185,7 @@ nav ul li a.active {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--medium-light);
+    background-color: var(--light);
     box-shadow: var(--box-shadow-light);
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     transition: clip-path 0.4s ease;

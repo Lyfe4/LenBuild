@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CallToAction from '../../components/CallToAction/CallToAction';
 import ParallaxImage from '../../components/ParallaxImage/ParallaxImage';
 import './Home.css';
 
 const Home = () => {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  
   // Scroll to section if hash in URL
   useEffect(() => {
     const { hash } = window.location;
@@ -41,6 +43,35 @@ const Home = () => {
     }
   ];
 
+  // Testimonials data
+  const testimonials = [
+    {
+      content: "We are incredibly happy with our new home and would highly recommend LenBuild to anyone. The team was very professional and personable, and their workmanship is amazing. Look no further than LenBuild for your next project.",
+      author: "Sarah & James Thompson"
+    },
+    {
+      content: "LenBuild custom built our first new house. From the start of us giving them some sketches of our dream home to the final handover, we have had first-class support and assistance. All the costs were shared with us upfront and in detail. There were no hidden costs.",
+      author: "Michael Wilson"
+    },
+    {
+      content: "The LenBuild team embraced our dream to build a custom new home and made it a solid reality. With sensible advice from the design through planning to construction stage, we are now proud owners of a beautiful home that meets our expectations in every respect.",
+      author: "Rebecca & David Martin"
+    },
+    {
+      content: "We are very happy with the LenBuild team, very professional, workmanship A1, very obliging. Our extension worked out beautifully. It was a tricky project, but the outcome turned out perfectly!",
+      author: "John & Emily Parker"
+    }
+  ];
+  
+  // Auto-cycle testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000); // Change every 5 seconds
+    
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
   return (
     <div className="home-page">
       {/* Hero Section */}
@@ -58,17 +89,17 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Welcome Section */}
-      <section className="welcome section" id="welcome">
+      {/* About Us Section */}
+      <section className="about-us section" id="about-us">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Welcome to LenBuild</h2>
-          <div className="welcome-content">
-            <div className="welcome-text" data-aos="fade-right" data-aos-delay="200">
-              <p>LenBuild is a family-owned construction company specializing in creating high-quality homes where the journey is equally rewarding as the final product itself. For over 10 years, we've been building new homes and extensions in the local area, with each home custom designed and built by our team of architects, contractors, and employees.</p>
-              <p>As industry leaders, we build architectural high-performing homes. Our collaborative pre-construction approach leads to an enjoyable building experience and a home that delivers sustainability and wellbeing for our clients.</p>
-              <Link to="/about" className="btn">Learn More About Us</Link>
+          <h2 className="section-title" data-aos="fade-up">About Us</h2>
+          <div className="about-us-content">
+            <div className="about-us-text" data-aos="fade-right" data-aos-delay="200">
+              <p data-aos="fade-up" data-aos-delay="300">LenBuild is a trusted, family-operated building company based in Guyra, NSW, known for its commitment to quality craftsmanship, sustainable building practices, and personalized service. With deep roots in the local community, LenBuild specializes in custom homes and offers expert solutions in renovations, extensions, and new home construction.</p>
+              <p data-aos="fade-up" data-aos-delay="400">The team is dedicated to using smarter, more sustainable construction methods. Every project is tailored to reflect the client's unique vision. LenBuild combines experience, innovation, and a family-first approach to help you with your new project.</p>
+              <Link to="/about" className="btn" data-aos="fade-up" data-aos-delay="500">Learn More About Us</Link>
             </div>
-            <div className="welcome-image" data-aos="fade-left" data-aos-delay="300">
+            <div className="about-us-image" data-aos="fade-left" data-aos-delay="300">
               <ParallaxImage imgSrc="/placeholder.jpg" altText="LenBuild Construction" speed={0.1} />
             </div>
           </div>
@@ -102,64 +133,32 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Recent Projects Showcase */}
-      <section className="recent-projects section" id="recent-projects">
+      {/* Testimonials Section */}
+      <section className="testimonials-section section" id="testimonials">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Recent Projects</h2>
-          <p className="section-intro" data-aos="fade-up" data-aos-delay="100">Take a look at some of our latest completed projects, showcasing the quality and craftsmanship that defines LenBuild.</p>
+          <h2 className="section-title" data-aos="fade-up">What Our Clients Say</h2>
           
-          <div className="projects-grid">
-            <div className="project-card" data-aos="fade-up" data-aos-delay="200">
-              <div className="project-image">
-                <ParallaxImage imgSrc="/placeholder.jpg" altText="Modern Family Home" speed={0.05} />
+          <div className="testimonial-carousel" data-aos="fade-up" data-aos-delay="200">
+            <div className="testimonial-display" key={currentTestimonial}>
+              <div className="testimonial-content" data-aos="fade-up" data-aos-delay="300">
+                <p>"{testimonials[currentTestimonial].content}"</p>
               </div>
-              <div className="project-details">
-                <h3>Modern Family Home</h3>
-                <p className="project-type">Custom New Build</p>
-                <p>A stunning 4-bedroom contemporary home featuring open-plan living, sustainable materials, and seamless indoor-outdoor flow. Completed with premium finishes throughout.</p>
-                <div className="project-features">
-                  <span>4 Bedrooms</span>
-                  <span>3 Bathrooms</span>
-                  <span>Double Garage</span>
-                </div>
+              <div className="testimonial-author" data-aos="fade-up" data-aos-delay="400">
+                <p>— {testimonials[currentTestimonial].author}</p>
               </div>
             </div>
             
-            <div className="project-card" data-aos="fade-up" data-aos-delay="300">
-              <div className="project-image">
-                <ParallaxImage imgSrc="/placeholder.jpg" altText="Heritage Home Extension" speed={0.05} />
-              </div>
-              <div className="project-details">
-                <h3>Heritage Home Extension</h3>
-                <p className="project-type">Extension & Renovation</p>
-                <p>Sympathetic extension to a 1920s heritage home, adding modern amenities while preserving original character features and architectural details.</p>
-                <div className="project-features">
-                  <span>Kitchen Extension</span>
-                  <span>Master Suite</span>
-                  <span>Heritage Restoration</span>
-                </div>
-              </div>
+            {/* Testimonial indicators */}
+            <div className="testimonial-indicators" data-aos="fade-up" data-aos-delay="500">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  className={`indicator ${index === currentTestimonial ? 'active' : ''}`}
+                  onClick={() => setCurrentTestimonial(index)}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
             </div>
-            
-            <div className="project-card" data-aos="fade-up" data-aos-delay="400">
-              <div className="project-image">
-                <ParallaxImage imgSrc="/placeholder.jpg" altText="Luxury Renovation" speed={0.05} />
-              </div>
-              <div className="project-details">
-                <h3>Luxury Renovation</h3>
-                <p className="project-type">Complete Renovation</p>
-                <p>Full transformation of a 1980s home into a modern luxury residence with high-end finishes, smart home technology, and energy-efficient systems.</p>
-                <div className="project-features">
-                  <span>Smart Home</span>
-                  <span>Premium Finishes</span>
-                  <span>Energy Efficient</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="text-center view-all" data-aos="fade-up" data-aos-delay="500">
-            <Link to="/projects-services" className="btn">View All Projects</Link>
           </div>
         </div>
       </section>

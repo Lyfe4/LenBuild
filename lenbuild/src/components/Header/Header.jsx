@@ -63,14 +63,13 @@ const Header = () => {
   // Dropdown menu data
   const dropdownMenus = {
     '/': [
-      { label: 'Welcome', hash: '#welcome' },
+      { label: 'About Us', hash: '#about-us' },
       { label: 'Our Services', hash: '#services' },
-      { label: 'Recent Projects', hash: '#recent-projects' }
+      { label: 'What Our Clients Say', hash: '#testimonials' }
     ],
     '/about': [
       { label: 'Our Story & Values', hash: '#story' },
-      { label: 'Meet Our Team', hash: '#team' },
-      { label: 'What Our Clients Say', hash: '#testimonials' }
+      { label: 'Meet Our Team', hash: '#team' }
     ],
     '/projects-services': [
       { label: 'Our Expertise', hash: '#expertise' },
@@ -78,7 +77,6 @@ const Header = () => {
     ],
     '/contact': [
       { label: 'Get In Touch', hash: '#contact-form' },
-      { label: 'Find Us', hash: '#map' },
       { label: 'FAQ', hash: '#faq' }
     ]
   };

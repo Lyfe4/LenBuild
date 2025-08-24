@@ -210,7 +210,7 @@
 }
 
 .team-member {
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: var(--border-radius-md);
   overflow: hidden;
   box-shadow: var(--box-shadow-light);
@@ -253,7 +253,7 @@
   transform: translateX(-50%);
   width: 0;
   height: 3px;
-  background-color: var(--secondary);
+  background-color: var(--primary);
   transition: width 0.3s ease;
 }
 
@@ -267,161 +267,13 @@
 }
 
 .team-member:hover .team-details h3 {
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 .team-position {
   color: var(--secondary);
   font-weight: 500;
   margin-bottom: var(--spacing-sm);
-}
-
-/* Testimonials Section - Cycling Carousel */
-.testimonials-section {
-  background-color: var(--light);
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonials-section::before,
-.testimonials-section::after {
-  content: '';
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-color: rgba(44, 76, 99, 0.05); /* Primary color with opacity */
-  z-index: 1;
-}
-
-.testimonials-section::before {
-  top: -150px;
-  left: -150px;
-}
-
-.testimonials-section::after {
-  bottom: -150px;
-  right: -150px;
-  background-color: rgba(228, 192, 142, 0.05); /* Secondary color with opacity */
-}
-
-.testimonial-carousel {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.testimonial-display {
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: var(--spacing-xl) 0;
-  position: relative;
-}
-
-.testimonial-content {
-  margin-bottom: var(--spacing-lg);
-  position: relative;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideInFade 0.8s ease-out forwards;
-}
-
-.testimonial-content p {
-  font-size: var(--font-size-large);
-  font-style: italic;
-  line-height: 1.8;
-  color: var(--dark);
-  margin: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.testimonial-author {
-  position: relative;
-  opacity: 0;
-  transform: translateY(15px);
-  animation: slideInFade 0.8s ease-out 0.3s forwards;
-}
-
-.testimonial-author p {
-  font-weight: 600;
-  color: var(--primary);
-  font-size: var(--font-size-base);
-  margin: 0;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 8px;
-}
-
-.testimonial-author::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 2px;
-  background-color: var(--secondary);
-  transition: width 0.4s ease;
-}
-
-.testimonial-carousel:hover .testimonial-author::before {
-  width: 120px;
-}
-
-/* Testimonial Indicators */
-.testimonial-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: var(--spacing-xl);
-}
-
-.indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid var(--primary);
-  background-color: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-}
-
-.indicator:hover {
-  background-color: var(--primary);
-  opacity: 0.7;
-}
-
-.indicator.active {
-  background-color: var(--primary);
-  transform: scale(1.2);
-}
-
-/* Fade transition animation */
-.testimonial-display {
-  position: relative;
-}
-
-@keyframes slideInFade {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Smooth transition between testimonials */
-.testimonial-carousel .testimonial-content,
-.testimonial-carousel .testimonial-author {
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 /* Responsive */
@@ -458,19 +310,6 @@
   
   .team-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .testimonial-content p {
-    font-size: var(--font-size-base);
-  }
-  
-  .testimonial-content::before {
-    font-size: 80px;
-    top: -20px;
-  }
-  
-  .testimonial-carousel {
-    padding: 0 var(--spacing-md);
   }
 
   .value-card h4 {

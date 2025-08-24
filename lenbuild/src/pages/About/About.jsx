@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';
 import ParallaxImage from '../../components/ParallaxImage/ParallaxImage';
 import './About.css';
 
 const About = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  
   // Breadcrumbs for the page header
   const breadcrumbs = [
     { text: 'About Us' }
@@ -62,34 +60,6 @@ const About = () => {
     }
   ];
   
-  // Testimonials data
-  const testimonials = [
-    {
-      content: "We are incredibly happy with our new home and would highly recommend LenBuild to anyone. The team was very professional and personable, and their workmanship is amazing. Look no further than LenBuild for your next project.",
-      author: "Sarah & James Thompson"
-    },
-    {
-      content: "LenBuild custom built our first new house. From the start of us giving them some sketches of our dream home to the final handover, we have had first-class support and assistance. All the costs were shared with us upfront and in detail. There were no hidden costs.",
-      author: "Michael Wilson"
-    },
-    {
-      content: "The LenBuild team embraced our dream to build a custom new home and made it a solid reality. With sensible advice from the design through planning to construction stage, we are now proud owners of a beautiful home that meets our expectations in every respect.",
-      author: "Rebecca & David Martin"
-    },
-    {
-      content: "We are very happy with the LenBuild team, very professional, workmanship A1, very obliging. Our extension worked out beautifully. It was a tricky project, but the outcome turned out perfectly!",
-      author: "John & Emily Parker"
-    }
-  ];
-  
-  // Auto-cycle testimonials
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000); // Change every 5 seconds
-    
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
   
   // Scroll to section if hash in URL
   useEffect(() => {
@@ -183,36 +153,6 @@ const About = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* Testimonials Section */}
-      <section className="testimonials-section section" id="testimonials">
-        <div className="container">
-          <h2 className="section-title" data-aos="fade-up">What Our Clients Say</h2>
-          
-          <div className="testimonial-carousel">
-            <div className="testimonial-display" key={currentTestimonial}>
-              <div className="testimonial-content">
-                <p>"{testimonials[currentTestimonial].content}"</p>
-              </div>
-              <div className="testimonial-author">
-                <p>— {testimonials[currentTestimonial].author}</p>
-              </div>
-            </div>
-            
-            {/* Testimonial indicators */}
-            <div className="testimonial-indicators">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  className={`indicator ${index === currentTestimonial ? 'active' : ''}`}
-                  onClick={() => setCurrentTestimonial(index)}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </section>
