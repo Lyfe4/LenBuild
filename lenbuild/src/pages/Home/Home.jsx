@@ -6,6 +6,7 @@ import './Home.css';
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [intervalId, setIntervalId] = useState(null);
   
   // Scroll to section if hash in URL
   useEffect(() => {
@@ -30,7 +31,7 @@ const Home = () => {
       state: { scrollToTop: false }
     },
     {
-      title: "Home Extensions",
+      title: "Extensions",
       description: "Need more space? Our extension services seamlessly integrate with your existing home, providing additional living areas.",
       link: "/projects-services#extensions",
       state: { scrollToTop: false }
@@ -40,34 +41,48 @@ const Home = () => {
       description: "Transform your current space with our comprehensive renovation services, breathing new life into your home.",
       link: "/projects-services#renovations",
       state: { scrollToTop: false }
+    },
+    {
+      title: "Paid as a Consultant (PAC)",
+      description: "Expert building consultation services to guide your project from planning to completion, providing professional advice and oversight.",
+      link: "/projects-services#pac",
+      state: { scrollToTop: false }
     }
   ];
 
   // Testimonials data
   const testimonials = [
     {
-      content: "We are incredibly happy with our new home and would highly recommend LenBuild to anyone. The team was very professional and personable, and their workmanship is amazing. Look no further than LenBuild for your next project.",
-      author: "Sarah & James Thompson"
+      content: "Working with Lenbuild Pty Ltd has been an absolute pleasure over many years and across a variety of projects. They're our preferred builder for good reason—reliable, highly skilled, and consistently delivering exceptional quality. Dan and his team are masters of their craft, with a perfectionist's eye for detail and a genuine pride in their work that shines through in every build",
+      author: "Martin & Teesh"
     },
     {
-      content: "LenBuild custom built our first new house. From the start of us giving them some sketches of our dream home to the final handover, we have had first-class support and assistance. All the costs were shared with us upfront and in detail. There were no hidden costs.",
-      author: "Michael Wilson"
-    },
-    {
-      content: "The LenBuild team embraced our dream to build a custom new home and made it a solid reality. With sensible advice from the design through planning to construction stage, we are now proud owners of a beautiful home that meets our expectations in every respect.",
-      author: "Rebecca & David Martin"
-    },
-    {
-      content: "We are very happy with the LenBuild team, very professional, workmanship A1, very obliging. Our extension worked out beautifully. It was a tricky project, but the outcome turned out perfectly!",
-      author: "John & Emily Parker"
+      content: "We engaged with LenBuild to take on an old farm homestead renovation project. With the view that we could make it a practical, modern, warm family home, although keeping the country feel it had before. Dan and his team went above and beyond to help us navigate this project from framing areas so we could visualize the space, sourcing products that fitted with the feel & look we were after at a reasonable price, and solved problem after problem as we embarked on this journey. He engaged with only the best contractors in the area that would meet his level of professionalism and perfection, so the whole project could come together. He challenged us to think about how to make the home work best for us in a cold Guyra climate and also understood the emotional attachment certain aspects of the old home meant to me and how to incorporate these in the project. LenBuild comes with our highest recommendation and would be the first team we would call if we were to do any more building projects in the future.",
+      author: "Richard & Prue"
     }
   ];
   
+  // Handle manual testimonial change
+  const handleTestimonialChange = (index) => {
+    setCurrentTestimonial(index);
+    // Clear existing interval
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+    // Start new interval
+    const newInterval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 10000);
+    setIntervalId(newInterval);
+  };
+
   // Auto-cycle testimonials
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000); // Change every 5 seconds
+    }, 10000); // Change every 10 seconds
+    
+    setIntervalId(interval);
     
     return () => clearInterval(interval);
   }, [testimonials.length]);
@@ -92,7 +107,7 @@ const Home = () => {
       {/* About Us Section */}
       <section className="about-us section" id="about-us">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">About Us</h2>
+          <h2 className="section-title" data-aos="fade-up">About LenBuild</h2>
           <div className="about-us-content">
             <div className="about-us-text" data-aos="fade-right" data-aos-delay="200">
               <p data-aos="fade-up" data-aos-delay="300">LenBuild is a trusted, family-operated building company based in Guyra, NSW, known for its commitment to quality craftsmanship, sustainable building practices, and personalized service. With deep roots in the local community, LenBuild specializes in custom homes and offers expert solutions in renovations, extensions, and new home construction.</p>
@@ -154,7 +169,7 @@ const Home = () => {
                 <button
                   key={index}
                   className={`indicator ${index === currentTestimonial ? 'active' : ''}`}
-                  onClick={() => setCurrentTestimonial(index)}
+                  onClick={() => handleTestimonialChange(index)}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}

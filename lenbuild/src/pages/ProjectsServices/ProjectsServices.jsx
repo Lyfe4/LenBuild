@@ -43,14 +43,6 @@ const ProjectsServices = () => {
       year: '2024'
     },
     {
-      id: 4,
-      title: 'Downtown Office Complex',
-      category: 'commercial',
-      location: 'CBD',
-      image: '/placeholder.jpg',
-      year: '2023'
-    },
-    {
       id: 5,
       title: 'Coastal Retreat',
       category: 'custom-homes',
@@ -63,6 +55,22 @@ const ProjectsServices = () => {
       title: 'Heritage Home Restoration',
       category: 'renovations',
       location: 'Inner West',
+      image: '/placeholder.jpg',
+      year: '2023'
+    },
+    {
+      id: 7,
+      title: 'Building Assessment & Consultation',
+      category: 'pac',
+      location: 'Guyra',
+      image: '/placeholder.jpg',
+      year: '2024'
+    },
+    {
+      id: 8,
+      title: 'Project Management Oversight',
+      category: 'pac',
+      location: 'Armidale',
       image: '/placeholder.jpg',
       year: '2023'
     }
@@ -122,7 +130,7 @@ const ProjectsServices = () => {
     },
     {
       id: 'extensions',
-      title: 'Home Extensions',
+      title: 'Extensions',
       description: 'Need more space? Our extension services seamlessly integrate with your existing home, providing additional living areas that match your home\'s character and style. We handle everything from design through to completion, ensuring minimal disruption to your daily life.',
       features: [
         'Second-story additions',
@@ -164,24 +172,24 @@ const ProjectsServices = () => {
       ]
     },
     {
-      id: 'commercial',
-      title: 'Commercial Construction',
-      description: 'From office spaces to retail outlets, we deliver high-quality commercial construction services tailored to your business needs and industry requirements. Our team understands the unique demands of commercial projects and delivers functional, attractive spaces on time and on budget.',
+      id: 'pac',
+      title: 'Paid as a Consultant (PAC)',
+      description: 'Expert building consultation services to guide your project from planning to completion, providing professional advice and oversight. Our experienced consultants offer independent assessments, project management, and technical expertise to ensure your building project meets the highest standards.',
       features: [
-        'Office fit-outs',
-        'Retail space construction',
-        'Restaurant and hospitality venues',
-        'Medical and professional facilities'
+        'Independent project assessments',
+        'Technical building advice',
+        'Project management oversight',
+        'Quality assurance and compliance'
       ],
-      ctaText: 'Build Your Business',
+      ctaText: 'Get Expert Consultation',
       projects: [
         {
-          title: 'Modern Office Fit-out',
+          title: 'Project Consultation',
           year: '2024',
           image: '/placeholder.jpg'
         },
         {
-          title: 'Retail Shopfront',
+          title: 'Building Assessment',
           year: '2023',
           image: '/placeholder.jpg'
         }
@@ -284,10 +292,10 @@ const ProjectsServices = () => {
               Renovations
             </button>
             <button 
-              className={`filter-btn ${filter === 'commercial' ? 'active' : ''}`} 
-              onClick={() => handleFilterClick('commercial')}
+              className={`filter-btn ${filter === 'pac' ? 'active' : ''}`} 
+              onClick={() => handleFilterClick('pac')}
             >
-              Commercial
+              PAC
             </button>
           </div>
           
@@ -306,6 +314,7 @@ const ProjectsServices = () => {
                   <p>{project.category === 'custom-homes' ? 'Custom Home' : 
                       project.category === 'extensions' ? 'Extension' :
                       project.category === 'renovations' ? 'Renovation' :
+                      project.category === 'pac' ? 'PAC' :
                       project.category === 'commercial' ? 'Commercial' : ''} | {project.location}</p>
                 </div>
               </div>
