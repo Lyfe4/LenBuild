@@ -107,13 +107,16 @@ const ProjectsServices = () => {
     {
       id: 'custom-homes',
       title: 'Custom Home Building',
-      description: 'We create bespoke homes designed specifically for you and your lifestyle, working closely with you from concept to completion to ensure your vision becomes reality. Our custom homes feature quality craftsmanship, energy-efficient designs, and thoughtful details that make your house a home.',
+      description: 'At LenBuild, we believe your home should be as unique as you are. That\'s why every custom build begins with listening to your vision, lifestyle, and goals. From the first conversation to the final handover, we\'re by your side, turning ideas into spaces that feel truly yours.',
+      additionalContent: 'As a trusted, family-operated building company based in Guyra, NSW, we bring over 15 years of experience, deep local knowledge, and a commitment to quality craftsmanship. Our process is collaborative and transparent, designed to make you feel confident and supported every step of the way.',
+      processTitle: 'Here\'s how we do it:',
       features: [
-        'Full architectural design services',
-        'Energy-efficient building practices',
-        'Premium materials and finishes',
-        'Transparent project management'
+        'Personalised Planning – We take the time to understand your needs, preferences, and budget, crafting a design that reflects your personality and priorities.',
+        'Expert Craftsmanship – Our skilled team combines traditional techniques with smarter, more sustainable building practices to ensure your home is built to last.',
+        'Clear Communication – You\'ll always know what\'s happening and why. We keep things simple, honest, and tailored to your comfort level.',
+        'Sustainable Solutions – We care about the future of our community. That\'s why we use eco-conscious materials and methods wherever possible.'
       ],
+      familyApproach: 'A Family-First Approach – We treat every build like it\'s our own, because we know it\'s more than just a house—it\'s your future.',
       ctaText: 'Start Your Dream Home',
       projects: [
         {
@@ -131,12 +134,15 @@ const ProjectsServices = () => {
     {
       id: 'extensions',
       title: 'Extensions',
-      description: 'Need more space? Our extension services seamlessly integrate with your existing home, providing additional living areas that match your home\'s character and style. We handle everything from design through to completion, ensuring minimal disruption to your daily life.',
+      description: 'At LenBuild, we know that sometimes the perfect home just needs a little more room to grow. Whether you\'re welcoming new family members, craving a more functional layout, or simply ready to expand your lifestyle, our team is here to help you extend with confidence.',
+      additionalContent: 'As a trusted, family-operated building company based in Guyra, NSW, we bring over 15 years of experience and a deep commitment to quality craftsmanship. Our approach to extensions is thoughtful and tailored—designed to enhance your existing home while staying true to its character.',
+      processTitle: 'Here\'s how we make it happen:',
       features: [
-        'Second-story additions',
-        'Living area extensions',
-        'Seamless integration with existing structure',
-        'Council approval management'
+        'Respect for Your Home\'s Story – We take the time to understand your current layout, style, and structure, ensuring every addition feels natural and cohesive.',
+        'Tailored Design Solutions – Whether it\'s an extra bedroom, a larger living space, or a new entertaining area, we work closely with you to bring your vision to life.',
+        'Expert Craftsmanship – Our skilled team combines hands-on experience with smarter, more sustainable building practices to deliver high-quality results.',
+        'Clear, Honest Communication – We keep you informed and involved throughout the process, so you feel supported from planning to completion.',
+        'Sustainable Building Methods – We look for opportunities to improve energy efficiency and reduce environmental impact—without compromising comfort or design.'
       ],
       ctaText: 'Expand Your Space',
       projects: [
@@ -155,12 +161,14 @@ const ProjectsServices = () => {
     {
       id: 'renovations',
       title: 'Renovations',
-      description: 'Transform your current space with our comprehensive renovation services, breathing new life into your home while enhancing functionality and aesthetics. From kitchen and bathroom renovations to complete home transformations, we deliver stunning results that exceed expectations.',
+      description: 'At LenBuild, we understand that renovating your home isn\'t just about updating spaces, it\'s about honouring what\'s already there while making room for what\'s next. Whether it\'s a growing family, a changing lifestyle, or a long-overdue refresh, we\'re here to help you reimagine your home with care, creativity, and craftsmanship.',
+      additionalContent: 'As a trusted, family-operated building company based in Guyra, NSW, we bring over 15 years of experience and a deep connection to our community. Our renovation process is personal, collaborative, and tailored to your vision—because no two homes (or homeowners) are the same.',
+      processTitle: 'Here\'s how we make it happen:',
       features: [
-        'Kitchen and bathroom renovations',
-        'Interior reconfiguration',
-        'Modern updates to older homes',
-        'Premium fixtures and fittings'
+        'Respect for What Exists – We take the time to understand your home\'s story and structure, ensuring every change complements its character and enhances its function.',
+        'Tailored Design Solutions – From layout tweaks to full-scale transformations, we work closely with you to create spaces that reflect your needs and style.',
+        'Quality Craftsmanship – Our team combines hands-on experience with smarter, more sustainable building practices to deliver results that last.',
+        'Clear, Honest Communication – We keep you informed and involved throughout the process, so you feel confident and supported from start to finish.'
       ],
       ctaText: 'Transform Your Home',
       projects: [
@@ -174,13 +182,8 @@ const ProjectsServices = () => {
     {
       id: 'pac',
       title: 'Paid as a Consultant (PAC)',
-      description: 'Expert building consultation services to guide your project from planning to completion, providing professional advice and oversight. Our experienced consultants offer independent assessments, project management, and technical expertise to ensure your building project meets the highest standards.',
-      features: [
-        'Independent project assessments',
-        'Technical building advice',
-        'Project management oversight',
-        'Quality assurance and compliance'
-      ],
+      description: 'The PAC (Paid as a Consultant) Process brings the builder into the design phase early, fostering trust, transparency, and smarter decision making from day one. The Paid pre-construction process creates collaboration between the builder, designer/architect and the client allowing us to be involved in the preliminary phase of the planning and designing of your new Home or Renovation.',
+      features: [],
       ctaText: 'Get Expert Consultation',
       projects: [
         {
@@ -234,11 +237,14 @@ const ProjectsServices = () => {
               <div className="service-content">
                 <div className="service-description" data-aos="fade-right" data-aos-delay={200 + index * 50}>
                   <p>{service.description}</p>
+                  {service.additionalContent && <p>{service.additionalContent}</p>}
+                  {service.processTitle && <p><strong>{service.processTitle}</strong></p>}
                   <ul className="service-features">
                     {service.features.map((feature, i) => (
                       <li className="stagger-item" key={i}>{feature}</li>
                     ))}
                   </ul>
+                  {service.familyApproach && <p><strong>{service.familyApproach}</strong></p>}
                   <Link to="/contact" className="service-cta-btn">
                     {service.ctaText}
                   </Link>
