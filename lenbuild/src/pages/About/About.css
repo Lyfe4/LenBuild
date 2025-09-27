@@ -205,8 +205,10 @@
 /* Team Section */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--spacing-xl);
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .team-member {
@@ -215,6 +217,12 @@
   overflow: hidden;
   box-shadow: var(--box-shadow-light);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  align-items: stretch;
+}
+
+.team-member:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
 .team-member:hover {
@@ -223,9 +231,11 @@
 }
 
 .team-image {
-  width: 100%;
-  height: 300px;
+  width: 300px;
+  min-width: 300px;
+  height: auto;
   overflow: hidden;
+  position: relative;
 }
 
 .team-image img {
@@ -233,6 +243,7 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  min-height: 250px;
 }
 
 .team-member:hover .team-image img {
@@ -241,16 +252,19 @@
 
 .team-details {
   padding: var(--spacing-lg);
-  text-align: center;
+  text-align: left;
   position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .team-details::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  top: var(--spacing-lg);
+  left: 0;
   width: 0;
   height: 3px;
   background-color: var(--primary);
@@ -258,12 +272,13 @@
 }
 
 .team-member:hover .team-details::before {
-  width: 30%;
+  width: 60px;
 }
 
 .team-details h3 {
   margin-bottom: var(--spacing-xs);
   transition: color 0.3s ease;
+  font-size: var(--font-size-xxl);
 }
 
 .team-member:hover .team-details h3 {
@@ -273,7 +288,13 @@
 .team-position {
   color: var(--secondary);
   font-weight: 500;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-large);
+}
+
+.team-details p {
+  line-height: 1.6;
+  color: var(--text-secondary);
 }
 
 /* Responsive */
@@ -310,6 +331,43 @@
   
   .team-grid {
     grid-template-columns: 1fr;
+  }
+
+  .team-member,
+  .team-member:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .team-image {
+    width: 100%;
+    min-width: 100%;
+    height: 250px;
+  }
+
+  .team-details,
+  .team-member:nth-child(even) .team-details {
+    text-align: left;
+    padding: var(--spacing-md);
+  }
+
+  .team-details::before,
+  .team-member:nth-child(even) .team-details::before {
+    left: 0;
+    right: auto;
+    transform: none;
+    top: 0;
+  }
+
+  .team-member:hover .team-details::before {
+    width: 40px;
+  }
+
+  .team-details h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  .team-position {
+    font-size: var(--font-size-medium);
   }
 
   .value-card h4 {

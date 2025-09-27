@@ -35,27 +35,27 @@ const About = () => {
   // Team members data
   const teamMembers = [
     {
-      name: "Daniel Johnson",
-      position: "Director & Builder",
-      bio: "With over 20 years in the industry, Daniel leads our team with a commitment to quality and client satisfaction.",
+      name: "Dan",
+      position: "Director",
+      bio: "Say hello to Dan, LenBuild's Director and the steady hand behind every project we take on. With over 15 years of experience in the building industry, Dan brings not only deep expertise but a genuine love for the craft, from the first sketch to the final fit-out. Known for his sharp eye for detail and unwavering commitment to quality, Dan thrives on helping clients turn their dreams into reality. He's across every aspect of the build, always ready to guide, problem-solve, and celebrate the wins, big and small. Outside of work, you'll find Dan unwinding in the great outdoors, He loves camping and casting a line on a quiet riverbank. Dan leads with integrity, care, and a deep respect for his team and community. He's not just the backbone of LenBuild—he's the heart.",
       image: "/placeholder.jpg"
     },
     {
-      name: "Jessica Miller",
-      position: "Interior Designer",
-      bio: "Jessica brings spaces to life with her creative vision and attention to detail, ensuring each project reflects the client's unique style.",
+      name: "Luke",
+      position: "Lead Carpenter",
+      bio: "Say hello to Luke, our lead Carpenter and one of LenBuild's most dedicated team members. Luke began his journey with us back in 2017 as an apprentice, and from day one, he's brought precision, pride, and a whole lot of heart to every project. With a keen eye for detail and unwavering loyalty, Luke has grown into a true leader on site. Favourite part of the job? The fit out stage where craftmanship meets creativity. Outside of work you'll find Luke keeping active with sports and fitness, or spending quality time with his family.",
       image: "/placeholder.jpg"
     },
     {
-      name: "Robert Wilson",
-      position: "Leading Hand",
-      bio: "Robert's craftsmanship and leadership on-site ensures every project maintains our high standards of quality.",
+      name: "Archie",
+      position: "3rd year Apprentice",
+      bio: "Say hello to Archie, our third-year apprentice carpenter and a bit of a character on site. Since joining LenBuild, Archie's brought not just skill and enthusiasm, but plenty of laughs and positive energy to the crew. With a real knack for framing and fix-out, Archie thrives where structure meets precision and he's always up for a challenge. Outside of work, You'll find him on the footy field, bringing the same drive and team spirit to the game as he does to the build. We're proud to support Archie as he grows his skills and career. He's a hard worker and a quick learner. He is a true asset to the LenBuild team.",
       image: "/placeholder.jpg"
     },
     {
-      name: "Mark Taylor",
-      position: "Project Manager",
-      bio: "Mark oversees all aspects of our projects, ensuring they're completed on time, within budget, and to our exacting standards.",
+      name: "Caleb",
+      position: "2nd year Apprentice",
+      bio: "Say hello to Caleb, our second-year apprentice carpenter who's already making his mark on site. He has a particular interest in roofing, when the build starts to take shape He's got a quiet determination and a real appreciation for the process, always ready to learn and lend a hand. Caleb brings focus, reliability, and a calm presence to the crew. Outside of work, you'll find him fishing, camping, and just enjoying the outdoors We're proud to support Caleb as he grows his skills and career. He's hardworking, grounded, and a true asset to the LenBuild team.",
       image: "/placeholder.jpg"
     }
   ];
