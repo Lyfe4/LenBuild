@@ -156,6 +156,46 @@
   transform: translateY(-5px);
 }
 
+/* Legacy Quote (integrated into About section) */
+.about-us .legacy-quote {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-sm) 0 var(--spacing-xl) 0;
+  margin-bottom: 0;
+}
+
+.about-us .legacy-quote blockquote {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0;
+  padding: 0 var(--spacing-md);
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.about-us .legacy-quote blockquote::before {
+  content: '"';
+  font-size: 2em;
+  color: var(--primary);
+  position: absolute;
+  left: -0.1em;
+  top: -0.2em;
+  font-family: serif;
+}
+
+.about-us .legacy-quote blockquote::after {
+  content: '"';
+  font-size: 2em;
+  color: var(--primary);
+  position: absolute;
+  right: -0.1em;
+  bottom: -0.4em;
+  font-family: serif;
+}
+
 /* Testimonials Section - Cycling Carousel */
 .testimonials-section {
   background-color: var(--light);
@@ -357,5 +397,16 @@
   
   .testimonial-carousel {
     padding: 0 var(--spacing-md);
+  }
+
+  /* Legacy Quote Responsive */
+  .about-us .legacy-quote blockquote {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    padding: 0 var(--spacing-md);
+  }
+
+  .about-us .legacy-quote blockquote::before,
+  .about-us .legacy-quote blockquote::after {
+    font-size: 1.5em;
   }
 }

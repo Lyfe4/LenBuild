@@ -126,6 +126,11 @@ const About = () => {
               ))}
             </div>
           </div>
+          
+          {/* Mission Statement */}
+          <div className="mission-statement" data-aos="fade-up" data-aos-delay="400">
+            <p className="mission-text">Whether you're dreaming of a new home, planning an extension, or reimagining your current space, LenBuild is here to help you build with confidence, creativity, and care.</p>
+          </div>
         </div>
       </section>
       
@@ -140,7 +145,7 @@ const About = () => {
               <div 
                 className="team-member" 
                 data-aos="fade-up" 
-                data-aos-delay={index * 100}
+                data-aos-delay={200 + index * 100}
                 key={index}
               >
                 <div className="team-image zoom-on-hover">

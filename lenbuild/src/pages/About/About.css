@@ -297,6 +297,84 @@
   color: var(--text-secondary);
 }
 
+/* Mission Statement */
+.mission-statement {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg) 0;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mission-statement::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.mission-statement:hover::before {
+  width: 120px;
+}
+
+.mission-text {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-primary);
+  max-width: 800px;
+  margin: 0 auto;
+  font-style: italic;
+  position: relative;
+  padding-top: var(--spacing-md);
+}
+
+/* Legacy Quote */
+.legacy-quote {
+  text-align: center;
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-lg) 0;
+}
+
+.legacy-quote blockquote {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.legacy-quote blockquote::before {
+  content: '"';
+  font-size: 2em;
+  color: var(--primary);
+  position: absolute;
+  left: -0.3em;
+  top: -0.1em;
+  font-family: serif;
+}
+
+.legacy-quote blockquote::after {
+  content: '"';
+  font-size: 2em;
+  color: var(--primary);
+  position: absolute;
+  right: -0.3em;
+  bottom: -0.4em;
+  font-family: serif;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
   .about-content {
@@ -376,5 +454,30 @@
 
   .value-overlay {
     padding: var(--spacing-md);
+  }
+
+  /* Mission Statement & Legacy Quote Responsive */
+  .mission-text {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    padding: 0 var(--spacing-md);
+  }
+
+  .mission-statement::before {
+    width: 40px;
+  }
+
+  .legacy-quote {
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-md) 0;
+  }
+
+  .legacy-quote blockquote {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    padding: 0 var(--spacing-md);
+  }
+
+  .legacy-quote blockquote::before,
+  .legacy-quote blockquote::after {
+    font-size: 1.5em;
   }
 }

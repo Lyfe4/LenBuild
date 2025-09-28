@@ -118,31 +118,41 @@ const Home = () => {
               <ParallaxImage imgSrc="/placeholder.jpg" altText="LenBuild Construction" speed={0.1} />
             </div>
           </div>
+          
+          {/* Legacy Quote */}
+          <div className="legacy-quote" data-aos="fade-up" data-aos-delay="600" data-aos-offset="200">
+            <blockquote>We build homes that hold memories, moments, that last for generations</blockquote>
+          </div>
         </div>
       </section>
       
       {/* Services Overview */}
       <section className="services-overview section" id="services">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Our Services</h2>
-          <p className="section-intro" data-aos="fade-up" data-aos-delay="100">At LenBuild, we offer a comprehensive range of building services, each delivered with the same commitment to quality and attention to detail.</p>
+          <h2 className="section-title" data-aos="fade-up" data-aos-offset="300">Our Services</h2>
+          <p className="section-intro" data-aos="fade-up" data-aos-delay="50" data-aos-offset="300">At LenBuild, we offer a comprehensive range of building services, each delivered with the same commitment to quality and attention to detail.</p>
           
           <div className="services-grid">
-            {services.map((service, index) => (
-              <div 
-                className="service-card hover-lift" 
-                data-aos="fade-up" 
-                data-aos-delay={index * 100}
-                key={index}
-              >
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <Link to={service.link} state={service.state} className="btn">Learn More</Link>
-              </div>
-            ))}
+            {services.map((service, index) => {
+              // Reduced delays: first row (0,1) = 100,150ms, second row (2,3) = 200,250ms
+              const delay = index < 2 ? 100 + (index * 50) : 200 + ((index - 2) * 50);
+              return (
+                <div 
+                  className="service-card hover-lift" 
+                  data-aos="fade-up" 
+                  data-aos-delay={delay}
+                  data-aos-offset="300"
+                  key={index}
+                >
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                  <Link to={service.link} state={service.state} className="btn">Learn More</Link>
+                </div>
+              );
+            })}
           </div>
           
-          <div className="text-center view-all" data-aos="fade-up" data-aos-delay="400">
+          <div className="text-center view-all" data-aos="fade-up" data-aos-delay="300" data-aos-offset="300">
             <Link to="/projects-services" className="btn">View All Services & Projects</Link>
           </div>
         </div>
