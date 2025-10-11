@@ -94,9 +94,9 @@ const Home = () => {
         <div className="hero-background"></div>
         <div className="container">
           <div className="hero-content">
-            <h1 data-aos="fade-up">Quality Building Solutions For Your Home</h1>
-            <p data-aos="fade-up" data-aos-delay="200">LenBuild is your trusted local builder, delivering exceptional craftsmanship and personalized service for all your building needs.</p>
-            <div className="hero-buttons" data-aos="fade-up" data-aos-delay="400">
+            <h1 data-aos="fade-up" data-aos-duration="1000">Quality Building Solutions For Your Home</h1>
+            <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">LenBuild is your trusted local builder, delivering exceptional craftsmanship and personalized service for all your building needs.</p>
+            <div className="hero-buttons" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
               <Link to="/contact" className="btn btn-secondary animate-float">Get In Touch</Link>
               <Link to="/projects-services" className="btn btn-secondary">View Our Work</Link>
             </div>
@@ -107,21 +107,25 @@ const Home = () => {
       {/* About Us Section */}
       <section className="about-us section" id="about-us">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">About LenBuild</h2>
+          <h2 className="section-title" data-aos="fade-up" data-aos-duration="800">About LenBuild</h2>
           <div className="about-us-content">
-            <div className="about-us-text" data-aos="fade-right" data-aos-delay="200">
-              <p data-aos="fade-up" data-aos-delay="300">LenBuild is a trusted, family-operated building company based in Guyra, NSW, known for its commitment to quality craftsmanship, sustainable building practices, and personalized service. With deep roots in the local community, LenBuild specializes in custom homes and offers expert solutions in renovations, extensions, and new home construction.</p>
-              <p data-aos="fade-up" data-aos-delay="400">The team is dedicated to using smarter, more sustainable construction methods. Every project is tailored to reflect the client's unique vision. LenBuild combines experience, innovation, and a family-first approach to help you with your new project.</p>
-              <Link to="/about" className="btn" data-aos="fade-up" data-aos-delay="500">Learn More About Us</Link>
+            <div className="about-us-text" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000">
+              <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">LenBuild is a trusted, family-operated building company based in Guyra, NSW, known for its commitment to quality craftsmanship, sustainable building practices, and personalized service. With deep roots in the local community, LenBuild specializes in custom homes and offers expert solutions in renovations, extensions, and new home construction.</p>
+              <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">The team is dedicated to using smarter, more sustainable construction methods. Every project is tailored to reflect the client's unique vision. LenBuild combines experience, innovation, and a family-first approach to help you with your new project.</p>
+              <Link to="/about" className="btn" data-aos="fade-up" data-aos-delay="800" data-aos-duration="800">Learn More About Us</Link>
             </div>
-            <div className="about-us-image" data-aos="fade-left" data-aos-delay="300">
+          <div className="about-us-image" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
               <ParallaxImage imgSrc="/placeholder.jpg" altText="LenBuild Construction" speed={0.1} />
             </div>
           </div>
-          
-          {/* Legacy Quote */}
-          <div className="legacy-quote" data-aos="fade-up" data-aos-delay="600" data-aos-offset="200">
-            <blockquote>We build homes that hold memories, moments, that last for generations</blockquote>
+        </div>
+      </section>
+      
+      {/* Legacy Quote */}
+      <section className="legacy-quote-section">
+        <div className="container">
+          <div className="legacy-quote" data-aos="fade-up" data-aos-duration="1000">
+            <blockquote>We Build homes that hold memories and moments that last for generations</blockquote>
           </div>
         </div>
       </section>
@@ -129,19 +133,20 @@ const Home = () => {
       {/* Services Overview */}
       <section className="services-overview section" id="services">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up" data-aos-offset="300">Our Services</h2>
-          <p className="section-intro" data-aos="fade-up" data-aos-delay="50" data-aos-offset="300">At LenBuild, we offer a comprehensive range of building services, each delivered with the same commitment to quality and attention to detail.</p>
+          <h2 className="section-title" data-aos="fade-up" data-aos-offset="200" data-aos-duration="800">Our Services</h2>
+          <p className="section-intro" data-aos="fade-up" data-aos-delay="200" data-aos-offset="200" data-aos-duration="800">At LenBuild, we offer a comprehensive range of building services, each delivered with the same commitment to quality and attention to detail.</p>
           
           <div className="services-grid">
             {services.map((service, index) => {
-              // Reduced delays: first row (0,1) = 100,150ms, second row (2,3) = 200,250ms
-              const delay = index < 2 ? 100 + (index * 50) : 200 + ((index - 2) * 50);
+              // Staggered delays: 400, 500, 600, 700ms for natural appearance
+              const delay = 400 + (index * 100);
               return (
                 <div 
                   className="service-card hover-lift" 
                   data-aos="fade-up" 
                   data-aos-delay={delay}
-                  data-aos-offset="300"
+                  data-aos-offset="150"
+                  data-aos-duration="800"
                   key={index}
                 >
                   <h3>{service.title}</h3>
@@ -152,7 +157,7 @@ const Home = () => {
             })}
           </div>
           
-          <div className="text-center view-all" data-aos="fade-up" data-aos-delay="300" data-aos-offset="300">
+          <div className="text-center view-all" data-aos="fade-up" data-aos-delay="900" data-aos-offset="150" data-aos-duration="800">
             <Link to="/projects-services" className="btn">View All Services & Projects</Link>
           </div>
         </div>
@@ -161,20 +166,20 @@ const Home = () => {
       {/* Testimonials Section */}
       <section className="testimonials-section section" id="testimonials">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">What Our Clients Say</h2>
+          <h2 className="section-title" data-aos="fade-up" data-aos-duration="800">What Our Clients Say</h2>
           
-          <div className="testimonial-carousel" data-aos="fade-up" data-aos-delay="200">
+          <div className="testimonial-carousel" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
             <div className="testimonial-display" key={currentTestimonial}>
-              <div className="testimonial-content" data-aos="fade-up" data-aos-delay="300">
+              <div className="testimonial-content" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                 <p>"{testimonials[currentTestimonial].content}"</p>
               </div>
-              <div className="testimonial-author" data-aos="fade-up" data-aos-delay="400">
+              <div className="testimonial-author" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
                 <p>— {testimonials[currentTestimonial].author}</p>
               </div>
             </div>
             
             {/* Testimonial indicators */}
-            <div className="testimonial-indicators" data-aos="fade-up" data-aos-delay="500">
+            <div className="testimonial-indicators" data-aos="fade-up" data-aos-delay="800" data-aos-duration="800">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
