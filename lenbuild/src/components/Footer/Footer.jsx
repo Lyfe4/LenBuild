@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 import apaLogo from '../../assets/apa.png';
-import hiaLogo from '../../assets/hia.png';
+import hiaLogo from '../../assets/thumbnail_image(2).png';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
@@ -55,18 +55,6 @@ const Footer = () => {
                 <a href="#" target="_blank" rel="noopener noreferrer">
                   <FaInstagram className="social-icon" />
                   Instagram
-                </a>
-              </li>
-              <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin className="social-icon" />
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <FaTwitter className="social-icon" />
-                  Twitter
                 </a>
               </li>
             </ul>
