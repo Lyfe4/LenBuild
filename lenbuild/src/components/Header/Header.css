@@ -64,6 +64,7 @@
 
 .logo-image {
   height: 60px;
+  max-width: 200px;
   width: auto;
   object-fit: contain;
   /* Try to make black background transparent */
@@ -175,9 +176,28 @@ nav ul li a.active {
   transform: rotate(90deg);
 }
 
+/* Tablet styles */
+@media (max-width: 1024px) {
+  nav ul li {
+    margin-left: var(--spacing-md);
+  }
+  
+  .logo-image {
+    height: 50px;
+    max-width: 180px;
+  }
+}
+
 @media (max-width: 768px) {
   .mobile-menu-btn {
     display: block;
+    font-size: 28px;
+    padding: var(--spacing-xs);
+  }
+  
+  .logo-image {
+    height: 45px;
+    max-width: 160px;
   }
   
   nav {
@@ -192,14 +212,12 @@ nav ul li a.active {
   }
   
   .header.merged-with-image nav {
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../../assets/placeholder.jpg');
-    background-size: cover;
-    background-position: center;
+    background-color: var(--light);
   }
   
   .header.merged-with-image nav ul li a {
-    color: white;
-    border-bottom-color: rgba(255, 255, 255, 0.2);
+    color: var(--black);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
   }
   
   nav.mobile-menu-open {
@@ -219,5 +237,41 @@ nav ul li a.active {
     display: block;
     padding: var(--spacing-md);
     border-bottom: 1px solid var(--light);
+  }
+  
+  /* Dropdown menu adjustments for mobile */
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background-color: transparent;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  
+  .dropdown-menu.show {
+    display: block;
+  }
+  
+  .dropdown-item {
+    padding-left: var(--spacing-xl);
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .logo-image {
+    height: 40px;
+    max-width: 140px;
+  }
+  
+  .mobile-menu-btn {
+    font-size: 24px;
+  }
+  
+  .header-container {
+    padding: var(--spacing-xs) 0;
   }
 }

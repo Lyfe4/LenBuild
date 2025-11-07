@@ -33,6 +33,8 @@
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-medium);
   height: 400px;
+  max-height: 500px;
+  min-height: 300px;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
   cursor: pointer;
@@ -236,14 +238,17 @@
   height: auto;
   overflow: hidden;
   position: relative;
+  flex-shrink: 0;
 }
 
 .team-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
   transition: transform 0.5s ease;
   min-height: 250px;
+  max-height: 400px;
 }
 
 .team-member:hover .team-image img {
@@ -376,6 +381,26 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .about-image {
+    height: 350px;
+  }
+  
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .team-image {
+    width: 250px;
+    min-width: 250px;
+  }
+  
+  .team-details {
+    padding: var(--spacing-md);
+  }
+}
+
 @media (max-width: 992px) {
   .about-content {
     flex-direction: column;
@@ -388,6 +413,10 @@
   
   .about-text {
     margin-bottom: var(--spacing-lg);
+  }
+  
+  .about-image {
+    height: 300px;
   }
 
   .values-grid {
@@ -402,9 +431,13 @@
 }
 
 @media (max-width: 768px) {
+  .about-image {
+    height: 280px;
+  }
+  
   .values-grid {
     grid-template-columns: 1fr;
-    max-width: 400px;
+    max-width: 500px;
   }
   
   .team-grid {
@@ -420,6 +453,13 @@
     width: 100%;
     min-width: 100%;
     height: 250px;
+    max-height: 250px;
+  }
+  
+  .team-image img {
+    min-height: 250px;
+    max-height: 250px;
+    object-position: center 25%;
   }
 
   .team-details,
@@ -479,5 +519,31 @@
   .legacy-quote blockquote::before,
   .legacy-quote blockquote::after {
     font-size: 1.5em;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .about-image {
+    height: 250px;
+  }
+  
+  .values-grid {
+    max-width: 100%;
+  }
+  
+  .value-card {
+    aspect-ratio: 4/3;
+  }
+  
+  .team-image {
+    height: 220px;
+    max-height: 220px;
+  }
+  
+  .team-image img {
+    min-height: 220px;
+    max-height: 220px;
+    object-position: center 20%;
   }
 }

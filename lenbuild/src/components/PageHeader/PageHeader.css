@@ -1,5 +1,6 @@
 .page-header {
-  height: 60vh;
+  min-height: 60vh;
+  height: auto;
   position: relative;
   display: flex;
   align-items: center;
@@ -10,6 +11,7 @@
   overflow: hidden;
   margin-top: calc(-1 * (var(--spacing-md) * 2 + var(--font-size-xl) * 1.2) - 15px);
   padding-top: calc(var(--spacing-md) * 2 + var(--font-size-xl) * 1.2 + 15px);
+  padding-bottom: var(--spacing-xl);
 }
 
 .page-header-background {
@@ -37,11 +39,12 @@
 .page-header h1 {
   color: white;
   margin-bottom: var(--spacing-sm);
-  font-size: var(--font-size-xxl);
+  font-size: clamp(2rem, 5vw, var(--font-size-xxl));
   position: relative;
   z-index: 1;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   opacity: 0; /* AOS will handle the visibility */
+  padding: 0 var(--spacing-md);
 }
 
 .breadcrumb {
@@ -98,12 +101,55 @@
 .breadcrumb li:nth-child(3) { --i: 3; }
 .breadcrumb li:nth-child(4) { --i: 4; }
 
-@media (max-width: 768px) {
+/* Tablet styles */
+@media (max-width: 1024px) {
   .page-header {
-    height: 50vh;
+    min-height: 50vh;
   }
   
   .page-header h1 {
-    font-size: calc(var(--font-size-xxl) * 0.8);
+    font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    min-height: 45vh;
+    margin-top: calc(-1 * (var(--spacing-sm) * 2 + 45px) - 10px);
+    padding-top: calc((var(--spacing-sm) * 2 + 45px) + 10px + var(--spacing-md));
+  }
+  
+  .page-header h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+  
+  .breadcrumb {
+    flex-wrap: wrap;
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .breadcrumb li {
+    margin: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-small);
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (max-height: 500px) {
+  .page-header {
+    min-height: 70vh;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .page-header {
+    min-height: 40vh;
+    margin-top: calc(-1 * (var(--spacing-xs) * 2 + 40px) - 8px);
+    padding-top: calc((var(--spacing-xs) * 2 + 40px) + 8px + var(--spacing-sm));
+  }
+  
+  .page-header h1 {
+    font-size: clamp(1.3rem, 7vw, 1.8rem);
   }
 }

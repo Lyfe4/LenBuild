@@ -161,6 +161,8 @@
 .project-item img {
   width: 100%;
   height: auto;
+  max-height: 400px;
+  object-fit: cover;
   display: block;
   transition: transform 0.5s ease;
 }
@@ -172,6 +174,7 @@
 /* Specific styling for Home Extensions images to have consistent height */
 .project-item.post-2-image img {
   height: 320px;
+  max-height: 320px;
   object-fit: cover;
   object-position: center;
 }
@@ -179,6 +182,7 @@
 /* Apply same height to the first image in extensions section */
 #extensions .project-gallery .project-item:first-child img {
   height: 320px;
+  max-height: 320px;
   object-fit: cover;
   object-position: center;
 }
@@ -368,6 +372,32 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .service-category h3 {
+    font-size: var(--font-size-large);
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+  
+  .service-content {
+    padding: var(--spacing-lg);
+  }
+  
+  .project-item img {
+    max-height: 300px;
+  }
+  
+  .project-item.post-2-image img,
+  #extensions .project-gallery .project-item:first-child img {
+    height: 280px;
+    max-height: 280px;
+  }
+  
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
 @media (max-width: 992px) {
   .service-content {
     flex-direction: column;
@@ -386,9 +416,24 @@
   .project-item {
     flex: 0 0 calc(50% - 10px);
   }
+  
+  .project-item img {
+    max-height: 250px;
+  }
+  
+  .project-item.post-2-image img,
+  #extensions .project-gallery .project-item:first-child img {
+    height: 240px;
+    max-height: 240px;
+  }
 }
 
 @media (max-width: 768px) {
+  .service-content {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+  
   .project-filter {
     flex-direction: column;
     align-items: center;
@@ -396,6 +441,7 @@
   
   .filter-btn {
     width: 80%;
+    max-width: 300px;
   }
   
   .showcase-grid {
@@ -406,8 +452,48 @@
     flex: 0 0 100%;
   }
   
+  .project-item img {
+    max-height: 220px;
+  }
+  
+  .project-item.post-2-image img,
+  #extensions .project-gallery .project-item:first-child img {
+    height: 220px;
+    max-height: 220px;
+  }
+  
   .service-cta-btn {
     padding: 10px 20px;
     font-size: var(--font-size-small);
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .service-category h3 {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+  
+  .service-content {
+    padding: var(--spacing-sm);
+  }
+  
+  .project-item img {
+    max-height: 200px;
+  }
+  
+  .project-item.post-2-image img,
+  #extensions .project-gallery .project-item:first-child img {
+    height: 200px;
+    max-height: 200px;
+  }
+  
+  .showcase-item {
+    aspect-ratio: 1/1;
+  }
+  
+  .filter-btn {
+    width: 90%;
   }
 }
