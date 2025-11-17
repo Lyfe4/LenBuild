@@ -211,20 +211,16 @@ const Contact = () => {
   // FAQ data
   const faqs = [
     {
-      question: "What areas do you service?",
-      answer: "We primarily service the Sydney metropolitan area, including the Eastern Suburbs, Inner West, North Shore, and Northern Beaches. For projects outside these areas, please contact us to discuss further."
+      question: "What Areas do you service",
+      answer: "At LenBuild, we're deeply connected to the Guyra community and the stunning landscapes of Northern NSW. From the heart of the New England Tablelands to the surrounding towns and rural properties"
     },
     {
-      question: "How long does a typical project take to complete?",
-      answer: "Project timelines vary significantly based on the scope and complexity. A custom home typically takes 8-12 months from design to completion, while renovations may take 2-6 months. We provide detailed timelines during the consultation phase."
+      question: "How long does a typical project take to complete",
+      answer: "Every build is unique, and so is the timeline. The duration of your project depends on a range of factors—including the scope of work, weather conditions, material availability, and coordination with other trades. While we can't always predict every detail upfront, we're committed to keeping you informed and working efficiently from start to finish. We're always happy to discuss your specific project and provide a realistic timeframe based on your goals and site conditions."
     },
     {
-      question: "Do you provide design services?",
-      answer: "Yes, we offer comprehensive design services as part of our building process. Our team can work from existing plans or create custom designs tailored to your needs and preferences."
-    },
-    {
-      question: "What does your warranty cover?",
-      answer: "We provide a comprehensive 7-year structural warranty on all new builds and major renovations, as well as a 12-month warranty on all other work. This covers both materials and workmanship."
+      question: "Do you provide design services",
+      answer: "While LenBuild doesn't offer in-house architectural design, we're happy to work with you and a trusted draftsman to develop the plans you need. Whether you're starting from scratch or refining an idea, we'll guide you through the process to ensure your plans are practical, compliant, and tailored to your vision."
     }
   ];
   

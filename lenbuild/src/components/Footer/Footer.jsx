@@ -28,8 +28,7 @@ const Footer = () => {
               <li><Link to="/projects-services#custom-homes" state={{ scrollToTop: false }}>Custom Home Building</Link></li>
               <li><Link to="/projects-services#extensions" state={{ scrollToTop: false }}>Home Extensions</Link></li>
               <li><Link to="/projects-services#renovations" state={{ scrollToTop: false }}>Renovations</Link></li>
-              <li><Link to="/projects-services#energy-efficient" state={{ scrollToTop: false }}>Energy-Efficient Solutions</Link></li>
-              <li><Link to="/projects-services#commercial" state={{ scrollToTop: false }}>Commercial Construction</Link></li>
+              <li><Link to="/projects-services#pac" state={{ scrollToTop: false }}>PAC</Link></li>
             </ul>
           </div>
           

@@ -138,7 +138,7 @@ const About = () => {
       <section className="team-section section" id="team">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">Meet Our Team</h2>
-          <p className="section-intro" data-aos="fade-up" data-aos-delay="100">Our dedicated team brings together decades of experience and a shared commitment to excellence. We take pride in the relationships we build, both with our clients and within our team.</p>
+          <p className="section-intro" data-aos="fade-up" data-aos-delay="100">Our dedicated team is united by a strong commitment to excellence and a genuine passion for what we do. We take pride in the relationships we build both with our clients and within our team.</p>
           
           <div className="team-grid">
             {teamMembers.map((member, index) => (
