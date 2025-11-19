@@ -189,10 +189,14 @@ nav ul li a.active {
 }
 
 @media (max-width: 768px) {
+  .header-container {
+    padding: 0;
+  }
+  
   .mobile-menu-btn {
     display: block;
     font-size: 28px;
-    padding: var(--spacing-xs);
+    padding: 0;
   }
   
   .logo-image {
