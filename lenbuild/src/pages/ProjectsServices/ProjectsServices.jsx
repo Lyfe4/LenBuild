@@ -122,12 +122,12 @@ const ProjectsServices = () => {
         {
           title: 'Modern Family Home',
           year: '2024',
-          image: '/placeholder.jpg'
+          image: require('../../assets/Website 3.jpg')
         },
         {
           title: 'Beachside Retreat',
           year: '2023',
-          image: '/placeholder.jpg'
+          image: require('../../assets/14 - Copy.jpg')
         }
       ]
     },
@@ -149,7 +149,7 @@ const ProjectsServices = () => {
         {
           title: 'Placeholder',
           year: 'This is placeholder info',
-          image: require('../../assets/13.jpg')
+          image: require('../../assets/11.jpg')
         },
         {
           title: 'Placeholder',
@@ -175,7 +175,12 @@ const ProjectsServices = () => {
         {
           title: 'Bathroom Transformation',
           year: '2024',
-          image: require('../../assets/11.jpg')
+          image: require('../../assets/Website 4 (2).JPG')
+        },
+        {
+          title: 'Kitchen Renovation',
+          year: '2024',
+          image: require('../../assets/website 5.jpg')
         }
       ]
     },
@@ -185,18 +190,7 @@ const ProjectsServices = () => {
       description: 'The PAC (Paid as a Consultant) Process brings the builder into the design phase early, fostering trust, transparency, and smarter decision making from day one. The Paid pre-construction process creates collaboration between the builder, designer/architect and the client allowing us to be involved in the preliminary phase of the planning and designing of your new Home or Renovation.',
       features: [],
       ctaText: 'Get Expert Consultation',
-      projects: [
-        {
-          title: 'Project Consultation',
-          year: '2024',
-          image: '/placeholder.jpg'
-        },
-        {
-          title: 'Building Assessment',
-          year: '2023',
-          image: '/placeholder.jpg'
-        }
-      ]
+      projects: []
     }
   ];
   
@@ -253,10 +247,6 @@ const ProjectsServices = () => {
                   {service.projects.map((project, i) => (
                     <div className={`project-item zoom-on-hover ${project.title === 'Placeholder' && i === 1 ? 'post-2-image' : ''}`} key={i}>
                       <img src={project.image} alt={project.title} />
-                      <div className="project-overlay">
-                        <h4>{project.title}</h4>
-                        <p>Completed {project.year}</p>
-                      </div>
                     </div>
                   ))}
                 </div>

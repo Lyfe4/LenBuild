@@ -160,8 +160,8 @@
 
 .project-item img {
   width: 100%;
-  height: auto;
-  max-height: 400px;
+  height: 320px;
+  max-height: 320px;
   object-fit: cover;
   display: block;
   transition: transform 0.5s ease;
@@ -171,20 +171,14 @@
   transform: scale(1.05);
 }
 
-/* Specific styling for Home Extensions images to have consistent height */
-.project-item.post-2-image img {
-  height: 320px;
-  max-height: 320px;
-  object-fit: cover;
-  object-position: center;
+/* Hide empty project gallery and make description full width */
+.project-gallery:empty {
+  display: none;
 }
 
-/* Apply same height to the first image in extensions section */
-#extensions .project-gallery .project-item:first-child img {
-  height: 320px;
-  max-height: 320px;
-  object-fit: cover;
-  object-position: center;
+.service-content:has(.project-gallery:empty) .service-description {
+  flex: 1;
+  max-width: 100%;
 }
 
 .project-overlay {
@@ -383,11 +377,6 @@
   }
   
   .project-item img {
-    max-height: 300px;
-  }
-  
-  .project-item.post-2-image img,
-  #extensions .project-gallery .project-item:first-child img {
     height: 280px;
     max-height: 280px;
   }
@@ -418,11 +407,6 @@
   }
   
   .project-item img {
-    max-height: 250px;
-  }
-  
-  .project-item.post-2-image img,
-  #extensions .project-gallery .project-item:first-child img {
     height: 240px;
     max-height: 240px;
   }
@@ -453,11 +437,6 @@
   }
   
   .project-item img {
-    max-height: 220px;
-  }
-  
-  .project-item.post-2-image img,
-  #extensions .project-gallery .project-item:first-child img {
     height: 220px;
     max-height: 220px;
   }
@@ -480,11 +459,6 @@
   }
   
   .project-item img {
-    max-height: 200px;
-  }
-  
-  .project-item.post-2-image img,
-  #extensions .project-gallery .project-item:first-child img {
     height: 200px;
     max-height: 200px;
   }

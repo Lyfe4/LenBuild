@@ -190,10 +190,6 @@ img {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.breadcrumb li a:hover {
-  color: var(--secondary);
-}
-
 /* Responsive breakpoints */
 @media (max-width: 1024px) {
   .container {

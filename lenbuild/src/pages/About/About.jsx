@@ -15,20 +15,17 @@ const About = () => {
     {
       title: "Quality Craftsmanship",
       description: "We never compromise on quality. Every project, regardless of size, receives the same attention to detail and commitment to excellence.",
-      defaultImage: require('../../assets/10 - Copy.jpg'),
-      hoverImage: require('../../assets/Picture 3.jpg')
+      image: require('../../assets/10 - Copy.jpg')
     },
     {
       title: "Client-Centered Approach",
       description: "We believe in transparent communication and involving our clients throughout the entire building process.",
-      defaultImage: "/placeholder.jpg",
-      hoverImage: "/placeholder2.jpg"
+      image: require('../../assets/Picture 3.jpg')
     },
     {
       title: "Sustainability",
       description: "We're committed to environmentally responsible building practices that create healthier, more efficient homes.",
-      defaultImage: "/placeholder.jpg",
-      hoverImage: "/placeholder2.jpg"
+      image: "/placeholder.jpg"
     }
   ];
   
@@ -106,14 +103,9 @@ const About = () => {
                 >
                   <div className="value-image-container">
                     <img 
-                      src={value.defaultImage} 
+                      src={value.image} 
                       alt={value.title}
-                      className="value-image default"
-                    />
-                    <img 
-                      src={value.hoverImage} 
-                      alt={value.title}
-                      className="value-image hover"
+                      className="value-image"
                     />
                   </div>
                   <div className="value-overlay">
