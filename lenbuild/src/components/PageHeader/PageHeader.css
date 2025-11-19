@@ -20,9 +20,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/placeholder.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/Wedbsite 1.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: right 60%;
   animation: slowZoom 15s ease-in-out infinite alternate;
   z-index: -1;
 }

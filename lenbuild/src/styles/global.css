@@ -160,8 +160,9 @@ img {
 /* Page header styling */
 .page-header {
   height: 40vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/placeholder.jpg');  background-size: cover;
-  background-position: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/Wedbsite 1.jpg');
+  background-size: cover;
+  background-position: right 60%;
   display: flex;
   align-items: center;
   justify-content: center;
