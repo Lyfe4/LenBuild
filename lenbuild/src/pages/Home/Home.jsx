@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CallToAction from '../../components/CallToAction/CallToAction';
-import ParallaxImage from '../../components/ParallaxImage/ParallaxImage';
+import LenBuildTeamImage from '../../assets/LenBuild Team.jpeg';
 import './Home.css';
 
 const Home = () => {
@@ -115,7 +115,7 @@ const Home = () => {
               <Link to="/about" className="btn" data-aos="fade-up" data-aos-delay="800" data-aos-duration="800">Learn More About Us</Link>
             </div>
           <div className="about-us-image" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
-              <ParallaxImage imgSrc="/placeholder.jpg" altText="LenBuild Construction" speed={0.1} />
+              <img src={LenBuildTeamImage} alt="LenBuild Team" />
             </div>
           </div>
         </div>

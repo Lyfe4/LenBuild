@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const ParallaxImage = ({ imgSrc, altText, speed = 0.2, className = '' }) => {
+const ParallaxImage = ({ imgSrc, altText, speed = 0.2, className = '', objectPosition = 'center' }) => {
   const imgRef = useRef(null);
   const containerRef = useRef(null);
   
@@ -38,6 +38,7 @@ const ParallaxImage = ({ imgSrc, altText, speed = 0.2, className = '' }) => {
           width: '100%', 
           height: '100%',
           objectFit: 'cover',
+          objectPosition: objectPosition,
           transform: 'translateY(0px)',
           transition: 'transform 0.1s ease-out'
         }} 

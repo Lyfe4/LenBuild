@@ -73,7 +73,10 @@ const Header = () => {
     ],
     '/projects-services': [
       { label: 'Our Expertise', hash: '#expertise' },
-      { label: 'Featured Projects', hash: '#projects' }
+      { label: 'Custom Home Building', hash: '#custom-homes', isSubheading: true },
+      { label: 'Extensions', hash: '#extensions', isSubheading: true },
+      { label: 'Renovations', hash: '#renovations', isSubheading: true },
+      { label: 'Paid as a Consultant (PAC)', hash: '#pac', isSubheading: true }
     ],
     '/contact': [
       { label: 'Get In Touch', hash: '#contact-form' },
@@ -164,7 +167,7 @@ const Header = () => {
                       <Link 
                         key={index}
                         to={`/projects-services${item.hash}`}
-                        className="dropdown-item"
+                        className={`dropdown-item ${item.isSubheading ? 'dropdown-subheading' : ''}`}
                         onClick={handleDropdownLeave}
                       >
                         {item.label}

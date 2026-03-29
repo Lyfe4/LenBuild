@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';
-import ParallaxImage from '../../components/ParallaxImage/ParallaxImage';
 import './About.css';
 
 const About = () => {
@@ -87,7 +86,7 @@ const About = () => {
               <p>Our team of skilled craftsmen is hand-picked and renowned for their exceptional quality of work and attention to detail. We take pride in our ability to bring visions to life and create spaces that reflect the unique personalities and lifestyles of our clients.</p>
             </div>
             <div className="about-image" data-aos="fade-left" data-aos-delay="300">
-              <ParallaxImage imgSrc={require('../../assets/5.jpg')} altText="LenBuild Construction" speed={0} />
+              <img src={require('../../assets/5.jpg')} alt="LenBuild Construction" />
             </div>
           </div>
           
