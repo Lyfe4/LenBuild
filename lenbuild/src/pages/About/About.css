@@ -66,6 +66,20 @@
   min-height: 100% !important;
 }
 
+/* Direct image styling (when not using parallax) */
+.about-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.about-image:hover > img {
+  transform: scale(1.05);
+}
+
 /* Add a subtle overlay effect */
 .about-image::after {
   content: '';
