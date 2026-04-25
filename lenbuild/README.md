@@ -1,70 +1,168 @@
-# Getting Started with Create React App
+# 🏗️ LenBuild — Official Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> *"We build homes that hold memories and moments that last for generations."*
+
+The official marketing website for **LenBuild Pty Ltd** — a trusted, family-operated building company based in **Guyra, NSW**, specialising in custom homes, renovations, extensions, and building consultancy across the New England Tablelands region.
+
+---
+
+## 🌐 Live Site
+
+> Deployed via GitHub — [https://github.com/Lyfe4/LenBuild](https://github.com/Lyfe4/LenBuild)
+
+---
+
+## 📋 Table of Contents
+
+- [About the Project](#about-the-project)
+- [Pages & Features](#pages--features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Contact](#contact)
+
+---
+
+## About the Project
+
+This is a fully responsive, single-page application (SPA) built with **React** to serve as the digital presence for LenBuild. It showcases the company's services, team, past projects, client testimonials, and provides a direct contact channel for prospective clients.
+
+Key highlights:
+- ✅ Smooth page transitions using `react-transition-group`
+- ✅ Scroll-triggered animations powered by **AOS** (Animate On Scroll)
+- ✅ Fully responsive across desktop, tablet, and mobile
+- ✅ Contact form with client-side validation, anti-spam measures, and **Formspree** integration
+- ✅ Parallax image effects
+- ✅ Auto-scrolling testimonial carousel
+
+---
+
+## Pages & Features
+
+### 🏠 Home
+- Full-screen hero section with call-to-action buttons
+- Company overview and team photo
+- Legacy quote block
+- Services overview grid (Custom Homes, Extensions, Renovations, PAC)
+- Rotating client testimonials carousel
+- Call-to-action section
+
+### 👷 About
+- Company story and mission
+- Core values cards (Quality Craftsmanship, Client-Centred Approach, Sustainability)
+- Meet the Team section featuring:
+  - **Dan** — Director (15+ years experience)
+  - **Luke** — Lead Carpenter
+  - **Archie** — 3rd Year Apprentice
+  - **Caleb** — 2nd Year Apprentice
+
+### 🔨 Projects & Services
+Dedicated page showcasing LenBuild's full range of services:
+- **Custom Home Building** — Bespoke homes designed from concept to completion
+- **Extensions** — Seamless additions to existing homes
+- **Renovations** — Full-scale home transformations
+- **PAC (Paid as a Consultant)** — Expert building guidance and oversight
+
+### ✉️ Contact
+- Contact form with full validation (required fields, format checks, character limits)
+- Formspree backend integration for email delivery
+- Anti-spam protection (session-based submission limit + cooldown timer)
+- Accordion-style FAQ section covering common client questions
+- Contact information card (location & email)
+
+---
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| [React 18](https://react.dev/) | UI framework |
+| [React Router DOM v6](https://reactrouter.com/) | Client-side routing |
+| [React Transition Group](https://reactcommunity.org/react-transition-group/) | Page transition animations |
+| [AOS](https://michalsnik.github.io/aos/) | Scroll-triggered animations |
+| [React Icons](https://react-icons.github.io/react-icons/) | Icon library |
+| [Formspree](https://formspree.io/) | Contact form handling |
+| CSS Modules / Global CSS | Styling |
+
+---
+
+## Project Structure
+
+```
+lenbuild/
+├── public/
+│   ├── index.html
+│   └── manifest.json
+└── src/
+    ├── assets/              # Images and media
+    ├── components/
+    │   ├── CallToAction/    # CTA banner component
+    │   ├── Footer/          # Site footer
+    │   ├── Header/          # Navigation header
+    │   ├── PageHeader/      # Page banner with breadcrumbs
+    │   ├── ParallaxImage/   # Parallax scroll effect
+    │   └── ScrollToTop/     # Scroll-to-top button & auto scroll
+    ├── pages/
+    │   ├── Home/            # Landing page
+    │   ├── About/           # About & team page
+    │   ├── ProjectsServices/# Services & projects page
+    │   └── Contact/         # Contact form & FAQ page
+    ├── styles/
+    │   ├── global.css       # Global styles & transitions
+    │   └── variables.css    # CSS custom properties
+    ├── App.jsx              # Root app with routing
+    └── index.jsx            # Entry point
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Lyfe4/LenBuild.git
+   cd LenBuild
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm start
+   ```
+
+   The app will open at [http://localhost:3000](http://localhost:3000).
+
+---
 
 ## Available Scripts
 
-In the project directory, you can run:
+| Script | Description |
+|---|---|
+| `npm start` | Runs the app in development mode |
+| `npm run build` | Builds the app for production to the `build/` folder |
+| `npm test` | Launches the test runner |
+| `npm run eject` | Ejects from Create React App (irreversible) |
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Contact
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**LenBuild Pty Ltd**  
+📍 Guyra Region, NSW 2365  
+📧 [lenbuild@myyahoo.com](mailto:lenbuild@myyahoo.com)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p align="center">Built with ❤️ for the LenBuild team by <a href="https://github.com/Lyfe4">Lyfe4</a></p>
