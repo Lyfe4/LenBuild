@@ -23,8 +23,8 @@ const About = () => {
     },
     {
       title: "Sustainability",
-      description: "We're committed to environmentally responsible building practices that create healthier, more efficient homes.",
-      image: "/placeholder.jpg"
+      description: "We aim to use sustainable materials and smarter building practices wherever possible, helping create efficient, long-lasting homes while reducing environmental impact.",
+      image: require('../../assets/Photo.jpeg')
     }
   ];
   

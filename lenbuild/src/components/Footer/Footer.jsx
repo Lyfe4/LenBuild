@@ -33,25 +33,16 @@ const Footer = () => {
           </div>
           
           <div className="footer-col">
-            <h3>Legal</h3>
-            <ul>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Cookie Policy</a></li>
-            </ul>
-          </div>
-          
-          <div className="footer-col">
             <h3>Connect With Us</h3>
             <ul className="social-links">
               <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/share/1BWm12D8cd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
                   <FaFacebook className="social-icon" />
                   Facebook
                 </a>
               </li>
               <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/lenbuild_pty_ltd?igsh=MXM1eXVxdmUzbDIyZA==" target="_blank" rel="noopener noreferrer">
                   <FaInstagram className="social-icon" />
                   Instagram
                 </a>
