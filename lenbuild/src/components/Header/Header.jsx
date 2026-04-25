@@ -46,8 +46,23 @@ const Header = () => {
   }, [location]);
   
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+    setMobileMenuOpen(prev => !prev);
   };
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [mobileMenuOpen]);
   
   const isActive = (path) => {
     return location.pathname === path ? 'active' : '';
@@ -100,17 +115,27 @@ const Header = () => {
   const shouldMergeWithImage = isAtTop && hasImageHeader;
   
   return (
-    <header className={`header ${scrolled ? 'scrolled' : ''} ${navHidden ? 'nav-hidden' : ''} ${shouldMergeWithImage ? 'merged-with-image' : ''}`}>
+    <header className={`header ${scrolled ? 'scrolled' : ''} ${navHidden && !mobileMenuOpen ? 'nav-hidden' : ''} ${shouldMergeWithImage ? 'merged-with-image' : ''}`}>
       <div className="container">
         <div className="header-container">
           <Link to="/" className="logo" onClick={() => handleMainNavClick('/')}>
             <img src={lenbuildLogo} alt="LenBuild" className="logo-image" />
           </Link>
           
-          <div className="mobile-menu-btn" onClick={toggleMobileMenu}>
-            ☰
-          </div>
+          <button
+            className={`mobile-menu-btn${mobileMenuOpen ? ' open' : ''}`}
+            onClick={toggleMobileMenu}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           
+          {mobileMenuOpen && (
+            <div className="mobile-menu-overlay" onClick={toggleMobileMenu} aria-hidden="true" />
+          )}
           <nav className={mobileMenuOpen ? 'mobile-menu-open' : ''}>
             <ul>
               <li 

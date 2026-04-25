@@ -196,15 +196,55 @@ nav ul li a.active {
   opacity: 1;
 }
 
+/* ── Hamburger button ── */
 .mobile-menu-btn {
   display: none;
-  font-size: var(--font-size-xl);
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  padding: 0;
+  z-index: calc(var(--z-index-header) + 2);
+  flex-shrink: 0;
 }
 
-.mobile-menu-btn:hover {
-  transform: rotate(90deg);
+.mobile-menu-btn span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: transform 0.35s ease, opacity 0.25s ease, width 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animate to ✕ when open */
+.mobile-menu-btn.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-btn.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-menu-btn.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile overlay backdrop */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: calc(var(--z-index-header) - 1);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  cursor: pointer;
 }
 
 /* Tablet styles */
@@ -221,60 +261,83 @@ nav ul li a.active {
 
 @media (max-width: 768px) {
   .header-container {
-    padding: 0;
+    padding: var(--spacing-xs) 0;
+    /* No position:relative here — lets nav be absolute relative to the
+       full-width sticky <header> element instead of the narrow .container */
   }
-  
+
+  /* Show hamburger button */
   .mobile-menu-btn {
-    display: block;
-    font-size: 28px;
-    padding: 0;
+    display: flex;
   }
-  
+
+  /* Show overlay when menu is open */
+  .mobile-menu-overlay {
+    display: block;
+  }
+
   .logo-image {
     height: 45px;
     max-width: 160px;
   }
-  
+
+  /* Nav drawer — drops down from the sticky header */
   nav {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     background-color: var(--light);
-    box-shadow: var(--box-shadow-light);
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    transition: clip-path 0.4s ease;
+    box-shadow: var(--box-shadow-medium);
+    z-index: var(--z-index-header);
+    /* Independently scrollable on mobile */
+    max-height: calc(100svh - 65px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    /* Hidden by sliding up & fading out */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
-  
+
+  nav.mobile-menu-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
   .header.merged-with-image nav {
     background-color: var(--light);
   }
-  
+
   .header.merged-with-image nav ul li a {
     color: var(--black);
     border-bottom-color: rgba(0, 0, 0, 0.1);
   }
-  
-  nav.mobile-menu-open {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-  
+
   nav ul {
     flex-direction: column;
-    padding: 0;
+    padding: 0 0 var(--spacing-lg) 0;
   }
-  
+
   nav ul li {
     margin: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
-  
+
+  nav ul li:last-child {
+    border-bottom: none;
+  }
+
   nav ul li a {
     display: block;
-    padding: var(--spacing-md);
-    border-bottom: 1px solid var(--light);
+    padding: var(--spacing-md) var(--spacing-md);
+    font-size: 1.05rem;
   }
-  
-  /* Dropdown menu adjustments for mobile */
+
+  /* Dropdown menu on mobile — always visible as indented sub-links */
   .dropdown-menu {
     position: static;
     box-shadow: none;
@@ -283,21 +346,26 @@ nav ul li a.active {
     opacity: 1;
     visibility: visible;
     transform: none;
-  }
-  
-  .dropdown-menu.show {
+    /* Always shown — no toggle needed on mobile */
     display: block;
   }
-  
+
+  /* The .show class is only used for desktop hover; on mobile it's irrelevant */
   .dropdown-item {
     padding-left: var(--spacing-xl);
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    font-size: 0.95rem;
   }
-  
+
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+
   .dropdown-subheading {
     padding-left: calc(var(--spacing-xl) + 16px);
   }
-  
+
   .dropdown-subheading::before {
     left: var(--spacing-xl);
   }
