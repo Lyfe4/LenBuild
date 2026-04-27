@@ -25,7 +25,7 @@ const Contact = () => {
   // Validation state
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
-  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [, setHasSubmitted] = useState(false);
 
   // Submission state
   const [isSubmitting, setIsSubmitting] = useState(false);

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Footer.css';
 import apaLogo from '../../assets/apa.png';
 import hiaLogo from '../../assets/thumbnail_image(2).png';
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
