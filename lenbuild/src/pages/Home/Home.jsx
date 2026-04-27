@@ -114,7 +114,7 @@ const Home = () => {
               <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">The team is dedicated to using smarter, more sustainable construction methods. Every project is tailored to reflect the client's unique vision. LenBuild combines experience, innovation, and a family-first approach to help you with your new project.</p>
               <Link to="/about" className="btn" data-aos="fade-up" data-aos-delay="800" data-aos-duration="800">Learn More About Us</Link>
             </div>
-          <div className="about-us-image" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
+          <div className="about-us-image" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000" data-aos-offset="150">
               <img src={LenBuildTeamImage} alt="LenBuild Team" />
             </div>
           </div>

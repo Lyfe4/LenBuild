@@ -101,6 +101,7 @@
   height: 420px;
   max-height: 500px;
   min-height: 350px;
+  opacity: 0; /* AOS will handle the visibility */
 }
 
 .about-us-image img {
