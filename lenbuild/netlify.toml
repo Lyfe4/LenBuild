@@ -1,7 +1,6 @@
 [build]
-  base    = "lenbuild"
   command = "npm run build"
-  publish = "lenbuild/build"
+  publish = "build"
 
 [[redirects]]
   from = "/*"
