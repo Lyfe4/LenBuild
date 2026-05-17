@@ -50,34 +50,27 @@ const Header = () => {
   };
 
   // Lock body scroll when mobile menu is open.
-  // `overflow: hidden` alone is ignored by iOS Safari, so we use the
-  // position:fixed trick: pin the body at the current scroll offset,
-  // then restore it when the menu closes.
+  // Scroll to top first so the sticky header and nav drawer are in the
+  // viewport, then pin the body at top:0 (iOS Safari ignores overflow:hidden
+  // on body without the position:fixed trick).
   useEffect(() => {
     if (mobileMenuOpen) {
-      const scrollY = window.scrollY;
+      window.scrollTo(0, 0);
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
+      document.body.style.top = '0';
       document.body.style.width = '100%';
-      document.body.dataset.scrollY = scrollY;
     } else {
-      const savedY = parseInt(document.body.dataset.scrollY || '0', 10);
       document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
-      delete document.body.dataset.scrollY;
-      window.scrollTo(0, savedY);
     }
     return () => {
-      const savedY = parseInt(document.body.dataset.scrollY || '0', 10);
       document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
-      delete document.body.dataset.scrollY;
-      if (savedY) window.scrollTo(0, savedY);
     };
   }, [mobileMenuOpen]);
   
