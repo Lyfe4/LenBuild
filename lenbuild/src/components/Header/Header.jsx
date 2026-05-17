@@ -125,6 +125,14 @@ const Header = () => {
     setActiveDropdown(null);
   };
   
+  // Sync theme-color so iOS 15+ Safari tints its chrome to match the header state
+  useEffect(() => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) {
+      meta.setAttribute('content', isAtTop ? '#111111' : '#DEE2E6');
+    }
+  }, [isAtTop]);
+
   // Check if current page has an image header (all pages including home)
   const hasImageHeader = true;
   

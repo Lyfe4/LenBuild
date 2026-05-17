@@ -3,13 +3,33 @@
   background-color: var(--light);
   box-shadow: var(--box-shadow-light);
   position: sticky;
-  top: calc(-1 * env(safe-area-inset-top));
+  top: 0;
   z-index: var(--z-index-header);
   transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  /* Extend header into the status-bar safe area so no white gap shows */
+  /* Push nav/logo below the status bar; ::before fills the safe area at the physical top */
   padding-top: env(safe-area-inset-top);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
+}
+
+/* Fills the physical safe-area strip (behind the status bar) with the header's
+   background colour.  position:fixed guarantees it sits at y=0 on iOS even
+   though normal document flow starts below the safe-area inset. */
+.header::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top);
+  background-color: var(--light);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* When merged with the hero image, make it transparent so the hero shows through */
+.header.merged-with-image::before {
+  background-color: transparent;
 }
 
 .header.merged-with-image {
