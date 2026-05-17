@@ -5,13 +5,23 @@
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-family);
+  -webkit-tap-highlight-color: transparent;
 }
+
 
 body {
   color: var(--black);
   line-height: 1.6;
   font-size: var(--font-size-base);
   background-color: var(--light);
+  /* clip prevents horizontal overflow without creating a scroll container or BFC.
+     overflow-x: hidden would implicitly set overflow-y to auto (CSS spec), making
+     body a scroll container that clips the hero's negative-margin background. */
+  overflow-x: clip;
+}
+
+button, a {
+  touch-action: manipulation;
 }
 
 h1, h2, h3, h4, h5, h6 {

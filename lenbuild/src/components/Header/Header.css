@@ -1,3 +1,4 @@
+/* ===== HEADER BASE ===== */
 .header {
   background-color: var(--light);
   box-shadow: var(--box-shadow-light);
@@ -5,6 +6,9 @@
   top: 0;
   z-index: var(--z-index-header);
   transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  /* Safe area for notched phones (landscape) */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .header.merged-with-image {
@@ -34,7 +38,6 @@
 
 .header.merged-with-image .mobile-menu-btn {
   color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .header.scrolled {
@@ -45,6 +48,7 @@
   transform: translateY(-100%);
 }
 
+/* ===== HEADER CONTAINER ===== */
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -52,10 +56,12 @@
   padding: var(--spacing-sm) 0;
 }
 
+/* ===== LOGO ===== */
 .logo {
   display: flex;
   align-items: center;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .logo:hover {
@@ -67,14 +73,16 @@
   max-width: 200px;
   width: auto;
   object-fit: contain;
-  /* Try to make black background transparent */
   mix-blend-mode: multiply;
   background: transparent;
+  display: block;
 }
 
+/* ===== DESKTOP NAV (>1024px) ===== */
 nav ul {
   display: flex;
   list-style: none;
+  align-items: center;
 }
 
 nav ul li {
@@ -86,6 +94,7 @@ nav ul li a {
   position: relative;
   transition: color 0.3s ease;
   color: var(--black);
+  white-space: nowrap;
 }
 
 nav ul li a::after {
@@ -108,7 +117,7 @@ nav ul li a.active {
   color: var(--primary);
 }
 
-/* Dropdown menu styles */
+/* ===== DROPDOWN MENU ===== */
 .nav-item-with-dropdown {
   position: relative;
 }
@@ -150,7 +159,6 @@ nav ul li a.active {
   color: var(--white);
 }
 
-/* Subheading styles */
 .dropdown-subheading {
   padding-left: calc(var(--spacing-md) + 16px);
   font-size: 0.9em;
@@ -172,10 +180,11 @@ nav ul li a.active {
   opacity: 1;
 }
 
-/* Dropdown styles for merged header */
+/* Dropdown styles for merged (transparent) header */
 .header.merged-with-image .dropdown-menu {
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .header.merged-with-image .dropdown-item {
@@ -196,11 +205,12 @@ nav ul li a.active {
   opacity: 1;
 }
 
-/* ── Hamburger button ── */
+/* ===== HAMBURGER BUTTON ===== */
 .mobile-menu-btn {
   display: none;
   flex-direction: column;
   justify-content: space-between;
+  /* Visual hamburger size */
   width: 28px;
   height: 20px;
   background: transparent;
@@ -209,6 +219,28 @@ nav ul li a.active {
   padding: 0;
   z-index: calc(var(--z-index-header) + 2);
   flex-shrink: 0;
+  /* Explicit dark colour — prevents browsers from showing blue */
+  color: var(--secondary);
+  /* Remove the blue tap-flash on iOS/Android */
+  -webkit-tap-highlight-color: transparent;
+  /* Remove browser default outline (we add our own below) */
+  outline: none;
+  /* Expand touch target to 44×44 px via invisible pseudo-element */
+  position: relative;
+}
+
+/* Invisible tap-target expansion — keeps visual size but makes it easy to tap */
+.mobile-menu-btn::before {
+  content: '';
+  position: absolute;
+  inset: -12px -8px;
+}
+
+/* Keyboard-only focus ring (won't show on touch/mouse click) */
+.mobile-menu-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+  border-radius: var(--border-radius-sm);
 }
 
 .mobile-menu-btn span {
@@ -235,71 +267,67 @@ nav ul li a.active {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* Mobile overlay backdrop */
+/* ===== MOBILE OVERLAY BACKDROP ===== */
 .mobile-menu-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: calc(var(--z-index-header) - 1);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   cursor: pointer;
+  /* Prevent scroll bleed-through on iOS */
+  touch-action: none;
+  -webkit-touch-callout: none;
 }
 
-/* Tablet styles */
+/* ===== TABLET / MOBILE — hamburger active (≤1024px) ===== */
+/*
+ * Moving the breakpoint to 1024px fixes the "zoom out" bug:
+ * zooming out on a phone widens the logical viewport past 768 px,
+ * which used to reveal the desktop nav with no room to display it.
+ */
 @media (max-width: 1024px) {
-  nav ul li {
-    margin-left: var(--spacing-md);
-  }
-  
-  .logo-image {
-    height: 50px;
-    max-width: 180px;
-  }
-}
-
-@media (max-width: 768px) {
   .header-container {
     padding: var(--spacing-xs) 0;
-    /* No position:relative here — lets nav be absolute relative to the
-       full-width sticky <header> element instead of the narrow .container */
   }
 
-  /* Show hamburger button */
+  /* Show hamburger */
   .mobile-menu-btn {
     display: flex;
   }
 
-  /* Show overlay when menu is open */
+  /* Show overlay when menu is rendered (it's conditionally rendered in JSX) */
   .mobile-menu-overlay {
     display: block;
   }
 
   .logo-image {
-    height: 45px;
-    max-width: 160px;
+    height: 50px;
+    max-width: 180px;
   }
 
-  /* Nav drawer — drops down from the sticky header */
+  /* ── Nav Drawer ── */
   nav {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--light);
-    box-shadow: var(--box-shadow-medium);
+    /* White canvas — clean, no grey card clutter */
+    background-color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     z-index: var(--z-index-header);
-    /* Independently scrollable on mobile */
-    max-height: calc(100svh - 65px);
+    /* Scrollable if menu is taller than the screen */
+    max-height: calc(100svh - 60px);
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
-    /* Hidden by sliding up & fading out */
+    /* Hidden state */
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-8px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
 
   nav.mobile-menu-open {
@@ -308,81 +336,134 @@ nav ul li a.active {
     transform: translateY(0);
   }
 
+  /* Always white even when header is transparent */
   .header.merged-with-image nav {
-    background-color: var(--light);
+    background-color: #ffffff;
   }
 
-  .header.merged-with-image nav ul li a {
-    color: var(--black);
-    border-bottom-color: rgba(0, 0, 0, 0.1);
+  .header.merged-with-image nav ul li > a {
+    color: var(--secondary);
   }
 
   nav ul {
     flex-direction: column;
-    padding: 0 0 var(--spacing-lg) 0;
+    padding: var(--spacing-sm) 0 max(var(--spacing-lg), env(safe-area-inset-bottom)) 0;
   }
 
+  /* Thin divider between top-level sections only */
   nav ul li {
     margin: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
-  nav ul li:last-child {
-    border-bottom: none;
+  nav ul li + li {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
   }
 
-  nav ul li a {
-    display: block;
-    padding: var(--spacing-md) var(--spacing-md);
-    font-size: 1.05rem;
+  /* ── Main nav links — label style ── */
+  nav ul li > a {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 12px 20px 12px 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    border-left: 3px solid transparent;
+    transition: color 0.2s ease, border-left-color 0.2s ease, background-color 0.2s ease;
   }
 
-  /* Dropdown menu on mobile — always visible as indented sub-links */
+  /* Hide the desktop underline pseudo-element on mobile */
+  nav ul li > a::after {
+    display: none;
+  }
+
+  nav ul li > a:hover {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    background-color: rgba(46, 125, 50, 0.04);
+  }
+
+  nav ul li > a.active {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    background-color: rgba(46, 125, 50, 0.05);
+  }
+
+  /* ── Dropdown sub-items — no boxes, just a green left rule ── */
   .dropdown-menu {
     position: static;
     box-shadow: none;
     background-color: transparent;
-    padding: 0;
+    border-radius: 0;
+    padding: 0 0 10px 0;
     opacity: 1;
     visibility: visible;
     transform: none;
-    /* Always shown — no toggle needed on mobile */
     display: block;
+    min-width: unset;
   }
 
-  /* The .show class is only used for desktop hover; on mobile it's irrelevant */
   .dropdown-item {
-    padding-left: var(--spacing-xl);
-    background-color: rgba(0, 0, 0, 0.04);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    font-size: 0.95rem;
-  }
-
-  .dropdown-item:last-child {
+    display: flex;
+    align-items: center;
+    min-height: 42px;
+    /* Indent + left accent via border */
+    padding: 9px 20px 9px 36px;
+    margin-left: 20px;
+    border-left: 2px solid rgba(46, 125, 50, 0.22);
+    /* No background box */
+    background-color: transparent;
     border-bottom: none;
+    /* Typography */
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text);
+    transition: color 0.2s ease, border-left-color 0.2s ease;
   }
 
+  .dropdown-item:hover {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    background-color: transparent;
+  }
+
+  /* Subheadings indented one more level */
   .dropdown-subheading {
-    padding-left: calc(var(--spacing-xl) + 16px);
+    padding-left: 48px;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    border-left-color: rgba(46, 125, 50, 0.12);
   }
 
   .dropdown-subheading::before {
-    left: var(--spacing-xl);
+    content: '–';
+    position: absolute;
+    left: 20px;
+    color: var(--primary);
+    opacity: 0.45;
+  }
+
+  .dropdown-subheading:hover {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    opacity: 1;
   }
 }
 
-/* Small mobile adjustments */
+/* ===== MOBILE (≤768px) — logo/header size only ===== */
+@media (max-width: 768px) {
+  .logo-image {
+    height: 45px;
+    max-width: 160px;
+  }
+}
+
+/* ===== SMALL MOBILE (≤480px) ===== */
 @media (max-width: 480px) {
   .logo-image {
     height: 40px;
     max-width: 140px;
-  }
-  
-  .mobile-menu-btn {
-    font-size: 24px;
-  }
-  
-  .header-container {
-    padding: var(--spacing-xs) 0;
   }
 }

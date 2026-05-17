@@ -573,10 +573,43 @@
   .form-group select {
     padding: 14px 16px;
     border-radius: 12px;
+    /* Prevent iOS auto-zoom on focus (font must be ≥16px) */
+    font-size: 16px;
   }
 
   .contact-form-container .btn {
     padding: 14px 28px;
     border-radius: 12px;
+    width: 100%;
+  }
+
+  /* Tighter FAQ padding on mobile */
+  .faq-question {
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+  }
+
+  .faq-answer {
+    padding: 0 var(--spacing-md);
+  }
+
+  .faq-question.active + .faq-answer {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form-container {
+    padding: var(--spacing-md);
+    border-radius: 12px;
+  }
+
+  .contact-card {
+    padding: var(--spacing-md);
+    border-radius: 12px;
+  }
+
+  .contact-card h3 {
+    font-size: var(--font-size-large);
   }
 }
