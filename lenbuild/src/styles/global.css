@@ -5,6 +5,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-family);
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -12,6 +18,11 @@ body {
   line-height: 1.6;
   font-size: var(--font-size-base);
   background-color: var(--light);
+  overflow-x: hidden;
+}
+
+button, a {
+  touch-action: manipulation;
 }
 
 h1, h2, h3, h4, h5, h6 {
