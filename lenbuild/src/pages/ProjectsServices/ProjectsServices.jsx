@@ -182,6 +182,10 @@ const ProjectsServices = () => {
                   {service.projects.map((project, i) => (
                     <div className={`project-item zoom-on-hover ${project.title === 'Placeholder' && i === 1 ? 'post-2-image' : ''}`} key={i}>
                       <img src={project.image} alt={project.title} />
+                      <div className="project-overlay">
+                        <h4>{project.title}</h4>
+                        <p>{project.year}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
