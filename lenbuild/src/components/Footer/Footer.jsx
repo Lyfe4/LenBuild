@@ -56,16 +56,17 @@ const Footer = () => {
           <h3>Professional Memberships</h3>
           <div className="membership-logos">
             <div className="membership-item">
-              <img src={apaLogo} alt="Australian Physiotherapy Association" className="membership-logo" />
+              <img src={apaLogo} alt="Professional Membership - LenBuild Guyra NSW" className="membership-logo" />
             </div>
             <div className="membership-item">
-              <img src={hiaLogo} alt="Housing Industry Association" className="membership-logo" />
+              <img src={hiaLogo} alt="Housing Industry Association (HIA) member - LenBuild" className="membership-logo" />
             </div>
           </div>
         </div>
         
         <div className="copyright">
-          <p>&copy; {currentYear} LenBuild. All Rights Reserved.</p>
+          <p>Serving Guyra, Armidale and the New England region, NSW 2365</p>
+          <p>&copy; {currentYear} LenBuild Pty Ltd. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

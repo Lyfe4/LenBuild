@@ -1,43 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>LenBuild</title>
+    <!-- Primary Meta Tags -->
+    <title>LenBuild | Local Builder Guyra NSW | Custom Homes, Extensions & Renovations</title>
+    <meta name="title" content="LenBuild | Local Builder Guyra NSW | Custom Homes, Extensions & Renovations" />
+    <meta name="description" content="LenBuild is Guyra's trusted local builder. We specialise in custom home building, extensions, and renovations across Guyra, Armidale and the New England region of NSW. Call us for a quote." />
+    <meta name="keywords" content="Guyra builders, builder Guyra NSW, custom home builder Guyra, house builder Guyra, new home builder Guyra, home extensions Guyra, renovations Guyra, building contractor Guyra, builder New England NSW, builder Armidale NSW, LenBuild, LenBuild Pty Ltd, building company Guyra" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="LenBuild Pty Ltd" />
+    <meta name="theme-color" content="#1a1a1a" />
+
+    <!-- Geo Meta Tags (Local SEO) -->
+    <meta name="geo.region" content="AU-NSW" />
+    <meta name="geo.placename" content="Guyra, New South Wales, Australia" />
+    <meta name="geo.position" content="-30.2178;151.6736" />
+    <meta name="ICBM" content="-30.2178, 151.6736" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.lenbuild.com.au/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.lenbuild.com.au/" />
+    <meta property="og:title" content="LenBuild | Local Builder Guyra NSW" />
+    <meta property="og:description" content="Guyra's trusted local builder. Custom homes, extensions and renovations across the New England region of NSW. 15+ years of quality craftsmanship." />
+    <meta property="og:image" content="https://www.lenbuild.com.au/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="LenBuild - Local Builder in Guyra NSW" />
+    <meta property="og:site_name" content="LenBuild" />
+    <meta property="og:locale" content="en_AU" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LenBuild | Local Builder Guyra NSW" />
+    <meta name="twitter:description" content="Guyra's trusted local builder. Custom homes, extensions and renovations across the New England region of NSW." />
+    <meta name="twitter:image" content="https://www.lenbuild.com.au/og-image.jpg" />
+
+    <!-- Icons -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- JSON-LD: Local Business Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+      "@id": "https://www.lenbuild.com.au/#business",
+      "name": "LenBuild Pty Ltd",
+      "alternateName": "LenBuild",
+      "description": "LenBuild is a family-operated building company based in Guyra, NSW, specialising in custom home building, extensions, renovations, and paid building consultation across the New England region.",
+      "url": "https://www.lenbuild.com.au",
+      "email": "lenbuild@myyahoo.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Guyra",
+        "addressRegion": "NSW",
+        "postalCode": "2365",
+        "addressCountry": "AU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -30.2178,
+        "longitude": 151.6736
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Guyra"
+        },
+        {
+          "@type": "City",
+          "name": "Armidale"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "New England, NSW"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Northern NSW"
+        }
+      ],
+      "serviceType": [
+        "Custom Home Building",
+        "Home Extensions",
+        "Renovations",
+        "Building Consultation"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Building Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Home Building",
+              "description": "Bespoke custom homes designed and built for you in Guyra and the New England region NSW."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Home Extensions",
+              "description": "Seamless home extensions that expand your living space while respecting your home's character."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Renovations",
+              "description": "Comprehensive home renovation services across Guyra and surrounding areas."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Paid as a Consultant (PAC)",
+              "description": "Expert building consultation services to guide your project from planning through to completion."
+            }
+          }
+        ]
+      },
+      "foundingDate": "2015",
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "Dan",
+          "jobTitle": "Director"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/share/1BWm12D8cd/",
+        "https://www.instagram.com/lenbuild_pty_ltd/"
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Housing Industry Association",
+        "alternateName": "HIA"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Martin & Teesh"
+          },
+          "reviewBody": "Working with Lenbuild Pty Ltd has been an absolute pleasure over many years and across a variety of projects. They're our preferred builder for good reason—reliable, highly skilled, and consistently delivering exceptional quality.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Richard & Prue"
+          },
+          "reviewBody": "LenBuild comes with our highest recommendation and would be the first team we would call if we were to do any more building projects in the future.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "2",
+        "bestRating": "5"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD: Website -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://www.lenbuild.com.au/#website",
+      "url": "https://www.lenbuild.com.au",
+      "name": "LenBuild",
+      "description": "Guyra's trusted local builder — custom homes, extensions and renovations across the New England region, NSW.",
+      "publisher": {
+        "@id": "https://www.lenbuild.com.au/#business"
+      }
+    }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO/SEO';
 import CallToAction from '../../components/CallToAction/CallToAction';
 import LenBuildTeamImage from '../../assets/LenBuild Team.jpeg';
 import './Home.css';
+
+const homeSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lenbuild.com.au/'
+    }
+  ]
+};
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -89,13 +103,20 @@ const Home = () => {
 
   return (
     <div className="home-page">
+      <SEO
+        description="LenBuild is Guyra's trusted local builder. We specialise in custom home building, extensions, and renovations across Guyra, Armidale and the New England region of NSW. 15+ years experience."
+        keywords="Guyra builders, builder Guyra NSW, custom home builder Guyra, house builder Guyra, home extensions Guyra, renovations Guyra, building company New England NSW"
+        canonical="/"
+        schema={homeSchema}
+      />
+
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-background"></div>
         <div className="container">
           <div className="hero-content">
             <h1 data-aos="fade-up" data-aos-duration="1000">Quality Building Solutions For Your Home</h1>
-            <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">LenBuild is your trusted local builder, delivering exceptional craftsmanship and personalized service for all your building needs.</p>
+            <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">LenBuild is your trusted local builder in Guyra, NSW, delivering exceptional craftsmanship and personalised service for custom homes, extensions and renovations across the New England region.</p>
             <div className="hero-buttons" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
               <Link to="/contact" className="btn btn-secondary animate-float">Get In Touch</Link>
               <Link to="/projects-services" className="btn btn-secondary">View Our Work</Link>
@@ -115,7 +136,7 @@ const Home = () => {
               <Link to="/about" className="btn" data-aos="fade-up" data-aos-delay="800" data-aos-duration="800">Learn More About Us</Link>
             </div>
           <div className="about-us-image" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000" data-aos-offset="150">
-              <img src={LenBuildTeamImage} alt="LenBuild Team" />
+              <img src={LenBuildTeamImage} alt="LenBuild team - local builders based in Guyra NSW" />
             </div>
           </div>
         </div>

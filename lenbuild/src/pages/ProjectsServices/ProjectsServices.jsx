@@ -1,8 +1,28 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO/SEO';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';
 import './ProjectsServices.css';
+
+const servicesSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lenbuild.com.au/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Projects & Services',
+      item: 'https://www.lenbuild.com.au/projects-services'
+    }
+  ]
+};
 
 const ProjectsServices = () => {
   // Breadcrumbs for the page header
@@ -118,6 +138,13 @@ const ProjectsServices = () => {
   
   return (
     <div className="projects-services-page">
+      <SEO
+        title="Projects & Services | Custom Homes, Extensions & Renovations Guyra NSW"
+        description="LenBuild offers custom home building, extensions, renovations, and building consultation across Guyra and the New England region of NSW. View our completed projects and learn about our services."
+        keywords="custom home builder Guyra, home extensions Guyra NSW, renovations Guyra, building renovation New England NSW, house extension Armidale NSW, paid building consultant NSW, new home build Guyra"
+        canonical="/projects-services"
+        schema={servicesSchema}
+      />
       <PageHeader title="Projects & Services" breadcrumbs={breadcrumbs} />
       
       {/* Expertise Section */}
