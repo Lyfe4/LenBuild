@@ -14,7 +14,10 @@ body {
   line-height: 1.6;
   font-size: var(--font-size-base);
   background-color: var(--light);
-  overflow-x: hidden;
+  /* clip prevents horizontal overflow without creating a scroll container or BFC.
+     overflow-x: hidden would implicitly set overflow-y to auto (CSS spec), making
+     body a scroll container that clips the hero's negative-margin background. */
+  overflow-x: clip;
 }
 
 button, a {

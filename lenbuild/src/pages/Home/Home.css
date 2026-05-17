@@ -486,8 +486,8 @@
 @media (max-width: 480px) {
   .hero {
     min-height: 50vh;
-    margin-top: calc(-1 * (var(--spacing-xs) * 2 + 40px) - 8px);
-    padding-top: calc((var(--spacing-xs) * 2 + 40px) + 8px + var(--spacing-sm));
+    margin-top: calc(-1 * (var(--spacing-xs) * 2 + var(--spacing-sm) * 2 + 40px));
+    padding-top: calc((var(--spacing-xs) * 2 + var(--spacing-sm) * 2 + 40px) + var(--spacing-sm));
   }
   
   .hero h1 {
