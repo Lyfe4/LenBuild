@@ -12,13 +12,13 @@ const aboutSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://www.lenbuild.com.au/'
+      item: 'https://www.lenbuild.com/'
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'About Us',
-      item: 'https://www.lenbuild.com.au/about'
+      item: 'https://www.lenbuild.com/about'
     }
   ]
 };

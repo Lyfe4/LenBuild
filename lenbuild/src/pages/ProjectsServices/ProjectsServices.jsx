@@ -13,13 +13,13 @@ const servicesSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://www.lenbuild.com.au/'
+      item: 'https://www.lenbuild.com/'
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Projects & Services',
-      item: 'https://www.lenbuild.com.au/projects-services'
+      item: 'https://www.lenbuild.com/projects-services'
     }
   ]
 };
