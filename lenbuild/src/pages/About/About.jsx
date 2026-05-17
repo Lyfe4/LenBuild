@@ -64,14 +64,14 @@ const About = () => {
     },
     {
       name: "Archie",
-      position: "3rd year Apprentice",
-      bio: "Say hello to Archie, our third-year apprentice carpenter and a bit of a character on site. Since joining LenBuild, Archie's brought not just skill and enthusiasm, but plenty of laughs and positive energy to the crew. With a real knack for framing and fix-out, Archie thrives where structure meets precision and he's always up for a challenge. Outside of work, You'll find him on the footy field, bringing the same drive and team spirit to the game as he does to the build. We're proud to support Archie as he grows his skills and career. He's a hard worker and a quick learner. He is a true asset to the LenBuild team.",
+      position: "4th year Apprentice",
+      bio: "Say hello to Archie, our fourth-year apprentice carpenter and a bit of a character on site. Since joining LenBuild, Archie's brought not just skill and enthusiasm, but plenty of laughs and positive energy to the crew. With a real knack for framing and fix-out, Archie thrives where structure meets precision and he's always up for a challenge. Outside of work, You'll find him on the footy field, bringing the same drive and team spirit to the game as he does to the build. We're proud to support Archie as he grows his skills and career. He's a hard worker and a quick learner. He is a true asset to the LenBuild team.",
       image: require('../../assets/Archie_.jpg')
     },
     {
       name: "Caleb",
-      position: "2nd year Apprentice",
-      bio: "Say hello to Caleb, our second-year apprentice carpenter who's already making his mark on site. He has a particular interest in roofing, when the build starts to take shape He's got a quiet determination and a real appreciation for the process, always ready to learn and lend a hand. Caleb brings focus, reliability, and a calm presence to the crew. Outside of work, you'll find him fishing, camping, and just enjoying the outdoors We're proud to support Caleb as he grows his skills and career. He's hardworking, grounded, and a true asset to the LenBuild team.",
+      position: "3rd year Apprentice",
+      bio: "Say hello to Caleb, our third-year apprentice carpenter who's already making his mark on site. He has a particular interest in roofing, when the build starts to take shape He's got a quiet determination and a real appreciation for the process, always ready to learn and lend a hand. Caleb brings focus, reliability, and a calm presence to the crew. Outside of work, you'll find him fishing, camping, and just enjoying the outdoors We're proud to support Caleb as he grows his skills and career. He's hardworking, grounded, and a true asset to the LenBuild team.",
       image: require('../../assets/Caleb.jpg')
     }
   ];
