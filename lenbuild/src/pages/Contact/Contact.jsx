@@ -1,6 +1,59 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEO from '../../components/SEO/SEO';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import './Contact.css';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.lenbuild.com/'
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Contact',
+          item: 'https://www.lenbuild.com/contact'
+        }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What areas do you service?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "At LenBuild, we're deeply connected to the Guyra community and the stunning landscapes of Northern NSW. From the heart of the New England Tablelands to the surrounding towns and rural properties."
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'How long does a typical project take to complete?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "Every build is unique, and so is the timeline. The duration of your project depends on a range of factors—including the scope of work, weather conditions, material availability, and coordination with other trades. We're committed to keeping you informed and working efficiently from start to finish."
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Do you provide design services?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "While LenBuild doesn't offer in-house architectural design, we're happy to work with you and a trusted draftsman to develop the plans you need."
+          }
+        }
+      ]
+    }
+  ]
+};
 
 const FORMSPREE_URL = 'https://formspree.io/f/xgorqzre';
 const MAX_SUBMISSIONS = 3;
@@ -253,6 +306,13 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
+      <SEO
+        title="Contact Us | Get a Quote from Your Local Guyra Builder"
+        description="Get in touch with LenBuild — Guyra's local builder. Request a quote for custom homes, extensions or renovations in the New England region of NSW. We'd love to hear about your project."
+        keywords="contact builder Guyra, get a quote builder Guyra NSW, building quote New England NSW, builder enquiry Guyra, LenBuild contact"
+        canonical="/contact"
+        schema={contactSchema}
+      />
       <PageHeader title="Contact Us" breadcrumbs={breadcrumbs} />
 
       {/* Contact Section */}

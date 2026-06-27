@@ -1,7 +1,27 @@
 import React, { useEffect } from 'react';
+import SEO from '../../components/SEO/SEO';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';
 import './About.css';
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lenbuild.com/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'About Us',
+      item: 'https://www.lenbuild.com/about'
+    }
+  ]
+};
 
 const About = () => {
   // Breadcrumbs for the page header
@@ -44,14 +64,14 @@ const About = () => {
     },
     {
       name: "Archie",
-      position: "3rd year Apprentice",
-      bio: "Say hello to Archie, our third-year apprentice carpenter and a bit of a character on site. Since joining LenBuild, Archie's brought not just skill and enthusiasm, but plenty of laughs and positive energy to the crew. With a real knack for framing and fix-out, Archie thrives where structure meets precision and he's always up for a challenge. Outside of work, You'll find him on the footy field, bringing the same drive and team spirit to the game as he does to the build. We're proud to support Archie as he grows his skills and career. He's a hard worker and a quick learner. He is a true asset to the LenBuild team.",
+      position: "4th year Apprentice",
+      bio: "Say hello to Archie, our fourth-year apprentice carpenter and a bit of a character on site. Since joining LenBuild, Archie's brought not just skill and enthusiasm, but plenty of laughs and positive energy to the crew. With a real knack for framing and fix-out, Archie thrives where structure meets precision and he's always up for a challenge. Outside of work, You'll find him on the footy field, bringing the same drive and team spirit to the game as he does to the build. We're proud to support Archie as he grows his skills and career. He's a hard worker and a quick learner. He is a true asset to the LenBuild team.",
       image: require('../../assets/Archie_.jpg')
     },
     {
       name: "Caleb",
-      position: "2nd year Apprentice",
-      bio: "Say hello to Caleb, our second-year apprentice carpenter who's already making his mark on site. He has a particular interest in roofing, when the build starts to take shape He's got a quiet determination and a real appreciation for the process, always ready to learn and lend a hand. Caleb brings focus, reliability, and a calm presence to the crew. Outside of work, you'll find him fishing, camping, and just enjoying the outdoors We're proud to support Caleb as he grows his skills and career. He's hardworking, grounded, and a true asset to the LenBuild team.",
+      position: "3rd year Apprentice",
+      bio: "Say hello to Caleb, our third-year apprentice carpenter who's already making his mark on site. He has a particular interest in roofing, when the build starts to take shape He's got a quiet determination and a real appreciation for the process, always ready to learn and lend a hand. Caleb brings focus, reliability, and a calm presence to the crew. Outside of work, you'll find him fishing, camping, and just enjoying the outdoors We're proud to support Caleb as he grows his skills and career. He's hardworking, grounded, and a true asset to the LenBuild team.",
       image: require('../../assets/Caleb.jpg')
     }
   ];
@@ -73,6 +93,13 @@ const About = () => {
   
   return (
     <div className="about-page">
+      <SEO
+        title="About Us | Family Builder Guyra NSW"
+        description="Meet the LenBuild team — a family-operated building company with 10+ years serving Guyra and the New England region of NSW. Learn about our story, values, and the team behind every build."
+        keywords="about LenBuild, builder Guyra NSW team, family builder New England NSW, experienced builder Guyra, Dan LenBuild director"
+        canonical="/about"
+        schema={aboutSchema}
+      />
       <PageHeader title="About LenBuild" breadcrumbs={breadcrumbs} />
       
       {/* Story Section */}
@@ -86,7 +113,7 @@ const About = () => {
               <p>Our team of skilled craftsmen is hand-picked and renowned for their exceptional quality of work and attention to detail. We take pride in our ability to bring visions to life and create spaces that reflect the unique personalities and lifestyles of our clients.</p>
             </div>
             <div className="about-image" data-aos="fade-left" data-aos-delay="300">
-              <img src={require('../../assets/5.jpg')} alt="LenBuild Construction" />
+              <img src={require('../../assets/5.jpg')} alt="LenBuild construction project in Guyra NSW" />
             </div>
           </div>
           
@@ -101,9 +128,9 @@ const About = () => {
                   key={index}
                 >
                   <div className="value-image-container">
-                    <img 
-                      src={value.image} 
-                      alt={value.title}
+                    <img
+                      src={value.image}
+                      alt={`${value.title} - LenBuild Guyra NSW`}
                       className="value-image"
                     />
                   </div>
@@ -140,7 +167,7 @@ const About = () => {
                 key={index}
               >
                 <div className="team-image zoom-on-hover">
-                  <img src={member.image} alt={member.name} />
+                  <img src={member.image} alt={`${member.name} - ${member.position} at LenBuild Guyra NSW`} />
                 </div>
                 <div className="team-details">
                   <h3>{member.name}</h3>

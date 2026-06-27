@@ -49,18 +49,28 @@ const Header = () => {
     setMobileMenuOpen(prev => !prev);
   };
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll when mobile menu is open.
+  // Scroll to top first so the sticky header and nav drawer are in the
+  // viewport, then pin the body at top:0 (iOS Safari ignores overflow:hidden
+  // on body without the position:fixed trick).
   useEffect(() => {
     if (mobileMenuOpen) {
+      window.scrollTo(0, 0);
       document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
+      document.body.style.position = 'fixed';
+      document.body.style.top = '0';
+      document.body.style.width = '100%';
     } else {
       document.body.style.overflow = '';
-      document.body.style.touchAction = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
     }
     return () => {
       document.body.style.overflow = '';
-      document.body.style.touchAction = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
     };
   }, [mobileMenuOpen]);
   
@@ -108,6 +118,14 @@ const Header = () => {
     setActiveDropdown(null);
   };
   
+  // Sync theme-color so iOS 15+ Safari tints its chrome to match the header state
+  useEffect(() => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) {
+      meta.setAttribute('content', isAtTop ? '#111111' : '#DEE2E6');
+    }
+  }, [isAtTop]);
+
   // Check if current page has an image header (all pages including home)
   const hasImageHeader = true;
   
