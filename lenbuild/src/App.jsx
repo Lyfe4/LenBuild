@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import AOS from 'aos';
 
 // Layouts and Components
 import Header from './components/Header/Header';
@@ -48,6 +49,20 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
+  // Initialise scroll animations on the client only, AFTER hydration.
+  // Skipped during react-snap prerender (userAgent === 'ReactSnap') so AOS
+  // classes/styles aren't baked into the static HTML — that would cause the
+  // hydrated markup to mismatch React's render and throw hydration errors.
+  useEffect(() => {
+    if (typeof navigator !== 'undefined' && navigator.userAgent === 'ReactSnap') return;
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100,
+      easing: 'ease-in-out'
+    });
+  }, []);
+
   return (
     <Router>
       <div className="app">
