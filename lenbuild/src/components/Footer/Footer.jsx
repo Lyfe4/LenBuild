@@ -31,6 +31,14 @@ const Footer = () => {
               <li><Link to="/projects-services#pac" state={{ scrollToTop: false }}>PAC</Link></li>
             </ul>
           </div>
+
+          <div className="footer-col">
+            <h3>Areas We Serve</h3>
+            <ul>
+              <li><Link to="/custom-home-builder-guyra">Custom Home Builder Guyra</Link></li>
+              <li><Link to="/builders-armidale">Builders Armidale</Link></li>
+            </ul>
+          </div>
           
           <div className="footer-col">
             <h3>Connect With Us</h3>

@@ -25,6 +25,14 @@
   },
   "reactSnap": {
     "source": "build",
+    "include": [
+      "/",
+      "/about",
+      "/projects-services",
+      "/contact",
+      "/custom-home-builder-guyra",
+      "/builders-armidale"
+    ],
     "minifyHtml": {
       "collapseWhitespace": false,
       "removeComments": false

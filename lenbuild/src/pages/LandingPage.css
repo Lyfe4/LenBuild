@@ -1,0 +1,40 @@
+/* Shared styles for SEO location / service landing pages */
+
+.landing-page .landing-section {
+  padding: var(--spacing-xl) 0;
+}
+
+.landing-content {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.landing-content p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.7;
+}
+
+.landing-content h2 {
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.landing-content h3 {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.landing-list {
+  margin: 0 0 var(--spacing-md);
+  padding-left: 1.25rem;
+}
+
+.landing-list li {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+}
+
+.landing-cta-inline {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}

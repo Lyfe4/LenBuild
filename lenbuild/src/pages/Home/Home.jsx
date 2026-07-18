@@ -115,7 +115,7 @@ const Home = () => {
         <div className="hero-background"></div>
         <div className="container">
           <div className="hero-content">
-            <h1 data-aos="fade-up" data-aos-duration="1000">Guyra Builders — Quality Custom Homes, Extensions &amp; Renovations</h1>
+            <h1 data-aos="fade-up" data-aos-duration="1000">Quality Building Solutions For Your Home</h1>
             <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">LenBuild is your trusted local builder in Guyra, NSW, delivering exceptional craftsmanship and personalised service for custom homes, extensions and renovations across the New England region.</p>
             <div className="hero-buttons" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
               <Link to="/contact" className="btn btn-secondary animate-float">Get In Touch</Link>
@@ -142,18 +142,6 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Local Area / SEO content */}
-      <section className="local-area section" id="local-builders">
-        <div className="container">
-          <h2 className="section-title" data-aos="fade-up" data-aos-duration="800">Local Builders Serving Guyra &amp; the New England Region</h2>
-          <div className="local-area-content" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-            <p>As locally based Guyra builders, we understand what it takes to build for the New England high country. From the cold Guyra winters to the region's unique rural blocks, our team brings the local knowledge and hands-on experience needed to deliver homes that are comfortable, durable and built to last.</p>
-            <p>LenBuild proudly serves Guyra, Armidale and the wider New England region of NSW. Whether you're planning a brand-new custom home, extending a growing family home, or renovating an established property, we work alongside you from the first sketch through to the final handover — with clear communication and quality craftsmanship at every stage.</p>
-            <p>As a family-operated building company and Housing Industry Association (HIA) member, our reputation is built on trust, reliability and the relationships we've formed with clients right across the district. When you're searching for builders in Guyra you can rely on, LenBuild is ready to help bring your project to life.</p>
-          </div>
-        </div>
-      </section>
-
       {/* Legacy Quote */}
       <section className="legacy-quote-section">
         <div className="container">

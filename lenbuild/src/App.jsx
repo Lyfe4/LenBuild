@@ -13,6 +13,8 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import ProjectsServices from './pages/ProjectsServices/ProjectsServices';
 import Contact from './pages/Contact/Contact';
+import CustomHomeBuilderGuyra from './pages/CustomHomeBuilderGuyra/CustomHomeBuilderGuyra';
+import BuildersArmidale from './pages/BuildersArmidale/BuildersArmidale';
 
 // Styles
 import './styles/global.css';
@@ -36,6 +38,8 @@ const AnimatedRoutes = () => {
             <Route path="/about" element={<About />} />
             <Route path="/projects-services" element={<ProjectsServices />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/custom-home-builder-guyra" element={<CustomHomeBuilderGuyra />} />
+            <Route path="/builders-armidale" element={<BuildersArmidale />} />
           </Routes>
         </div>
       </CSSTransition>
