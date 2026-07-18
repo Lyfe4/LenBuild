@@ -24,6 +24,14 @@ const servicesSchema = {
   ]
 };
 
+// Map each service card id to its matching Contact form dropdown value
+const SERVICE_FORM_VALUE = {
+  'custom-homes': 'custom-home-building',
+  'extensions': 'extensions',
+  'renovations': 'renovations',
+  'pac': 'pac'
+};
+
 const ProjectsServices = () => {
   // Breadcrumbs for the page header
   const breadcrumbs = [
@@ -174,7 +182,11 @@ const ProjectsServices = () => {
                     ))}
                   </ul>
                   {service.familyApproach && <p><strong>{service.familyApproach}</strong></p>}
-                  <Link to="/contact" className="service-cta-btn">
+                  <Link
+                    to="/contact"
+                    state={{ service: SERVICE_FORM_VALUE[service.id], scrollToTop: false }}
+                    className="service-cta-btn"
+                  >
                     {service.ctaText}
                   </Link>
                 </div>

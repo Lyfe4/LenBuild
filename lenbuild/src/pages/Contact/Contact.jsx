@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import SEO from '../../components/SEO/SEO';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import './Contact.css';
+
+// Valid Contact form dropdown values (must match the <option> values below)
+const VALID_SERVICES = ['custom-home-building', 'extensions', 'renovations', 'pac', 'other'];
 
 const contactSchema = {
   '@context': 'https://schema.org',
@@ -60,6 +64,8 @@ const MAX_SUBMISSIONS = 3;
 const COOLDOWN_SECONDS = 60;
 
 const Contact = () => {
+  const location = useLocation();
+
   // Breadcrumbs for the page header
   const breadcrumbs = [
     { text: 'Contact' }
@@ -285,6 +291,19 @@ const Contact = () => {
       }
     }
   }, []);
+
+  // Pre-select the service dropdown and scroll to the form when arriving from a service card
+  useEffect(() => {
+    const incoming = location.state?.service;
+    if (incoming && VALID_SERVICES.includes(incoming)) {
+      setFormData(prev => ({ ...prev, service: incoming }));
+      const formSection = document.getElementById('contact-form');
+      if (formSection) {
+        // Delay lets the page transition settle before scrolling
+        setTimeout(() => formSection.scrollIntoView({ behavior: 'smooth' }), 300);
+      }
+    }
+  }, [location.state]);
 
   // FAQ data
   const faqs = [
