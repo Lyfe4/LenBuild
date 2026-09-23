@@ -155,13 +155,6 @@ lenbuild/
 | `npm test` | Launches the test runner |
 | `npm run eject` | Ejects from Create React App (irreversible) |
 
----
-
-## Contact
-
-**LenBuild Pty Ltd**  
-📍 Guyra Region, NSW 2365  
-📧 [lenbuild@myyahoo.com](mailto:lenbuild@myyahoo.com)
 
 ---
 
