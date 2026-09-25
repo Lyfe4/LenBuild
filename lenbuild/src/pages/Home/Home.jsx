@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO/SEO';
 import CallToAction from '../../components/CallToAction/CallToAction';
@@ -20,7 +20,8 @@ const homeSchema = {
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [intervalId, setIntervalId] = useState(null);
+  // Holds the active auto-cycle interval so manual changes can restart it
+  const intervalRef = useRef(null);
   
   // Scroll to section if hash in URL
   useEffect(() => {
@@ -80,14 +81,12 @@ const Home = () => {
   const handleTestimonialChange = (index) => {
     setCurrentTestimonial(index);
     // Clear existing interval
-    if (intervalId) {
-      clearInterval(intervalId);
-    }
+    clearInterval(intervalRef.current);
     // Start new interval
     const newInterval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 10000);
-    setIntervalId(newInterval);
+    intervalRef.current = newInterval;
   };
 
   // Auto-cycle testimonials
@@ -96,9 +95,10 @@ const Home = () => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 10000); // Change every 10 seconds
     
-    setIntervalId(interval);
+    intervalRef.current = interval;
     
-    return () => clearInterval(interval);
+    // Clear whichever interval is current, including one restarted by a manual change
+    return () => clearInterval(intervalRef.current);
   }, [testimonials.length]);
 
   return (

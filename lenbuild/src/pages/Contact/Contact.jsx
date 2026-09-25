@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import SEO from '../../components/SEO/SEO';
 import PageHeader from '../../components/PageHeader/PageHeader';
@@ -71,14 +71,18 @@ const Contact = () => {
     { text: 'Contact' }
   ];
 
-  // Form state
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
+  // Form state. Pre-select the service when arriving from a service card.
+  // (Each navigation remounts this page, so reading location.state once is enough.)
+  const [formData, setFormData] = useState(() => {
+    const incoming = location.state?.service;
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      service: VALID_SERVICES.includes(incoming) ? incoming : '',
+      message: ''
+    };
   });
 
   // Validation state
@@ -252,11 +256,11 @@ const Contact = () => {
           } else if (response.status === 429) {
             errorMsg = 'Too many submissions. Please wait a moment before trying again.';
           }
-        } catch (_) { /* use default message */ }
+        } catch { /* use default message */ }
         setSubmitError(errorMsg + ' Please try again or contact us directly at lenbuild@myyahoo.com');
         setIsSubmitting(false);
       }
-    } catch (networkError) {
+    } catch {
       setSubmitError(
         'Unable to send your message — please check your internet connection and try again. ' +
         'Alternatively, contact us directly at lenbuild@myyahoo.com'
@@ -292,11 +296,10 @@ const Contact = () => {
     }
   }, []);
 
-  // Pre-select the service dropdown and scroll to the form when arriving from a service card
+  // Scroll to the form when arriving from a service card
   useEffect(() => {
     const incoming = location.state?.service;
     if (incoming && VALID_SERVICES.includes(incoming)) {
-      setFormData(prev => ({ ...prev, service: incoming }));
       const formSection = document.getElementById('contact-form');
       if (formSection) {
         // Delay lets the page transition settle before scrolling

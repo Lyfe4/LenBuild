@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import lenbuildLogo from '../../assets/lenbuild.png';
@@ -40,10 +40,13 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
   
-  // Close mobile menu when location changes
-  useEffect(() => {
+  // Close mobile menu when location changes (adjusting state during render,
+  // rather than in an effect, avoids an extra render with the menu still open)
+  const [prevLocation, setPrevLocation] = useState(location);
+  if (location !== prevLocation) {
+    setPrevLocation(location);
     setMobileMenuOpen(false);
-  }, [location]);
+  }
   
   const toggleMobileMenu = () => {
     setMobileMenuOpen(prev => !prev);

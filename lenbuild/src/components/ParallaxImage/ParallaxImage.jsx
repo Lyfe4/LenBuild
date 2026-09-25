@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const ParallaxImage = ({ imgSrc, altText, speed = 0.2, className = '', objectPosition = 'center' }) => {
   const imgRef = useRef(null);
