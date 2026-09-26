@@ -63,12 +63,12 @@ const ProjectsServices = () => {
       ctaText: 'Start Your Dream Home',
       projects: [
         {
-          title: 'Modern Family Home',
+          title: 'Skylit hallway with teal joinery and timber-framed glass doors',
           year: '2024',
           image: customHomeImage1
         },
         {
-          title: 'Beachside Retreat',
+          title: 'Country kitchen with teal cabinetry, range cooker and timber island bench',
           year: '2023',
           image: customHomeImage2
         }
@@ -118,12 +118,12 @@ const ProjectsServices = () => {
       ctaText: 'Transform Your Home',
       projects: [
         {
-          title: 'Bathroom Transformation',
+          title: 'Laundry with timber benchtop, subway tiles and built-in cabinetry',
           year: '2024',
           image: renovationImage1
         },
         {
-          title: 'Kitchen Renovation',
+          title: 'Shower with hexagon feature tiles and an LED-lit niche',
           year: '2024',
           image: renovationImage2
         }

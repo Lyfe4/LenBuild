@@ -3,7 +3,6 @@
   command = "npm run build"
   publish = "build"
 
-[[redirects]]
-  from = "/*"
-  to   = "/index.html"
-  status = 200
+# No catch-all redirect on purpose. Every real route is prerendered to its own
+# folder by react-snap, and Netlify automatically serves build/404.html with a
+# 404 status for any path that doesn't exist.
