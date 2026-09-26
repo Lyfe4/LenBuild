@@ -16,6 +16,7 @@ import ProjectsServices from './pages/ProjectsServices/ProjectsServices';
 import Contact from './pages/Contact/Contact';
 import CustomHomeBuilderGuyra from './pages/CustomHomeBuilderGuyra/CustomHomeBuilderGuyra';
 import BuildersArmidale from './pages/BuildersArmidale/BuildersArmidale';
+import NotFound from './pages/NotFound/NotFound';
 
 // Styles
 import './styles/global.css';
@@ -41,8 +42,7 @@ const AnimatedRoutes = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/custom-home-builder-guyra" element={<CustomHomeBuilderGuyra />} />
             <Route path="/builders-armidale" element={<BuildersArmidale />} />
-            {/* Unknown paths render no page content (as before), without React Router's warning */}
-            <Route path="*" element={null} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </CSSTransition>
