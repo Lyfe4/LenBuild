@@ -77,13 +77,18 @@ const Header = () => {
     };
   }, [mobileMenuOpen]);
 
+  // Netlify serves prerendered pages as directories, so a direct visit to /about
+  // lands on /about/. Strip the trailing slash so it still matches the nav paths.
+  const currentPath =
+    location.pathname.length > 1 ? location.pathname.replace(/\/+$/, '') : location.pathname;
+
   const isActive = (path) => {
-    return location.pathname === path ? 'active' : '';
+    return currentPath === path ? 'active' : '';
   };
 
   // Handle main nav link clicks to scroll to top if already on the page
   const handleMainNavClick = (path) => {
-    if (location.pathname === path) {
+    if (currentPath === path) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
