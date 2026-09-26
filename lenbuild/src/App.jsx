@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import AOS from 'aos';
 
@@ -41,6 +41,8 @@ const AnimatedRoutes = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/custom-home-builder-guyra" element={<CustomHomeBuilderGuyra />} />
             <Route path="/builders-armidale" element={<BuildersArmidale />} />
+            {/* Unknown paths render no page content (as before), without React Router's warning */}
+            <Route path="*" element={null} />
           </Routes>
         </div>
       </CSSTransition>

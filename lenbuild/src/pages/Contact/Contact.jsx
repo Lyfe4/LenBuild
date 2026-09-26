@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import SEO from '../../components/SEO/SEO';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import './Contact.css';
