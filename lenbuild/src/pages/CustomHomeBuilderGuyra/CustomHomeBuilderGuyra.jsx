@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import SEO from '../../components/SEO/SEO';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';

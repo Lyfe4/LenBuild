@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import SEO from '../../components/SEO/SEO';
 import CallToAction from '../../components/CallToAction/CallToAction';
 import LenBuildTeamImage from '../../assets/LenBuild Team.jpeg';

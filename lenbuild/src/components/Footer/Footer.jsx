@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import './Footer.css';
 import apaLogo from '../../assets/apa.png';
 import hiaLogo from '../../assets/thumbnail_image(2).png';
