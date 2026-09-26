@@ -2,6 +2,14 @@ import React, { useEffect } from 'react';
 import SEO from '../../components/SEO/SEO';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';
+import valueImage1 from '../../assets/10 - Copy.jpg';
+import valueImage2 from '../../assets/Picture 3.jpg';
+import valueImage3 from '../../assets/Photo.jpeg';
+import danImage from '../../assets/Dan PAC Profile.jpg';
+import lukeImage from '../../assets/Luke.jpg';
+import archieImage from '../../assets/Archie_.jpg';
+import calebImage from '../../assets/Caleb.jpg';
+import constructionImage from '../../assets/5.jpg';
 import './About.css';
 
 const aboutSchema = {
@@ -34,17 +42,17 @@ const About = () => {
     {
       title: "Quality Craftsmanship",
       description: "We never compromise on quality. Every project, regardless of size, receives the same attention to detail and commitment to excellence.",
-      image: require('../../assets/10 - Copy.jpg')
+      image: valueImage1
     },
     {
       title: "Client-Centered Approach",
       description: "We believe in transparent communication and involving our clients throughout the entire building process.",
-      image: require('../../assets/Picture 3.jpg')
+      image: valueImage2
     },
     {
       title: "Sustainability",
       description: "We aim to use sustainable materials and smarter building practices wherever possible, helping create efficient, long-lasting homes while reducing environmental impact.",
-      image: require('../../assets/Photo.jpeg')
+      image: valueImage3
     }
   ];
   
@@ -54,25 +62,25 @@ const About = () => {
       name: "Dan",
       position: "Director",
       bio: "Say hello to Dan, LenBuild's Director and the steady hand behind every project we take on. With over 15 years of experience in the building industry, Dan brings not only deep expertise but a genuine love for the craft, from the first sketch to the final fit-out. Known for his sharp eye for detail and unwavering commitment to quality, Dan thrives on helping clients turn their dreams into reality. He's across every aspect of the build, always ready to guide, problem-solve, and celebrate the wins, big and small. Outside of work, you'll find Dan unwinding in the great outdoors, He loves camping and casting a line on a quiet riverbank. Dan leads with integrity, care, and a deep respect for his team and community. He's not just the backbone of LenBuild—he's the heart.",
-      image: require('../../assets/Dan PAC Profile.jpg')
+      image: danImage
     },
     {
       name: "Luke",
       position: "Lead Carpenter",
       bio: "Say hello to Luke, our lead Carpenter and one of LenBuild's most dedicated team members. Luke began his journey with us back in 2017 as an apprentice, and from day one, he's brought precision, pride, and a whole lot of heart to every project. With a keen eye for detail and unwavering loyalty, Luke has grown into a true leader on site. Favourite part of the job? The fit out stage where craftmanship meets creativity. Outside of work you'll find Luke keeping active with sports and fitness, or spending quality time with his family.",
-      image: require('../../assets/Luke.jpg')
+      image: lukeImage
     },
     {
       name: "Archie",
       position: "4th year Apprentice",
       bio: "Say hello to Archie, our fourth-year apprentice carpenter and a bit of a character on site. Since joining LenBuild, Archie's brought not just skill and enthusiasm, but plenty of laughs and positive energy to the crew. With a real knack for framing and fix-out, Archie thrives where structure meets precision and he's always up for a challenge. Outside of work, You'll find him on the footy field, bringing the same drive and team spirit to the game as he does to the build. We're proud to support Archie as he grows his skills and career. He's a hard worker and a quick learner. He is a true asset to the LenBuild team.",
-      image: require('../../assets/Archie_.jpg')
+      image: archieImage
     },
     {
       name: "Caleb",
       position: "3rd year Apprentice",
       bio: "Say hello to Caleb, our third-year apprentice carpenter who's already making his mark on site. He has a particular interest in roofing, when the build starts to take shape He's got a quiet determination and a real appreciation for the process, always ready to learn and lend a hand. Caleb brings focus, reliability, and a calm presence to the crew. Outside of work, you'll find him fishing, camping, and just enjoying the outdoors We're proud to support Caleb as he grows his skills and career. He's hardworking, grounded, and a true asset to the LenBuild team.",
-      image: require('../../assets/Caleb.jpg')
+      image: calebImage
     }
   ];
   
@@ -113,7 +121,7 @@ const About = () => {
               <p>Our team of skilled craftsmen is hand-picked and renowned for their exceptional quality of work and attention to detail. We take pride in our ability to bring visions to life and create spaces that reflect the unique personalities and lifestyles of our clients.</p>
             </div>
             <div className="about-image" data-aos="fade-left" data-aos-delay="300">
-              <img src={require('../../assets/5.jpg')} alt="LenBuild construction project in Guyra NSW" />
+              <img src={constructionImage} alt="LenBuild construction project in Guyra NSW" />
             </div>
           </div>
           

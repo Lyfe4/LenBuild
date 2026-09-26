@@ -78,6 +78,8 @@ Dedicated page showcasing LenBuild's full range of services:
 | Technology | Purpose |
 |---|---|
 | [React 18](https://react.dev/) | UI framework |
+| [Vite](https://vite.dev/) | Dev server and production build |
+| [react-snap](https://github.com/stereobooster/react-snap) | Prerenders each route to static HTML after the build (SEO) |
 | [React Router DOM v6](https://reactrouter.com/) | Client-side routing |
 | [React Transition Group](https://reactcommunity.org/react-transition-group/) | Page transition animations |
 | [AOS](https://michalsnik.github.io/aos/) | Scroll-triggered animations |
@@ -91,9 +93,9 @@ Dedicated page showcasing LenBuild's full range of services:
 
 ```
 lenbuild/
-├── public/
-│   ├── index.html
-│   └── manifest.json
+├── index.html               # HTML entry (Vite)
+├── vite.config.js
+├── public/                  # Static files copied as-is (favicons, manifest, robots, sitemap)
 └── src/
     ├── assets/              # Images and media
     ├── components/
@@ -121,20 +123,20 @@ lenbuild/
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v16 or higher recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Node.js](https://nodejs.org/) 22 (see `lenbuild/.nvmrc`; Vite needs 20.19+)
+- [npm](https://www.npmjs.com/)
 
 ### Installation
 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/Lyfe4/LenBuild.git
-   cd LenBuild
+   cd LenBuild/lenbuild
    ```
 
 2. **Install dependencies:**
    ```bash
-   npm install
+   npm ci
    ```
 
 3. **Start the development server:**
@@ -150,10 +152,9 @@ lenbuild/
 
 | Script | Description |
 |---|---|
-| `npm start` | Runs the app in development mode |
-| `npm run build` | Builds the app for production to the `build/` folder |
-| `npm test` | Launches the test runner |
-| `npm run eject` | Ejects from Create React App (irreversible) |
+| `npm start` / `npm run dev` | Runs the Vite dev server at http://localhost:3000 |
+| `npm run build` | Builds for production to `build/`, then prerenders every route with react-snap |
+| `npm run preview` | Serves the production build locally |
 
 
 ---

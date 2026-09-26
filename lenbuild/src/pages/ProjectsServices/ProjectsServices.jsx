@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO/SEO';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import CallToAction from '../../components/CallToAction/CallToAction';
+import customHomeImage1 from '../../assets/Website 3.jpg';
+import customHomeImage2 from '../../assets/Kitchen.jpeg';
+import extensionImage1 from '../../assets/11.jpg';
+import extensionImage2 from '../../assets/Post 2.jpg';
+import renovationImage1 from '../../assets/Website 4 (2).JPG';
+import renovationImage2 from '../../assets/website 5.jpg';
 import './ProjectsServices.css';
 
 const servicesSchema = {
@@ -58,12 +64,12 @@ const ProjectsServices = () => {
         {
           title: 'Modern Family Home',
           year: '2024',
-          image: require('../../assets/Website 3.jpg')
+          image: customHomeImage1
         },
         {
           title: 'Beachside Retreat',
           year: '2023',
-          image: require('../../assets/Kitchen.jpeg')
+          image: customHomeImage2
         }
       ]
     },
@@ -85,12 +91,12 @@ const ProjectsServices = () => {
         {
           title: 'Placeholder',
           year: 'This is placeholder info',
-          image: require('../../assets/11.jpg')
+          image: extensionImage1
         },
         {
           title: 'Placeholder',
           year: 'This is placeholder info',
-          image: require('../../assets/Post 2.jpg')
+          image: extensionImage2
         }
       ]
     },
@@ -111,12 +117,12 @@ const ProjectsServices = () => {
         {
           title: 'Bathroom Transformation',
           year: '2024',
-          image: require('../../assets/Website 4 (2).JPG')
+          image: renovationImage1
         },
         {
           title: 'Kitchen Renovation',
           year: '2024',
-          image: require('../../assets/website 5.jpg')
+          image: renovationImage2
         }
       ]
     },
