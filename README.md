@@ -8,7 +8,7 @@ The official marketing website for **LenBuild Pty Ltd** — a trusted, family-op
 
 ## 🌐 Live Site
 
-> Deployed via GitHub — [https://github.com/Lyfe4/LenBuild](https://github.com/Lyfe4/LenBuild)
+> [https://www.lenbuild.com](https://www.lenbuild.com) — deployed on Netlify from `main` (every pull request gets a deploy preview)
 
 ---
 
@@ -54,8 +54,8 @@ Key highlights:
 - Meet the Team section featuring:
   - **Dan** — Director (15+ years experience)
   - **Luke** — Lead Carpenter
-  - **Archie** — 3rd Year Apprentice
-  - **Caleb** — 2nd Year Apprentice
+  - **Archie** — 4th Year Apprentice
+  - **Caleb** — 3rd Year Apprentice
 
 ### 🔨 Projects & Services
 Dedicated page showcasing LenBuild's full range of services:
