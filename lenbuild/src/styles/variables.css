@@ -1,19 +1,19 @@
 :root {
   /* Color palette - LenBuild Brand Colors */
-  --primary: #2E7D32; /* Professional dark green */
-  --secondary: #2D2D2D; /* Dark grey/black */
-  --accent: #1B5E20; /* Darker green for hovers that matches primary */
-  --light: #DEE2E6; /* Slightly darker light grey */
-  --medium-light: #E9ECEF; /* Light grey */
-  --card-bg: #F5F6F7; /* Off-white for cards - between white and background */
-  --medium: #6C757D; /* Medium grey */
-  --dark: #343A40; /* Dark grey */
+  --primary: #2e7d32; /* Professional dark green */
+  --secondary: #2d2d2d; /* Dark grey/black */
+  --accent: #1b5e20; /* Darker green for hovers that matches primary */
+  --light: #dee2e6; /* Slightly darker light grey */
+  --medium-light: #e9ecef; /* Light grey */
+  --card-bg: #f5f6f7; /* Off-white for cards - between white and background */
+  --medium: #6c757d; /* Medium grey */
+  --dark: #343a40; /* Dark grey */
   --darker: #495057; /* Medium-dark grey */
   --text: #495057; /* Text grey */
-  --text-light: #6C757D; /* Light text grey */
-  --white: #FFFFFF;
+  --text-light: #6c757d; /* Light text grey */
+  --white: #ffffff;
   --black: #000000;
-  
+
   /* Typography */
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --font-size-base: 16px;
@@ -22,7 +22,7 @@
   --font-size-xl: 24px;
   --font-size-xxl: 32px;
   --font-size-huge: 48px;
-  
+
   /* Spacing */
   --spacing-xs: 5px;
   --spacing-sm: 10px;
@@ -30,7 +30,7 @@
   --spacing-lg: 30px;
   --spacing-xl: 50px;
   --spacing-xxl: 80px;
-  
+
   /* Borders & Shadows */
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
@@ -38,16 +38,16 @@
   --box-shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
   --box-shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.1);
   --box-shadow-heavy: 0 15px 50px rgba(0, 0, 0, 0.15);
-  
+
   /* Transitions */
   --transition-fast: all 0.2s ease;
   --transition-medium: all 0.3s ease;
   --transition-slow: all 0.5s ease;
-  
+
   /* Containers */
   --container-max-width: 1200px;
   --container-padding: 0 20px;
-  
+
   /* Z-indices */
   --z-index-header: 1000;
   --z-index-dropdown: 900;

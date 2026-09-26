@@ -9,8 +9,12 @@
   text-align: center;
   margin-bottom: var(--spacing-xl);
   overflow: hidden;
-  margin-top: calc(-1 * (var(--spacing-md) * 2 + var(--font-size-xl) * 1.2) - 15px - env(safe-area-inset-top));
-  padding-top: calc(var(--spacing-md) * 2 + var(--font-size-xl) * 1.2 + 15px + env(safe-area-inset-top));
+  margin-top: calc(
+    -1 * (var(--spacing-md) * 2 + var(--font-size-xl) * 1.2) - 15px - env(safe-area-inset-top)
+  );
+  padding-top: calc(
+    var(--spacing-md) * 2 + var(--font-size-xl) * 1.2 + 15px + env(safe-area-inset-top)
+  );
   padding-bottom: var(--spacing-xl);
 }
 
@@ -20,7 +24,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/Wedbsite 1.jpg');
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/Wedbsite 1.jpg');
   background-size: cover;
   background-position: right 60%;
   animation: slowZoom 15s ease-in-out infinite alternate;
@@ -96,10 +101,18 @@
   animation-delay: calc(0.1s * var(--i, 0));
 }
 
-.breadcrumb li:nth-child(1) { --i: 1; }
-.breadcrumb li:nth-child(2) { --i: 2; }
-.breadcrumb li:nth-child(3) { --i: 3; }
-.breadcrumb li:nth-child(4) { --i: 4; }
+.breadcrumb li:nth-child(1) {
+  --i: 1;
+}
+.breadcrumb li:nth-child(2) {
+  --i: 2;
+}
+.breadcrumb li:nth-child(3) {
+  --i: 3;
+}
+.breadcrumb li:nth-child(4) {
+  --i: 4;
+}
 
 /* Tablet styles — hamburger now active at ≤1024px */
 @media (max-width: 1024px) {
@@ -107,7 +120,9 @@
     min-height: 50vh;
     /* Header at ≤1024px: logo 50px + padding 5px×2 = ~60px */
     margin-top: calc(-1 * (var(--spacing-xs) * 2 + 50px) - 10px - env(safe-area-inset-top));
-    padding-top: calc((var(--spacing-xs) * 2 + 50px) + 10px + var(--spacing-md) + env(safe-area-inset-top));
+    padding-top: calc(
+      (var(--spacing-xs) * 2 + 50px) + 10px + var(--spacing-md) + env(safe-area-inset-top)
+    );
   }
 
   .page-header h1 {
@@ -119,18 +134,20 @@
   .page-header {
     min-height: 45vh;
     margin-top: calc(-1 * (var(--spacing-sm) * 2 + 45px) - 10px - env(safe-area-inset-top));
-    padding-top: calc((var(--spacing-sm) * 2 + 45px) + 10px + var(--spacing-md) + env(safe-area-inset-top));
+    padding-top: calc(
+      (var(--spacing-sm) * 2 + 45px) + 10px + var(--spacing-md) + env(safe-area-inset-top)
+    );
   }
-  
+
   .page-header h1 {
     font-size: clamp(1.5rem, 6vw, 2rem);
   }
-  
+
   .breadcrumb {
     flex-wrap: wrap;
     padding: 0 var(--spacing-sm);
   }
-  
+
   .breadcrumb li {
     margin: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-size-small);
@@ -148,10 +165,15 @@
 @media (max-width: 480px) {
   .page-header {
     min-height: 40vh;
-    margin-top: calc(-1 * (var(--spacing-xs) * 2 + var(--spacing-sm) * 2 + 40px) - env(safe-area-inset-top));
-    padding-top: calc((var(--spacing-xs) * 2 + var(--spacing-sm) * 2 + 40px) + var(--spacing-sm) + env(safe-area-inset-top));
+    margin-top: calc(
+      -1 * (var(--spacing-xs) * 2 + var(--spacing-sm) * 2 + 40px) - env(safe-area-inset-top)
+    );
+    padding-top: calc(
+      (var(--spacing-xs) * 2 + var(--spacing-sm) * 2 + 40px) + var(--spacing-sm) +
+        env(safe-area-inset-top)
+    );
   }
-  
+
   .page-header h1 {
     font-size: clamp(1.3rem, 7vw, 1.8rem);
   }

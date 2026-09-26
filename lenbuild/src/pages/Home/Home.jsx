@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO/SEO';
 import CallToAction from '../../components/CallToAction/CallToAction';
@@ -20,8 +20,9 @@ const homeSchema = {
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [intervalId, setIntervalId] = useState(null);
-  
+  // Holds the active auto-cycle interval so manual changes can restart it
+  const intervalRef = useRef(null);
+
   // Scroll to section if hash in URL
   useEffect(() => {
     const { hash } = window.location;
@@ -39,27 +40,31 @@ const Home = () => {
   // Service cards data
   const services = [
     {
-      title: "Custom Home Building",
-      description: "We create bespoke homes designed specifically for you and your lifestyle, working closely with you from concept to completion.",
-      link: "/projects-services#custom-homes",
+      title: 'Custom Home Building',
+      description:
+        'We create bespoke homes designed specifically for you and your lifestyle, working closely with you from concept to completion.',
+      link: '/projects-services#custom-homes',
       state: { scrollToTop: false }
     },
     {
-      title: "Extensions",
-      description: "Need more space? Our extension services seamlessly integrate with your existing home, providing additional living areas.",
-      link: "/projects-services#extensions",
+      title: 'Extensions',
+      description:
+        'Need more space? Our extension services seamlessly integrate with your existing home, providing additional living areas.',
+      link: '/projects-services#extensions',
       state: { scrollToTop: false }
     },
     {
-      title: "Renovations",
-      description: "Transform your current space with our comprehensive renovation services, breathing new life into your home.",
-      link: "/projects-services#renovations",
+      title: 'Renovations',
+      description:
+        'Transform your current space with our comprehensive renovation services, breathing new life into your home.',
+      link: '/projects-services#renovations',
       state: { scrollToTop: false }
     },
     {
-      title: "Paid as a Consultant (PAC)",
-      description: "Expert building consultation services to guide your project from planning to completion, providing professional advice and oversight.",
-      link: "/projects-services#pac",
+      title: 'Paid as a Consultant (PAC)',
+      description:
+        'Expert building consultation services to guide your project from planning to completion, providing professional advice and oversight.',
+      link: '/projects-services#pac',
       state: { scrollToTop: false }
     }
   ];
@@ -67,27 +72,27 @@ const Home = () => {
   // Testimonials data
   const testimonials = [
     {
-      content: "Working with Lenbuild Pty Ltd has been an absolute pleasure over many years and across a variety of projects. They're our preferred builder for good reason—reliable, highly skilled, and consistently delivering exceptional quality. Dan and his team are masters of their craft, with a perfectionist's eye for detail and a genuine pride in their work that shines through in every build",
-      author: "Martin & Teesh"
+      content:
+        "Working with Lenbuild Pty Ltd has been an absolute pleasure over many years and across a variety of projects. They're our preferred builder for good reason—reliable, highly skilled, and consistently delivering exceptional quality. Dan and his team are masters of their craft, with a perfectionist's eye for detail and a genuine pride in their work that shines through in every build",
+      author: 'Martin & Teesh'
     },
     {
-      content: "We engaged with LenBuild to take on an old farm homestead renovation project. With the view that we could make it a practical, modern, warm family home, although keeping the country feel it had before. Dan and his team went above and beyond to help us navigate this project from framing areas so we could visualize the space, sourcing products that fitted with the feel & look we were after at a reasonable price, and solved problem after problem as we embarked on this journey. He engaged with only the best contractors in the area that would meet his level of professionalism and perfection, so the whole project could come together. He challenged us to think about how to make the home work best for us in a cold Guyra climate and also understood the emotional attachment certain aspects of the old home meant to me and how to incorporate these in the project. LenBuild comes with our highest recommendation and would be the first team we would call if we were to do any more building projects in the future.",
-      author: "Richard & Prue"
+      content:
+        'We engaged with LenBuild to take on an old farm homestead renovation project. With the view that we could make it a practical, modern, warm family home, although keeping the country feel it had before. Dan and his team went above and beyond to help us navigate this project from framing areas so we could visualize the space, sourcing products that fitted with the feel & look we were after at a reasonable price, and solved problem after problem as we embarked on this journey. He engaged with only the best contractors in the area that would meet his level of professionalism and perfection, so the whole project could come together. He challenged us to think about how to make the home work best for us in a cold Guyra climate and also understood the emotional attachment certain aspects of the old home meant to me and how to incorporate these in the project. LenBuild comes with our highest recommendation and would be the first team we would call if we were to do any more building projects in the future.',
+      author: 'Richard & Prue'
     }
   ];
-  
+
   // Handle manual testimonial change
   const handleTestimonialChange = (index) => {
     setCurrentTestimonial(index);
     // Clear existing interval
-    if (intervalId) {
-      clearInterval(intervalId);
-    }
+    clearInterval(intervalRef.current);
     // Start new interval
     const newInterval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 10000);
-    setIntervalId(newInterval);
+    intervalRef.current = newInterval;
   };
 
   // Auto-cycle testimonials
@@ -95,10 +100,11 @@ const Home = () => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 10000); // Change every 10 seconds
-    
-    setIntervalId(interval);
-    
-    return () => clearInterval(interval);
+
+    intervalRef.current = interval;
+
+    // Clear whichever interval is current, including one restarted by a manual change
+    return () => clearInterval(intervalRef.current);
   }, [testimonials.length]);
 
   return (
@@ -115,11 +121,26 @@ const Home = () => {
         <div className="hero-background"></div>
         <div className="container">
           <div className="hero-content">
-            <h1 data-aos="fade-up" data-aos-duration="1000">Quality Building Solutions For Your Home</h1>
-            <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">LenBuild is your trusted local builder in Guyra, NSW, delivering exceptional craftsmanship and personalised service for custom homes, extensions and renovations across the New England region.</p>
-            <div className="hero-buttons" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-              <Link to="/contact" className="btn btn-secondary animate-float">Get In Touch</Link>
-              <Link to="/projects-services" className="btn btn-secondary">View Our Work</Link>
+            <h1 data-aos="fade-up" data-aos-duration="1000">
+              Quality Building Solutions For Your Home
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+              LenBuild is your trusted local builder in Guyra, NSW, delivering exceptional
+              craftsmanship and personalised service for custom homes, extensions and renovations
+              across the New England region.
+            </p>
+            <div
+              className="hero-buttons"
+              data-aos="fade-up"
+              data-aos-delay="600"
+              data-aos-duration="1000"
+            >
+              <Link to="/contact" className="btn btn-secondary animate-float">
+                Get In Touch
+              </Link>
+              <Link to="/projects-services" className="btn btn-secondary">
+                View Our Work
+              </Link>
             </div>
           </div>
         </div>
@@ -128,43 +149,96 @@ const Home = () => {
       {/* About Us Section */}
       <section className="about-us section" id="about-us">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up" data-aos-duration="800">About LenBuild</h2>
+          <h2 className="section-title" data-aos="fade-up" data-aos-duration="800">
+            About LenBuild
+          </h2>
           <div className="about-us-content">
-            <div className="about-us-text" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000">
-              <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">LenBuild is a trusted, family-operated building company based in Guyra, NSW, known for its commitment to quality craftsmanship, sustainable building practices, and personalized service. With deep roots in the local community, LenBuild specializes in custom homes and offers expert solutions in renovations, extensions, and new home construction.</p>
-              <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">The team is dedicated to using smarter, more sustainable construction methods. Every project is tailored to reflect the client's unique vision. LenBuild combines experience, innovation, and a family-first approach to help you with your new project.</p>
-              <Link to="/about" className="btn" data-aos="fade-up" data-aos-delay="800" data-aos-duration="800">Learn More About Us</Link>
+            <div
+              className="about-us-text"
+              data-aos="fade-right"
+              data-aos-delay="200"
+              data-aos-duration="1000"
+            >
+              <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+                LenBuild is a trusted, family-operated building company based in Guyra, NSW, known
+                for its commitment to quality craftsmanship, sustainable building practices, and
+                personalized service. With deep roots in the local community, LenBuild specializes
+                in custom homes and offers expert solutions in renovations, extensions, and new home
+                construction.
+              </p>
+              <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
+                The team is dedicated to using smarter, more sustainable construction methods. Every
+                project is tailored to reflect the client's unique vision. LenBuild combines
+                experience, innovation, and a family-first approach to help you with your new
+                project.
+              </p>
+              <Link
+                to="/about"
+                className="btn"
+                data-aos="fade-up"
+                data-aos-delay="800"
+                data-aos-duration="800"
+              >
+                Learn More About Us
+              </Link>
             </div>
-          <div className="about-us-image" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000" data-aos-offset="150">
-              <img src={LenBuildTeamImage} alt="LenBuild team - local builders based in Guyra NSW" />
+            <div
+              className="about-us-image"
+              data-aos="fade-left"
+              data-aos-delay="200"
+              data-aos-duration="1000"
+              data-aos-offset="150"
+            >
+              <img
+                src={LenBuildTeamImage}
+                alt="LenBuild team - local builders based in Guyra NSW"
+              />
             </div>
           </div>
         </div>
       </section>
-      
+
       {/* Legacy Quote */}
       <section className="legacy-quote-section">
         <div className="container">
           <div className="legacy-quote" data-aos="fade-up" data-aos-duration="1000">
-            <blockquote>We Build homes that hold memories and moments that last for generations</blockquote>
+            <blockquote>
+              We Build homes that hold memories and moments that last for generations
+            </blockquote>
           </div>
         </div>
       </section>
-      
+
       {/* Services Overview */}
       <section className="services-overview section" id="services">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up" data-aos-offset="200" data-aos-duration="800">Our Services</h2>
-          <p className="section-intro" data-aos="fade-up" data-aos-delay="200" data-aos-offset="200" data-aos-duration="800">At LenBuild, we offer a comprehensive range of building services, each delivered with the same commitment to quality and attention to detail.</p>
-          
+          <h2
+            className="section-title"
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-duration="800"
+          >
+            Our Services
+          </h2>
+          <p
+            className="section-intro"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-offset="200"
+            data-aos-duration="800"
+          >
+            At LenBuild, we offer a comprehensive range of building services, each delivered with
+            the same commitment to quality and attention to detail.
+          </p>
+
           <div className="services-grid">
             {services.map((service, index) => {
               // Staggered delays: 400, 500, 600, 700ms for natural appearance
-              const delay = 400 + (index * 100);
+              const delay = 400 + index * 100;
               return (
-                <div 
-                  className="service-card hover-lift" 
-                  data-aos="fade-up" 
+                <div
+                  className="service-card hover-lift"
+                  data-aos="fade-up"
                   data-aos-delay={delay}
                   data-aos-offset="150"
                   data-aos-duration="800"
@@ -172,35 +246,67 @@ const Home = () => {
                 >
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>
-                  <Link to={service.link} state={service.state} className="btn">Learn More</Link>
+                  <Link to={service.link} state={service.state} className="btn">
+                    Learn More
+                  </Link>
                 </div>
               );
             })}
           </div>
-          
-          <div className="text-center view-all" data-aos="fade-up" data-aos-delay="900" data-aos-offset="150" data-aos-duration="800">
-            <Link to="/projects-services" className="btn">View All Services & Projects</Link>
+
+          <div
+            className="text-center view-all"
+            data-aos="fade-up"
+            data-aos-delay="900"
+            data-aos-offset="150"
+            data-aos-duration="800"
+          >
+            <Link to="/projects-services" className="btn">
+              View All Services & Projects
+            </Link>
           </div>
         </div>
       </section>
-      
+
       {/* Testimonials Section */}
       <section className="testimonials-section section" id="testimonials">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up" data-aos-duration="800">What Our Clients Say</h2>
-          
-          <div className="testimonial-carousel" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+          <h2 className="section-title" data-aos="fade-up" data-aos-duration="800">
+            What Our Clients Say
+          </h2>
+
+          <div
+            className="testimonial-carousel"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-duration="1000"
+          >
             <div className="testimonial-display" key={currentTestimonial}>
-              <div className="testimonial-content" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+              <div
+                className="testimonial-content"
+                data-aos="fade-up"
+                data-aos-delay="400"
+                data-aos-duration="1000"
+              >
                 <p>"{testimonials[currentTestimonial].content}"</p>
               </div>
-              <div className="testimonial-author" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
+              <div
+                className="testimonial-author"
+                data-aos="fade-up"
+                data-aos-delay="600"
+                data-aos-duration="800"
+              >
                 <p>— {testimonials[currentTestimonial].author}</p>
               </div>
             </div>
-            
+
             {/* Testimonial indicators */}
-            <div className="testimonial-indicators" data-aos="fade-up" data-aos-delay="800" data-aos-duration="800">
+            <div
+              className="testimonial-indicators"
+              data-aos="fade-up"
+              data-aos-delay="800"
+              data-aos-duration="800"
+            >
               {testimonials.map((_, index) => (
                 <button
                   key={index}
@@ -213,7 +319,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Call to Action */}
       <CallToAction />
     </div>

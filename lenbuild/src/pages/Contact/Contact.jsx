@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import SEO from '../../components/SEO/SEO';
 import PageHeader from '../../components/PageHeader/PageHeader';
@@ -67,18 +67,20 @@ const Contact = () => {
   const location = useLocation();
 
   // Breadcrumbs for the page header
-  const breadcrumbs = [
-    { text: 'Contact' }
-  ];
+  const breadcrumbs = [{ text: 'Contact' }];
 
-  // Form state
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
+  // Form state. Pre-select the service when arriving from a service card.
+  // (Each navigation remounts this page, so reading location.state once is enough.)
+  const [formData, setFormData] = useState(() => {
+    const incoming = location.state?.service;
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      service: VALID_SERVICES.includes(incoming) ? incoming : '',
+      message: ''
+    };
   });
 
   // Validation state
@@ -106,7 +108,7 @@ const Contact = () => {
   const startCooldown = () => {
     setCooldownSeconds(COOLDOWN_SECONDS);
     cooldownRef.current = setInterval(() => {
-      setCooldownSeconds(prev => {
+      setCooldownSeconds((prev) => {
         if (prev <= 1) {
           clearInterval(cooldownRef.current);
           return 0;
@@ -119,21 +121,21 @@ const Contact = () => {
   // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
     // Re-validate field in real-time once it has been touched
     if (touched[name]) {
       const error = validateField(name, value);
-      setErrors(prev => ({ ...prev, [name]: error }));
+      setErrors((prev) => ({ ...prev, [name]: error }));
     }
   };
 
   // Mark field as touched on blur and validate immediately
   const handleBlur = (e) => {
     const { name, value } = e.target;
-    setTouched(prev => ({ ...prev, [name]: true }));
+    setTouched((prev) => ({ ...prev, [name]: true }));
     const error = validateField(name, value);
-    setErrors(prev => ({ ...prev, [name]: error }));
+    setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
   // Validate a single field — returns error string or null
@@ -142,23 +144,28 @@ const Contact = () => {
       case 'firstName':
         if (!value.trim()) return 'First name is required';
         if (value.trim().length < 2) return 'First name must be at least 2 characters';
-        if (!/^[a-zA-Z\s'-]+$/.test(value.trim())) return 'First name can only contain letters, spaces, hyphens, and apostrophes';
+        if (!/^[a-zA-Z\s'-]+$/.test(value.trim()))
+          return 'First name can only contain letters, spaces, hyphens, and apostrophes';
         return null;
 
       case 'lastName':
         if (!value.trim()) return 'Last name is required';
         if (value.trim().length < 2) return 'Last name must be at least 2 characters';
-        if (!/^[a-zA-Z\s'-]+$/.test(value.trim())) return 'Last name can only contain letters, spaces, hyphens, and apostrophes';
+        if (!/^[a-zA-Z\s'-]+$/.test(value.trim()))
+          return 'Last name can only contain letters, spaces, hyphens, and apostrophes';
         return null;
 
       case 'email':
         if (!value.trim()) return 'Email address is required';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) return 'Please enter a valid email address (e.g. name@example.com)';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()))
+          return 'Please enter a valid email address (e.g. name@example.com)';
         return null;
 
       case 'phone':
-        if (value.trim() && !/^[\d\s\-+()]+$/.test(value.trim())) return 'Phone number can only contain digits, spaces, +, -, and brackets';
-        if (value.trim() && value.trim().replace(/\D/g, '').length < 8) return 'Phone number must be at least 8 digits';
+        if (value.trim() && !/^[\d\s\-+()]+$/.test(value.trim()))
+          return 'Phone number can only contain digits, spaces, +, -, and brackets';
+        if (value.trim() && value.trim().replace(/\D/g, '').length < 8)
+          return 'Phone number must be at least 8 digits';
         return null;
 
       case 'service':
@@ -179,14 +186,14 @@ const Contact = () => {
   // Validate all fields and return whether form is valid
   const validateForm = () => {
     const newErrors = {};
-    Object.keys(formData).forEach(field => {
+    Object.keys(formData).forEach((field) => {
       const error = validateField(field, formData[field]);
       if (error) newErrors[field] = error;
     });
     setErrors(newErrors);
     // Mark all fields as touched so errors show
     const allTouched = {};
-    Object.keys(formData).forEach(f => (allTouched[f] = true));
+    Object.keys(formData).forEach((f) => (allTouched[f] = true));
     setTouched(allTouched);
     return Object.keys(newErrors).length === 0;
   };
@@ -202,7 +209,7 @@ const Contact = () => {
     if (sessionCount >= MAX_SUBMISSIONS) {
       setSubmitError(
         `You've reached the maximum number of submissions (${MAX_SUBMISSIONS}) for this session. ` +
-        'Please contact us directly at lenbuild@myyahoo.com if you need further assistance.'
+          'Please contact us directly at lenbuild@myyahoo.com if you need further assistance.'
       );
       return;
     }
@@ -236,7 +243,14 @@ const Contact = () => {
         startCooldown();
 
         // Reset form
-        setFormData({ firstName: '', lastName: '', email: '', phone: '', service: '', message: '' });
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
         setErrors({});
         setTouched({});
 
@@ -248,18 +262,22 @@ const Contact = () => {
         try {
           const data = await response.json();
           if (data?.errors?.length) {
-            errorMsg = data.errors.map(err => err.message).join(' ');
+            errorMsg = data.errors.map((err) => err.message).join(' ');
           } else if (response.status === 429) {
             errorMsg = 'Too many submissions. Please wait a moment before trying again.';
           }
-        } catch (_) { /* use default message */ }
-        setSubmitError(errorMsg + ' Please try again or contact us directly at lenbuild@myyahoo.com');
+        } catch {
+          /* use default message */
+        }
+        setSubmitError(
+          errorMsg + ' Please try again or contact us directly at lenbuild@myyahoo.com'
+        );
         setIsSubmitting(false);
       }
-    } catch (networkError) {
+    } catch {
       setSubmitError(
         'Unable to send your message — please check your internet connection and try again. ' +
-        'Alternatively, contact us directly at lenbuild@myyahoo.com'
+          'Alternatively, contact us directly at lenbuild@myyahoo.com'
       );
       setIsSubmitting(false);
     }
@@ -276,7 +294,7 @@ const Contact = () => {
     } else {
       const contentHeight = faqElement.scrollHeight;
       const paddingHeight = 60;
-      faqElement.style.maxHeight = (contentHeight + paddingHeight) + 'px';
+      faqElement.style.maxHeight = contentHeight + paddingHeight + 'px';
       faqQuestion.classList.add('active');
     }
   };
@@ -292,11 +310,10 @@ const Contact = () => {
     }
   }, []);
 
-  // Pre-select the service dropdown and scroll to the form when arriving from a service card
+  // Scroll to the form when arriving from a service card
   useEffect(() => {
     const incoming = location.state?.service;
     if (incoming && VALID_SERVICES.includes(incoming)) {
-      setFormData(prev => ({ ...prev, service: incoming }));
       const formSection = document.getElementById('contact-form');
       if (formSection) {
         // Delay lets the page transition settle before scrolling
@@ -309,15 +326,18 @@ const Contact = () => {
   const faqs = [
     {
       question: 'What areas do you service?',
-      answer: 'At LenBuild, we\'re deeply connected to the Guyra community and the stunning landscapes of Northern NSW. From the heart of the New England Tablelands to the surrounding towns and rural properties.'
+      answer:
+        "At LenBuild, we're deeply connected to the Guyra community and the stunning landscapes of Northern NSW. From the heart of the New England Tablelands to the surrounding towns and rural properties."
     },
     {
       question: 'How long does a typical project take to complete?',
-      answer: 'Every build is unique, and so is the timeline. The duration of your project depends on a range of factors—including the scope of work, weather conditions, material availability, and coordination with other trades. While we can\'t always predict every detail upfront, we\'re committed to keeping you informed and working efficiently from start to finish. We\'re always happy to discuss your specific project and provide a realistic timeframe based on your goals and site conditions.'
+      answer:
+        "Every build is unique, and so is the timeline. The duration of your project depends on a range of factors—including the scope of work, weather conditions, material availability, and coordination with other trades. While we can't always predict every detail upfront, we're committed to keeping you informed and working efficiently from start to finish. We're always happy to discuss your specific project and provide a realistic timeframe based on your goals and site conditions."
     },
     {
       question: 'Do you provide design services?',
-      answer: 'While LenBuild doesn\'t offer in-house architectural design, we\'re happy to work with you and a trusted draftsman to develop the plans you need. Whether you\'re starting from scratch or refining an idea, we\'ll guide you through the process to ensure your plans are practical, compliant, and tailored to your vision.'
+      answer:
+        "While LenBuild doesn't offer in-house architectural design, we're happy to work with you and a trusted draftsman to develop the plans you need. Whether you're starting from scratch or refining an idea, we'll guide you through the process to ensure your plans are practical, compliant, and tailored to your vision."
     }
   ];
 
@@ -337,14 +357,16 @@ const Contact = () => {
       {/* Contact Section */}
       <section className="contact-section section" id="contact-form">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Get In Touch</h2>
+          <h2 className="section-title" data-aos="fade-up">
+            Get In Touch
+          </h2>
           <p className="section-intro" data-aos="fade-up" data-aos-delay="100">
-            Have a project in mind? We'd love to hear from you. Fill out the form below and one of our team members will get back to you as soon as possible.
+            Have a project in mind? We'd love to hear from you. Fill out the form below and one of
+            our team members will get back to you as soon as possible.
           </p>
 
           <div className="contact-container">
             <div className="contact-form-container" data-aos="fade-right" data-aos-delay="200">
-
               {/* Global submission error banner */}
               {submitError && (
                 <div className="submit-error-banner animate-fade-in" role="alert">
@@ -359,20 +381,25 @@ const Contact = () => {
                   <p>We've received your inquiry and will get back to you as soon as possible.</p>
                 </div>
               ) : (
-                <form
-                  action={FORMSPREE_URL}
-                  method="POST"
-                  onSubmit={handleSubmit}
-                  noValidate
-                >
+                <form action={FORMSPREE_URL} method="POST" onSubmit={handleSubmit} noValidate>
                   {/* Honeypot field — hidden from real users, catches bots */}
-                  <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    style={{ display: 'none' }}
+                    tabIndex="-1"
+                    autoComplete="off"
+                  />
                   {/* Formspree email subject */}
                   <input type="hidden" name="_subject" value="New enquiry from LenBuild website" />
 
                   <div className="form-row">
-                    <div className={`form-group ${touched.firstName && errors.firstName ? 'error' : touched.firstName && !errors.firstName ? 'valid' : ''}`}>
-                      <label htmlFor="firstName">First Name <span className="required">*</span></label>
+                    <div
+                      className={`form-group ${touched.firstName && errors.firstName ? 'error' : touched.firstName && !errors.firstName ? 'valid' : ''}`}
+                    >
+                      <label htmlFor="firstName">
+                        First Name <span className="required">*</span>
+                      </label>
                       <input
                         type="text"
                         id="firstName"
@@ -386,12 +413,18 @@ const Contact = () => {
                         aria-invalid={!!errors.firstName}
                       />
                       {touched.firstName && errors.firstName && (
-                        <div id="firstName-error" className="error-message" role="alert">{errors.firstName}</div>
+                        <div id="firstName-error" className="error-message" role="alert">
+                          {errors.firstName}
+                        </div>
                       )}
                     </div>
 
-                    <div className={`form-group ${touched.lastName && errors.lastName ? 'error' : touched.lastName && !errors.lastName ? 'valid' : ''}`}>
-                      <label htmlFor="lastName">Last Name <span className="required">*</span></label>
+                    <div
+                      className={`form-group ${touched.lastName && errors.lastName ? 'error' : touched.lastName && !errors.lastName ? 'valid' : ''}`}
+                    >
+                      <label htmlFor="lastName">
+                        Last Name <span className="required">*</span>
+                      </label>
                       <input
                         type="text"
                         id="lastName"
@@ -405,13 +438,19 @@ const Contact = () => {
                         aria-invalid={!!errors.lastName}
                       />
                       {touched.lastName && errors.lastName && (
-                        <div id="lastName-error" className="error-message" role="alert">{errors.lastName}</div>
+                        <div id="lastName-error" className="error-message" role="alert">
+                          {errors.lastName}
+                        </div>
                       )}
                     </div>
                   </div>
 
-                  <div className={`form-group ${touched.email && errors.email ? 'error' : touched.email && !errors.email ? 'valid' : ''}`}>
-                    <label htmlFor="email">Email Address <span className="required">*</span></label>
+                  <div
+                    className={`form-group ${touched.email && errors.email ? 'error' : touched.email && !errors.email ? 'valid' : ''}`}
+                  >
+                    <label htmlFor="email">
+                      Email Address <span className="required">*</span>
+                    </label>
                     <input
                       type="email"
                       id="email"
@@ -425,12 +464,18 @@ const Contact = () => {
                       aria-invalid={!!errors.email}
                     />
                     {touched.email && errors.email && (
-                      <div id="email-error" className="error-message" role="alert">{errors.email}</div>
+                      <div id="email-error" className="error-message" role="alert">
+                        {errors.email}
+                      </div>
                     )}
                   </div>
 
-                  <div className={`form-group ${touched.phone && errors.phone ? 'error' : touched.phone && formData.phone && !errors.phone ? 'valid' : ''}`}>
-                    <label htmlFor="phone">Phone Number <span className="optional">(Optional)</span></label>
+                  <div
+                    className={`form-group ${touched.phone && errors.phone ? 'error' : touched.phone && formData.phone && !errors.phone ? 'valid' : ''}`}
+                  >
+                    <label htmlFor="phone">
+                      Phone Number <span className="optional">(Optional)</span>
+                    </label>
                     <input
                       type="tel"
                       id="phone"
@@ -444,12 +489,18 @@ const Contact = () => {
                       aria-invalid={!!errors.phone}
                     />
                     {touched.phone && errors.phone && (
-                      <div id="phone-error" className="error-message" role="alert">{errors.phone}</div>
+                      <div id="phone-error" className="error-message" role="alert">
+                        {errors.phone}
+                      </div>
                     )}
                   </div>
 
-                  <div className={`form-group ${touched.service && errors.service ? 'error' : touched.service && !errors.service ? 'valid' : ''}`}>
-                    <label htmlFor="service">Service Interested In <span className="required">*</span></label>
+                  <div
+                    className={`form-group ${touched.service && errors.service ? 'error' : touched.service && !errors.service ? 'valid' : ''}`}
+                  >
+                    <label htmlFor="service">
+                      Service Interested In <span className="required">*</span>
+                    </label>
                     <select
                       id="service"
                       name="service"
@@ -468,12 +519,18 @@ const Contact = () => {
                       <option value="other">Other</option>
                     </select>
                     {touched.service && errors.service && (
-                      <div id="service-error" className="error-message" role="alert">{errors.service}</div>
+                      <div id="service-error" className="error-message" role="alert">
+                        {errors.service}
+                      </div>
                     )}
                   </div>
 
-                  <div className={`form-group ${touched.message && errors.message ? 'error' : touched.message && !errors.message ? 'valid' : ''}`}>
-                    <label htmlFor="message">Your Message <span className="required">*</span></label>
+                  <div
+                    className={`form-group ${touched.message && errors.message ? 'error' : touched.message && !errors.message ? 'valid' : ''}`}
+                  >
+                    <label htmlFor="message">
+                      Your Message <span className="required">*</span>
+                    </label>
                     <textarea
                       id="message"
                       name="message"
@@ -486,11 +543,15 @@ const Contact = () => {
                       aria-describedby={errors.message ? 'message-error' : undefined}
                       aria-invalid={!!errors.message}
                     ></textarea>
-                    <div className={`character-count ${formData.message.length > 900 ? 'near-limit' : ''}`}>
+                    <div
+                      className={`character-count ${formData.message.length > 900 ? 'near-limit' : ''}`}
+                    >
                       {formData.message.length}/1000 characters
                     </div>
                     {touched.message && errors.message && (
-                      <div id="message-error" className="error-message" role="alert">{errors.message}</div>
+                      <div id="message-error" className="error-message" role="alert">
+                        {errors.message}
+                      </div>
                     )}
                   </div>
 
@@ -502,10 +563,9 @@ const Contact = () => {
                     {isSubmitting
                       ? 'Sending...'
                       : isOnCooldown
-                      ? `Please wait ${cooldownSeconds}s before sending again`
-                      : 'Send Message'}
+                        ? `Please wait ${cooldownSeconds}s before sending again`
+                        : 'Send Message'}
                   </button>
-
                 </form>
               )}
             </div>
@@ -534,16 +594,13 @@ const Contact = () => {
       {/* FAQ Section */}
       <section className="faq-section section" id="faq">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+          <h2 className="section-title" data-aos="fade-up">
+            Frequently Asked Questions
+          </h2>
 
           <div className="faq-container">
             {faqs.map((faq, index) => (
-              <div
-                className="faq-item"
-                key={index}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-              >
+              <div className="faq-item" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
                 <div
                   id={`faq-question-${index + 1}`}
                   className="faq-question"

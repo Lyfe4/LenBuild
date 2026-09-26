@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import lenbuildLogo from '../../assets/lenbuild.png';
@@ -11,42 +11,45 @@ const Header = () => {
   const [isAtTop, setIsAtTop] = useState(true);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
-  
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Check if we're at the very top
       setIsAtTop(currentScrollY === 0);
-      
+
       // Determine if scrolled down from top
       if (currentScrollY > 80) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
-      
+
       // Hide nav on scroll down, show on scroll up
       if (currentScrollY > lastScrollY && currentScrollY > 200) {
         setNavHidden(true);
       } else {
         setNavHidden(false);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
-  
-  // Close mobile menu when location changes
-  useEffect(() => {
+
+  // Close mobile menu when location changes (adjusting state during render,
+  // rather than in an effect, avoids an extra render with the menu still open)
+  const [prevLocation, setPrevLocation] = useState(location);
+  if (location !== prevLocation) {
+    setPrevLocation(location);
     setMobileMenuOpen(false);
-  }, [location]);
-  
+  }
+
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(prev => !prev);
+    setMobileMenuOpen((prev) => !prev);
   };
 
   // Lock body scroll when mobile menu is open.
@@ -73,7 +76,7 @@ const Header = () => {
       document.body.style.width = '';
     };
   }, [mobileMenuOpen]);
-  
+
   const isActive = (path) => {
     return location.pathname === path ? 'active' : '';
   };
@@ -84,7 +87,7 @@ const Header = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
-  
+
   // Dropdown menu data
   const dropdownMenus = {
     '/': [
@@ -108,16 +111,16 @@ const Header = () => {
       { label: 'FAQ', hash: '#faq' }
     ]
   };
-  
+
   // Handle dropdown hover
   const handleDropdownEnter = (path) => {
     setActiveDropdown(path);
   };
-  
+
   const handleDropdownLeave = () => {
     setActiveDropdown(null);
   };
-  
+
   // Sync theme-color so iOS 15+ Safari tints its chrome to match the header state
   useEffect(() => {
     const meta = document.querySelector('meta[name="theme-color"]');
@@ -128,18 +131,20 @@ const Header = () => {
 
   // Check if current page has an image header (all pages including home)
   const hasImageHeader = true;
-  
+
   // Determine if header should merge with page header image
   const shouldMergeWithImage = isAtTop && hasImageHeader;
-  
+
   return (
-    <header className={`header ${scrolled ? 'scrolled' : ''} ${navHidden && !mobileMenuOpen ? 'nav-hidden' : ''} ${shouldMergeWithImage ? 'merged-with-image' : ''}`}>
+    <header
+      className={`header ${scrolled ? 'scrolled' : ''} ${navHidden && !mobileMenuOpen ? 'nav-hidden' : ''} ${shouldMergeWithImage ? 'merged-with-image' : ''}`}
+    >
       <div className="container">
         <div className="header-container">
           <Link to="/" className="logo" onClick={() => handleMainNavClick('/')}>
             <img src={lenbuildLogo} alt="LenBuild" className="logo-image" />
           </Link>
-          
+
           <button
             className={`mobile-menu-btn${mobileMenuOpen ? ' open' : ''}`}
             onClick={toggleMobileMenu}
@@ -150,22 +155,24 @@ const Header = () => {
             <span></span>
             <span></span>
           </button>
-          
+
           {mobileMenuOpen && (
             <div className="mobile-menu-overlay" onClick={toggleMobileMenu} aria-hidden="true" />
           )}
           <nav className={mobileMenuOpen ? 'mobile-menu-open' : ''}>
             <ul>
-              <li 
+              <li
                 className="nav-item-with-dropdown"
                 onMouseEnter={() => handleDropdownEnter('/')}
                 onMouseLeave={handleDropdownLeave}
               >
-                <Link to="/" className={isActive('/')} onClick={() => handleMainNavClick('/')}>Home</Link>
+                <Link to="/" className={isActive('/')} onClick={() => handleMainNavClick('/')}>
+                  Home
+                </Link>
                 {dropdownMenus['/'] && (
                   <div className={`dropdown-menu ${activeDropdown === '/' ? 'show' : ''}`}>
                     {dropdownMenus['/'].map((item, index) => (
-                      <Link 
+                      <Link
                         key={index}
                         to={`/${item.hash}`}
                         className="dropdown-item"
@@ -177,16 +184,22 @@ const Header = () => {
                   </div>
                 )}
               </li>
-              <li 
+              <li
                 className="nav-item-with-dropdown"
                 onMouseEnter={() => handleDropdownEnter('/about')}
                 onMouseLeave={handleDropdownLeave}
               >
-                <Link to="/about" className={isActive('/about')} onClick={() => handleMainNavClick('/about')}>About</Link>
+                <Link
+                  to="/about"
+                  className={isActive('/about')}
+                  onClick={() => handleMainNavClick('/about')}
+                >
+                  About
+                </Link>
                 {dropdownMenus['/about'] && (
                   <div className={`dropdown-menu ${activeDropdown === '/about' ? 'show' : ''}`}>
                     {dropdownMenus['/about'].map((item, index) => (
-                      <Link 
+                      <Link
                         key={index}
                         to={`/about${item.hash}`}
                         className="dropdown-item"
@@ -198,16 +211,24 @@ const Header = () => {
                   </div>
                 )}
               </li>
-              <li 
+              <li
                 className="nav-item-with-dropdown"
                 onMouseEnter={() => handleDropdownEnter('/projects-services')}
                 onMouseLeave={handleDropdownLeave}
               >
-                <Link to="/projects-services" className={isActive('/projects-services')} onClick={() => handleMainNavClick('/projects-services')}>Projects & Services</Link>
+                <Link
+                  to="/projects-services"
+                  className={isActive('/projects-services')}
+                  onClick={() => handleMainNavClick('/projects-services')}
+                >
+                  Projects & Services
+                </Link>
                 {dropdownMenus['/projects-services'] && (
-                  <div className={`dropdown-menu ${activeDropdown === '/projects-services' ? 'show' : ''}`}>
+                  <div
+                    className={`dropdown-menu ${activeDropdown === '/projects-services' ? 'show' : ''}`}
+                  >
                     {dropdownMenus['/projects-services'].map((item, index) => (
-                      <Link 
+                      <Link
                         key={index}
                         to={`/projects-services${item.hash}`}
                         className={`dropdown-item ${item.isSubheading ? 'dropdown-subheading' : ''}`}
@@ -219,16 +240,22 @@ const Header = () => {
                   </div>
                 )}
               </li>
-              <li 
+              <li
                 className="nav-item-with-dropdown"
                 onMouseEnter={() => handleDropdownEnter('/contact')}
                 onMouseLeave={handleDropdownLeave}
               >
-                <Link to="/contact" className={isActive('/contact')} onClick={() => handleMainNavClick('/contact')}>Contact</Link>
+                <Link
+                  to="/contact"
+                  className={isActive('/contact')}
+                  onClick={() => handleMainNavClick('/contact')}
+                >
+                  Contact
+                </Link>
                 {dropdownMenus['/contact'] && (
                   <div className={`dropdown-menu ${activeDropdown === '/contact' ? 'show' : ''}`}>
                     {dropdownMenus['/contact'].map((item, index) => (
-                      <Link 
+                      <Link
                         key={index}
                         to={`/contact${item.hash}`}
                         className="dropdown-item"

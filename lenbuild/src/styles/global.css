@@ -26,11 +26,17 @@ body {
   overflow-x: clip;
 }
 
-button, a {
+button,
+a {
   touch-action: manipulation;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 500;
   color: var(--primary);
   margin-bottom: var(--spacing-md);
@@ -58,7 +64,8 @@ a:hover {
   color: var(--secondary);
 }
 
-ul, ol {
+ul,
+ol {
   list-style-position: inside;
 }
 
@@ -176,7 +183,8 @@ img {
 /* Page header styling */
 .page-header {
   height: 40vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/Wedbsite 1.jpg');
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/Wedbsite 1.jpg');
   background-size: cover;
   background-position: right 60%;
   display: flex;
@@ -212,15 +220,15 @@ img {
   .container {
     width: 93%;
   }
-  
+
   h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
   }
-  
+
   h2 {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
   }
-  
+
   .section {
     padding: calc(var(--spacing-xl) * 1.2) 0;
   }
@@ -230,11 +238,11 @@ img {
   h1 {
     font-size: clamp(1.8rem, 5.5vw, 3rem);
   }
-  
+
   h2 {
     font-size: clamp(1.6rem, 4.5vw, 2.2rem);
   }
-  
+
   .section {
     padding: var(--spacing-xl) 0;
   }
@@ -245,27 +253,27 @@ img {
     width: 95%;
     padding: var(--spacing-sm);
   }
-  
+
   h1 {
     font-size: clamp(1.5rem, 6vw, 2.2rem);
   }
-  
+
   h2 {
     font-size: clamp(1.4rem, 5vw, 1.8rem);
   }
-  
+
   h3 {
     font-size: clamp(1.2rem, 4vw, 1.5rem);
   }
-  
+
   .section-intro {
     font-size: var(--font-size-base);
   }
-  
+
   .section {
     padding: var(--spacing-lg) 0;
   }
-  
+
   .btn {
     padding: var(--spacing-xs) var(--spacing-md);
     font-size: var(--font-size-small);
@@ -277,15 +285,15 @@ img {
   .container {
     width: 96%;
   }
-  
+
   h1 {
     font-size: clamp(1.3rem, 7vw, 1.8rem);
   }
-  
+
   h2 {
     font-size: clamp(1.2rem, 6vw, 1.6rem);
   }
-  
+
   h3 {
     font-size: clamp(1.1rem, 5vw, 1.4rem);
   }
