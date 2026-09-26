@@ -24,12 +24,12 @@ import './styles/global.css';
 const AnimatedRoutes = () => {
   const location = useLocation();
   const nodeRef = useRef(null);
-  
+
   return (
     <TransitionGroup component={null}>
-      <CSSTransition 
-        key={location.key} 
-        timeout={300} 
+      <CSSTransition
+        key={location.key}
+        timeout={300}
         classNames="page-transition"
         nodeRef={nodeRef}
       >

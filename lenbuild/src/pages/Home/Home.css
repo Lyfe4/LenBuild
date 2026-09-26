@@ -7,8 +7,12 @@
   text-align: center;
   color: white;
   overflow: hidden;
-  margin-top: calc(-1 * (var(--spacing-md) * 2 + var(--font-size-xl) * 1.2) - 15px - env(safe-area-inset-top));
-  padding-top: calc(var(--spacing-md) * 2 + var(--font-size-xl) * 1.2 + 15px + env(safe-area-inset-top));
+  margin-top: calc(
+    -1 * (var(--spacing-md) * 2 + var(--font-size-xl) * 1.2) - 15px - env(safe-area-inset-top)
+  );
+  padding-top: calc(
+    var(--spacing-md) * 2 + var(--font-size-xl) * 1.2 + 15px + env(safe-area-inset-top)
+  );
   padding-bottom: var(--spacing-xl);
 }
 
@@ -18,7 +22,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/Wedbsite 1.jpg');
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/Wedbsite 1.jpg');
   background-size: cover;
   background-position: right 70%;
   background-repeat: no-repeat;
@@ -86,7 +91,9 @@
 
 .about-us-text .btn {
   margin-top: var(--spacing-md);
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .about-us-text .btn:hover {
@@ -127,7 +134,9 @@
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   display: flex;
   flex-direction: column;
   opacity: 0; /* AOS will handle the visibility */
@@ -167,7 +176,9 @@
 
 .service-card .btn {
   align-self: flex-start;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .service-card .btn:hover {
@@ -363,7 +374,9 @@
 /* Smooth transition between testimonials */
 .testimonial-carousel .testimonial-content,
 .testimonial-carousel .testimonial-author {
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
 }
 
 /* Responsive */
@@ -372,7 +385,9 @@
     min-height: 60vh;
     /* Header at ≤1024px: logo 50px + padding 5px×2 = ~60px */
     margin-top: calc(-1 * (var(--spacing-xs) * 2 + 50px) - 10px - env(safe-area-inset-top));
-    padding-top: calc((var(--spacing-xs) * 2 + 50px) + 10px + var(--spacing-md) + env(safe-area-inset-top));
+    padding-top: calc(
+      (var(--spacing-xs) * 2 + 50px) + 10px + var(--spacing-md) + env(safe-area-inset-top)
+    );
   }
 
   .hero h1 {
@@ -397,16 +412,16 @@
   .about-us-content {
     flex-direction: column;
   }
-  
+
   .about-us-text,
   .about-us-image {
     width: 100%;
   }
-  
+
   .about-us-text {
     margin-bottom: var(--spacing-lg);
   }
-  
+
   .about-us-image {
     height: 300px;
   }
@@ -416,23 +431,25 @@
   .hero {
     min-height: 55vh;
     margin-top: calc(-1 * (var(--spacing-sm) * 2 + 45px) - 10px - env(safe-area-inset-top));
-    padding-top: calc((var(--spacing-sm) * 2 + 45px) + 10px + var(--spacing-md) + env(safe-area-inset-top));
+    padding-top: calc(
+      (var(--spacing-sm) * 2 + 45px) + 10px + var(--spacing-md) + env(safe-area-inset-top)
+    );
   }
-  
+
   .hero h1 {
     font-size: clamp(1.5rem, 7vw, 2.2rem);
   }
-  
+
   .hero p {
     font-size: clamp(0.9rem, 3.5vw, 1.1rem);
     margin-bottom: var(--spacing-lg);
   }
-  
+
   .hero-buttons {
     flex-direction: column;
     gap: var(--spacing-md);
   }
-  
+
   .hero-buttons .btn {
     margin: 0;
     width: 100%;
@@ -451,7 +468,7 @@
   .testimonial-content p {
     font-size: var(--font-size-base);
   }
-  
+
   .testimonial-carousel {
     padding: 0 var(--spacing-md);
   }
@@ -486,22 +503,27 @@
 @media (max-width: 480px) {
   .hero {
     min-height: 50vh;
-    margin-top: calc(-1 * (var(--spacing-xs) * 2 + var(--spacing-sm) * 2 + 40px) - env(safe-area-inset-top));
-    padding-top: calc((var(--spacing-xs) * 2 + var(--spacing-sm) * 2 + 40px) + var(--spacing-sm) + env(safe-area-inset-top));
+    margin-top: calc(
+      -1 * (var(--spacing-xs) * 2 + var(--spacing-sm) * 2 + 40px) - env(safe-area-inset-top)
+    );
+    padding-top: calc(
+      (var(--spacing-xs) * 2 + var(--spacing-sm) * 2 + 40px) + var(--spacing-sm) +
+        env(safe-area-inset-top)
+    );
   }
-  
+
   .hero h1 {
     font-size: clamp(1.3rem, 8vw, 1.8rem);
   }
-  
+
   .hero p {
     font-size: clamp(0.85rem, 4vw, 1rem);
   }
-  
+
   .about-us-image {
     height: 250px;
   }
-  
+
   .services-grid {
     max-width: 100%;
   }

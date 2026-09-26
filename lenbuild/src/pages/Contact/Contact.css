@@ -12,7 +12,9 @@
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(44, 76, 99, 0.12);
   border: 1px solid rgba(222, 226, 230, 0.3);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .contact-form-container:hover {
@@ -49,11 +51,21 @@
   }
 }
 
-.form-group:nth-child(1) { animation: formFieldAppear 0.5s ease forwards 0.1s; }
-.form-group:nth-child(2) { animation: formFieldAppear 0.5s ease forwards 0.2s; }
-.form-group:nth-child(3) { animation: formFieldAppear 0.5s ease forwards 0.3s; }
-.form-group:nth-child(4) { animation: formFieldAppear 0.5s ease forwards 0.4s; }
-.form-group:nth-child(5) { animation: formFieldAppear 0.5s ease forwards 0.5s; }
+.form-group:nth-child(1) {
+  animation: formFieldAppear 0.5s ease forwards 0.1s;
+}
+.form-group:nth-child(2) {
+  animation: formFieldAppear 0.5s ease forwards 0.2s;
+}
+.form-group:nth-child(3) {
+  animation: formFieldAppear 0.5s ease forwards 0.3s;
+}
+.form-group:nth-child(4) {
+  animation: formFieldAppear 0.5s ease forwards 0.4s;
+}
+.form-group:nth-child(5) {
+  animation: formFieldAppear 0.5s ease forwards 0.5s;
+}
 
 .form-group label {
   display: block;
@@ -100,7 +112,9 @@
 .form-group select:focus {
   border-color: var(--primary);
   outline: none;
-  box-shadow: 0 0 0 4px rgba(44, 76, 99, 0.1), 0 4px 16px rgba(44, 76, 99, 0.08);
+  box-shadow:
+    0 0 0 4px rgba(44, 76, 99, 0.1),
+    0 4px 16px rgba(44, 76, 99, 0.08);
   transform: translateY(-2px);
   background: #ffffff;
 }
@@ -116,10 +130,16 @@
   cursor: pointer;
   appearance: none;
   background-color: #ffffff;
-  background-image: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23374151' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-  background-position: 0 0, right 16px center;
+  background-image:
+    linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%),
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23374151' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position:
+    0 0,
+    right 16px center;
   background-repeat: no-repeat, no-repeat;
-  background-size: 100% 100%, 16px 16px;
+  background-size:
+    100% 100%,
+    16px 16px;
   padding-right: 48px;
 }
 
@@ -142,7 +162,9 @@
 .form-group.valid input:focus,
 .form-group.valid textarea:focus,
 .form-group.valid select:focus {
-  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1), 0 4px 16px rgba(16, 185, 129, 0.08);
+  box-shadow:
+    0 0 0 4px rgba(16, 185, 129, 0.1),
+    0 4px 16px rgba(16, 185, 129, 0.08);
 }
 
 .form-group.error input,
@@ -159,15 +181,30 @@
 }
 
 @keyframes errorPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.01); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.01);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-4px); }
-  40%, 80% { transform: translateX(4px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-4px);
+  }
+  40%,
+  80% {
+    transform: translateX(4px);
+  }
 }
 
 .error-message {
@@ -182,7 +219,7 @@
 }
 
 .error-message::before {
-  content: "⚠";
+  content: '⚠';
   font-size: 14px;
 }
 
@@ -293,8 +330,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .hidden {
@@ -314,7 +355,9 @@
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(44, 76, 99, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   position: relative;
   overflow: hidden;
 }
@@ -424,7 +467,9 @@
   box-shadow: 0 8px 32px rgba(44, 76, 99, 0.08);
   position: relative;
   z-index: 1;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .map-container:hover {
@@ -456,7 +501,9 @@
   box-shadow: 0 8px 32px rgba(44, 76, 99, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .faq-item:hover {

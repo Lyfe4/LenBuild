@@ -6,13 +6,13 @@ export default defineConfig({
   plugins: [react()],
   css: {
     // CRA ran autoprefixer against the browserslist in package.json; keep doing so.
-    postcss: { plugins: [autoprefixer()] },
+    postcss: { plugins: [autoprefixer()] }
   },
   server: {
-    port: 3000,
+    port: 3000
   },
   preview: {
-    port: 3000,
+    port: 3000
   },
   build: {
     // Keep CRA's output layout: react-snap (postbuild) prerenders from build/.
@@ -20,6 +20,6 @@ export default defineConfig({
     assetsDir: 'static',
     // react-snap drives Puppeteer 1.x (Chromium 78), which can't parse ES2020+
     // syntax such as optional chaining. Without this, prerendering fails silently.
-    target: 'es2019',
-  },
+    target: 'es2019'
+  }
 });

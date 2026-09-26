@@ -18,14 +18,20 @@
   transition: all 0.5s ease;
 }
 
-.about-text[data-aos="fade-right"].aos-animate p {
+.about-text[data-aos='fade-right'].aos-animate p {
   transform: translateY(0);
   opacity: 1;
 }
 
-.about-text p:nth-child(1) { transition-delay: 0.2s; }
-.about-text p:nth-child(2) { transition-delay: 0.4s; }
-.about-text p:nth-child(3) { transition-delay: 0.6s; }
+.about-text p:nth-child(1) {
+  transition-delay: 0.2s;
+}
+.about-text p:nth-child(2) {
+  transition-delay: 0.4s;
+}
+.about-text p:nth-child(3) {
+  transition-delay: 0.6s;
+}
 
 .about-image {
   flex: 1;
@@ -36,7 +42,10 @@
   max-height: 500px;
   min-height: 300px;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
   cursor: pointer;
 }
 
@@ -88,7 +97,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(44, 76, 99, 0.1) 0%, transparent 50%, rgba(228, 192, 142, 0.1) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(44, 76, 99, 0.1) 0%,
+    transparent 50%,
+    rgba(228, 192, 142, 0.1) 100%
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -123,7 +137,9 @@
   border-radius: var(--spacing-lg);
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   box-shadow: var(--box-shadow-light);
 }
 
@@ -152,7 +168,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -161,7 +177,7 @@
 }
 
 .value-card:hover .value-overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 .value-content {
@@ -180,14 +196,14 @@
   margin-bottom: var(--spacing-sm);
   font-size: var(--font-size-xl);
   font-weight: 600;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .value-card p {
   line-height: 1.6;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255, 255, 255, 0.9);
   font-size: var(--font-size-small);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   opacity: 0.9;
   transition: opacity 0.4s ease;
 }
@@ -210,7 +226,9 @@
   border-radius: var(--border-radius-md);
   overflow: hidden;
   box-shadow: var(--box-shadow-light);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   display: flex;
   align-items: stretch;
 }
@@ -377,17 +395,17 @@
   .about-image {
     height: 350px;
   }
-  
+
   .values-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-md);
   }
-  
+
   .team-image {
     width: 250px;
     min-width: 250px;
   }
-  
+
   .team-details {
     padding: var(--spacing-md);
   }
@@ -397,16 +415,16 @@
   .about-content {
     flex-direction: column;
   }
-  
+
   .about-text,
   .about-image {
     width: 100%;
   }
-  
+
   .about-text {
     margin-bottom: var(--spacing-lg);
   }
-  
+
   .about-image {
     height: 300px;
   }
@@ -416,7 +434,7 @@
     max-width: 600px;
     gap: var(--spacing-md);
   }
-  
+
   .value-card {
     aspect-ratio: 16/10;
   }
@@ -426,12 +444,12 @@
   .about-image {
     height: 280px;
   }
-  
+
   .values-grid {
     grid-template-columns: 1fr;
     max-width: 500px;
   }
-  
+
   .team-grid {
     grid-template-columns: 1fr;
   }
@@ -447,7 +465,7 @@
     height: 250px;
     max-height: 250px;
   }
-  
+
   .team-image img {
     min-height: 250px;
     max-height: 250px;
@@ -519,20 +537,20 @@
   .about-image {
     height: 250px;
   }
-  
+
   .values-grid {
     max-width: 100%;
   }
-  
+
   .value-card {
     aspect-ratio: 4/3;
   }
-  
+
   .team-image {
     height: 220px;
     max-height: 220px;
   }
-  
+
   .team-image img {
     min-height: 220px;
     max-height: 220px;

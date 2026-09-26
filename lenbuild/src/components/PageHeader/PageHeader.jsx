@@ -7,10 +7,12 @@ const PageHeader = ({ title, breadcrumbs }) => {
       <div className="page-header-background"></div>
       <div className="container">
         <h1 data-aos="fade-up">{title}</h1>
-        
+
         {breadcrumbs && (
           <ul className="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-            <li><Link to="/">Home</Link></li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
             {breadcrumbs.map((breadcrumb, index) => (
               <li key={index}>
                 {breadcrumb.link ? (
