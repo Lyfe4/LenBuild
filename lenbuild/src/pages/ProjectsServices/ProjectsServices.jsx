@@ -92,13 +92,11 @@ const ProjectsServices = () => {
       ctaText: 'Expand Your Space',
       projects: [
         {
-          title: 'Placeholder',
-          year: 'This is placeholder info',
+          title: 'Bathroom with timber vanity and patterned floor tiles',
           image: extensionImage1
         },
         {
-          title: 'Placeholder',
-          year: 'This is placeholder info',
+          title: 'Open living area with exposed brick wall and new kitchen',
           image: extensionImage2
         }
       ]
@@ -228,10 +226,7 @@ const ProjectsServices = () => {
                   data-aos-delay={300 + index * 50}
                 >
                   {service.projects.map((project, i) => (
-                    <div
-                      className={`project-item zoom-on-hover ${project.title === 'Placeholder' && i === 1 ? 'post-2-image' : ''}`}
-                      key={i}
-                    >
+                    <div className="project-item zoom-on-hover" key={i}>
                       <img src={project.image} alt={project.title} />
                     </div>
                   ))}
