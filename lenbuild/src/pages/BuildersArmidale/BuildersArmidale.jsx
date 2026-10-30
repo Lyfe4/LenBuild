@@ -9,12 +9,12 @@ const pageSchema = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.lenbuild.com/' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://lenbuild.com/' },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Builders Armidale',
-        item: 'https://www.lenbuild.com/builders-armidale'
+        item: 'https://lenbuild.com/builders-armidale/'
       }
     ]
   },
@@ -22,7 +22,7 @@ const pageSchema = [
     '@context': 'https://schema.org',
     '@type': 'Service',
     serviceType: 'Home Building, Extensions and Renovations',
-    provider: { '@id': 'https://www.lenbuild.com/#business' },
+    provider: { '@id': 'https://lenbuild.com/#business' },
     areaServed: [
       { '@type': 'City', name: 'Armidale' },
       { '@type': 'AdministrativeArea', name: 'New England, NSW' }
@@ -41,7 +41,7 @@ const BuildersArmidale = () => {
         title="Builders in Armidale NSW"
         description="Looking for builders in Armidale? LenBuild delivers custom homes, extensions and renovations across Armidale and the New England region of NSW. Get in touch for a quote."
         keywords="builders Armidale, builder Armidale NSW, home builder Armidale, renovations Armidale, home extensions Armidale, custom home builder Armidale NSW"
-        canonical="/builders-armidale"
+        canonical="/builders-armidale/"
         schema={pageSchema}
       />
       <PageHeader title="Builders in Armidale, NSW" breadcrumbs={breadcrumbs} />

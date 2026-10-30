@@ -20,13 +20,13 @@ const aboutSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://www.lenbuild.com/'
+      item: 'https://lenbuild.com/'
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'About Us',
-      item: 'https://www.lenbuild.com/about'
+      item: 'https://lenbuild.com/about/'
     }
   ]
 };
@@ -105,7 +105,7 @@ const About = () => {
         title="About Us | Family Builder Guyra NSW"
         description="Meet the LenBuild team — a family-operated building company with 10+ years serving Guyra and the New England region of NSW. Learn about our story, values, and the team behind every build."
         keywords="about LenBuild, builder Guyra NSW team, family builder New England NSW, experienced builder Guyra, Dan LenBuild director"
-        canonical="/about"
+        canonical="/about/"
         schema={aboutSchema}
       />
       <PageHeader title="About LenBuild" breadcrumbs={breadcrumbs} />

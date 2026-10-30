@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const SITE_URL = 'https://www.lenbuild.com';
+const SITE_URL = 'https://lenbuild.com';
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 const SEO = ({
@@ -16,7 +16,8 @@ const SEO = ({
     ? `${title} | LenBuild Guyra NSW`
     : 'LenBuild | Local Builder Guyra NSW | Custom Homes, Extensions & Renovations';
 
-  const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : SITE_URL;
+  // Netlify serves pages at /path/ (and 301s /path to it), so canonicals must end in a slash
+  const canonicalUrl = `${SITE_URL}${canonical || '/'}`;
 
   return (
     <Helmet>
