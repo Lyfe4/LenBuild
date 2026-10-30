@@ -17,13 +17,13 @@ const contactSchema = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.lenbuild.com/'
+          item: 'https://lenbuild.com/'
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Contact',
-          item: 'https://www.lenbuild.com/contact'
+          item: 'https://lenbuild.com/contact/'
         }
       ]
     },
@@ -349,7 +349,7 @@ const Contact = () => {
         title="Contact Us | Get a Quote from Your Local Guyra Builder"
         description="Get in touch with LenBuild — Guyra's local builder. Request a quote for custom homes, extensions or renovations in the New England region of NSW. We'd love to hear about your project."
         keywords="contact builder Guyra, get a quote builder Guyra NSW, building quote New England NSW, builder enquiry Guyra, LenBuild contact"
-        canonical="/contact"
+        canonical="/contact/"
         schema={contactSchema}
       />
       <PageHeader title="Contact Us" breadcrumbs={breadcrumbs} />

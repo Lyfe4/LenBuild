@@ -9,12 +9,12 @@ const pageSchema = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.lenbuild.com/' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://lenbuild.com/' },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Custom Home Builder Guyra',
-        item: 'https://www.lenbuild.com/custom-home-builder-guyra'
+        item: 'https://lenbuild.com/custom-home-builder-guyra/'
       }
     ]
   },
@@ -22,7 +22,7 @@ const pageSchema = [
     '@context': 'https://schema.org',
     '@type': 'Service',
     serviceType: 'Custom Home Building',
-    provider: { '@id': 'https://www.lenbuild.com/#business' },
+    provider: { '@id': 'https://lenbuild.com/#business' },
     areaServed: [
       { '@type': 'City', name: 'Guyra' },
       { '@type': 'AdministrativeArea', name: 'New England, NSW' }
@@ -41,7 +41,7 @@ const CustomHomeBuilderGuyra = () => {
         title="Custom Home Builder in Guyra NSW"
         description="Planning a new home? LenBuild is a local custom home builder in Guyra, NSW, designing and building bespoke homes across the New England region. Book a consultation today."
         keywords="custom home builder Guyra, new home builder Guyra NSW, custom homes Guyra, home builder New England NSW, acreage home builder Guyra"
-        canonical="/custom-home-builder-guyra"
+        canonical="/custom-home-builder-guyra/"
         schema={pageSchema}
       />
       <PageHeader title="Custom Home Builder in Guyra, NSW" breadcrumbs={breadcrumbs} />

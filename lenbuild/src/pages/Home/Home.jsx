@@ -13,7 +13,7 @@ const homeSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://www.lenbuild.com/'
+      item: 'https://lenbuild.com/'
     }
   ]
 };
